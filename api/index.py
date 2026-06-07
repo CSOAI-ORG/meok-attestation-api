@@ -654,12 +654,21 @@ def sign_attestation(
 
 
 def verify_attestation(cert: dict[str, Any]) -> tuple[bool, str]:
-    payload_str = cert.get("payload")
+    payload_field = cert.get("payload")
     sig = cert.get("signature_sha256_hmac")
-    if not payload_str or not sig:
+    if not payload_field or not sig:
         return False, "Missing payload or signature"
+    # Accept both documented forms of `payload` (see openapi VerifyRequest):
+    #   • canonical-JSON string — exactly as emitted by /sign
+    #   • JSON object — re-canonicalised here so the HMAC matches the signer
+    if isinstance(payload_field, dict):
+        payload_bytes = _canonical_payload(payload_field)
+        payload_str = payload_bytes.decode("utf-8")
+    else:
+        payload_str = payload_field
+        payload_bytes = payload_str.encode("utf-8")
     try:
-        expected = _sign_bytes(payload_str.encode("utf-8"))
+        expected = _sign_bytes(payload_bytes)
     except Exception as e:
         return False, f"Signature recomputation failed: {e}"
     if not hmac.compare_digest(expected, sig):
