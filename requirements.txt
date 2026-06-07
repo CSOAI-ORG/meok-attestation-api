@@ -1,0 +1,1 @@
+# Pure stdlib — no external deps required. HMAC + json + datetime only.

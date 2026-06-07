@@ -1,0 +1,7 @@
+node_modules/
+.vercel/
+*.pyc
+__pycache__/
+SECRETS_LOCAL.md*
+.env
+.env.local

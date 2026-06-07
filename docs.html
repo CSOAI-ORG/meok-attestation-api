@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MEOK Attestation API — Interactive Docs</title>
+    <meta name="description" content="Interactive OpenAPI 3.1 reference for the MEOK Attestation API. Try sign + verify directly from the browser." />
+    <link rel="icon" type="image/x-icon" href="https://haulage.app/favicon.ico" />
+    <link rel="canonical" href="https://meok-attestation-api.vercel.app/docs" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swagger-ui-dist@5.17.14/swagger-ui.css"
+      crossorigin="anonymous"
+    />
+    <style>
+      html, body { margin: 0; padding: 0; height: 100%; background: #0a0a0a; }
+      #header {
+        padding: 20px 24px;
+        background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+        border-bottom: 1px solid #333;
+        color: #fff;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      }
+      #header h1 { margin: 0 0 6px 0; font-size: 22px; font-weight: 700; }
+      #header h1 a { color: #fb923c; text-decoration: none; }
+      #header p { margin: 0; opacity: 0.7; font-size: 14px; }
+      #swagger-ui { background: #fff; }
+    </style>
+  </head>
+  <body>
+    <div id="header">
+      <h1>
+        <a href="https://haulage.app">MEOK</a> Attestation API
+        <span style="opacity:0.5; font-weight:400;">/ Interactive docs</span>
+      </h1>
+      <p>OpenAPI 3.1 spec at <code style="color:#fb923c">/openapi.json</code> · Verifier is public · Sign requires an API key · Email <a href="mailto:nicholas@meok.ai" style="color:#fb923c">Nick</a> for a free trial key</p>
+    </div>
+    <div id="swagger-ui"></div>
+    <script
+      src="https://unpkg.com/swagger-ui-dist@5.17.14/swagger-ui-bundle.js"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      window.addEventListener('load', () => {
+        window.ui = SwaggerUIBundle({
+          url: '/openapi.json',
+          dom_id: '#swagger-ui',
+          deepLinking: true,
+          tryItOutEnabled: true,
+          persistAuthorization: true,
+          defaultModelsExpandDepth: 1,
+          defaultModelExpandDepth: 2,
+          docExpansion: 'list',
+          syntaxHighlight: { theme: 'monokai' }
+        });
+      });
+    </script>
+  </body>
+</html>

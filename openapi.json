@@ -1,0 +1,986 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "MEOK Attestation API",
+    "version": "1.2.0",
+    "summary": "Sign + verify HMAC-SHA256 compliance attestations across the MEOK trade-compliance ecosystem.",
+    "description": "Public signing + verification surface for MEOK MCP-emitted compliance evidence.\n\nEvery MEOK trade-compliance MCP server (32 in the catalogue) emits HMAC-signed tool results. This API is the public counterpart: it can issue fresh signed attestations (auth required), and it can verify any attestation chain (no auth) so auditors, regulators, and customers can prove the chain holds without installing anything.\n\n**Verifier endpoint:** `POST /verify` \u2014 public, rate-limited, no API key required.\n\n**Signing endpoint:** `POST /sign` \u2014 requires `api_key` (derived from your Stripe checkout email + tier).\n\n**Audit-trail philosophy:** every signature includes the issuer, kid (key id), version, signed canonical-JSON payload bytes, and an HMAC-SHA256 digest. The verifier re-derives the canonical bytes and re-computes the HMAC \u2014 if it matches, the cert is intact.",
+    "contact": {
+      "name": "Nicholas Templeman",
+      "email": "nicholas@meok.ai",
+      "url": "https://meok.ai"
+    },
+    "license": {
+      "name": "MIT",
+      "identifier": "MIT"
+    },
+    "termsOfService": "https://meok.ai/terms"
+  },
+  "servers": [
+    {
+      "url": "https://meok-attestation-api.vercel.app",
+      "description": "Production"
+    }
+  ],
+  "tags": [
+    {
+      "name": "verify",
+      "description": "Public verification surface \u2014 no auth, rate-limited."
+    },
+    {
+      "name": "sign",
+      "description": "Issue new signed attestations \u2014 API key required."
+    },
+    {
+      "name": "lifecycle",
+      "description": "Provision keys + handle Stripe billing webhooks."
+    },
+    {
+      "name": "meta",
+      "description": "Health, robots, llms, root catalogue."
+    },
+    {
+      "name": "acp",
+      "description": "Agent Communication Protocol \u2014 agent-to-agent surface."
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "ApiKeyHeader": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key",
+        "description": "API key derived from your Stripe-checkout email + tier. Get yours from the welcome email after upgrading on https://meok-compliance.vercel.app/pricing."
+      },
+      "ApiKeyBody": {
+        "type": "apiKey",
+        "in": "query",
+        "name": "api_key",
+        "description": "Alternative \u2014 pass the API key inside the JSON body as `api_key`. Either method works on `POST /sign`."
+      },
+      "StripeSignature": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Stripe-Signature",
+        "description": "Signed by Stripe. Required for `POST /webhook` and `POST /payg/webhook`."
+      },
+      "MasterKey": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-Master-Key",
+        "description": "Break-glass support key. Reserved for MEOK support / provisioning recovery."
+      }
+    },
+    "schemas": {
+      "Assessment": {
+        "type": "string",
+        "enum": [
+          "COMPLIANT",
+          "PARTIAL",
+          "NON_COMPLIANT",
+          "COMPLIANT (UNVERIFIED \u2014 free tier)",
+          "PARTIAL (UNVERIFIED \u2014 free tier)",
+          "NON_COMPLIANT (UNVERIFIED \u2014 free tier)"
+        ],
+        "description": "Derived from `score`: \u2265 70 COMPLIANT, \u2265 40 PARTIAL, else NON_COMPLIANT. Free tier is marked UNVERIFIED."
+      },
+      "Tier": {
+        "type": "string",
+        "enum": [
+          "free",
+          "starter",
+          "pro",
+          "enterprise"
+        ],
+        "description": "Resolved server-side from the API key \u2014 request-body `tier` is ignored to prevent privilege escalation."
+      },
+      "SignRequest": {
+        "type": "object",
+        "required": [
+          "api_key",
+          "regulation",
+          "entity",
+          "score"
+        ],
+        "properties": {
+          "api_key": {
+            "type": "string",
+            "description": "Derived API key. Pass here OR via `X-API-Key` header."
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "Email associated with the API key. Required for free tier (lead capture)."
+          },
+          "regulation": {
+            "type": "string",
+            "examples": [
+              "EU_AI_ACT_ANNEX_III",
+              "UK_AI_BILL_ART_22C",
+              "DVSA_OCRS",
+              "FORS_BRONZE",
+              "BS_7121",
+              "GDPR",
+              "NIST_AI_RMF"
+            ],
+            "description": "Regulation / framework being audited."
+          },
+          "entity": {
+            "type": "string",
+            "examples": [
+              "ACME Haulage Ltd",
+              "ACME-HAULAGE-VRN-AB12CDE"
+            ],
+            "description": "Subject of the audit \u2014 company, fleet, vehicle, AI model."
+          },
+          "score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Compliance score 0-100. Auto-derives `assessment`."
+          },
+          "findings": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              {
+                "type": "string",
+                "description": "Comma-separated; will be split."
+              }
+            ],
+            "examples": [
+              [
+                "Tachograph data exported",
+                "Driver hours within limits",
+                "OCRS forecast GREEN"
+              ]
+            ]
+          },
+          "articles_audited": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              {
+                "type": "string",
+                "description": "Comma-separated; will be split."
+              }
+            ],
+            "examples": [
+              [
+                "EU_AI_ACT_ART_9",
+                "EU_AI_ACT_ART_10",
+                "EU_AI_ACT_ART_15"
+              ]
+            ]
+          },
+          "auditor_notes": {
+            "type": "string",
+            "maxLength": 5000
+          }
+        }
+      },
+      "Cert": {
+        "type": "object",
+        "description": "A signed attestation \u2014 the verifier endpoint accepts these.",
+        "properties": {
+          "cert_id": {
+            "type": "string",
+            "description": "ULID/UUID-style id"
+          },
+          "issued_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "expires_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "1 year after issued_at"
+          },
+          "regulation": {
+            "type": "string"
+          },
+          "entity": {
+            "type": "string"
+          },
+          "score": {
+            "type": "number"
+          },
+          "assessment": {
+            "$ref": "#/components/schemas/Assessment"
+          },
+          "findings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "articles_audited": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "auditor_notes": {
+            "type": "string"
+          },
+          "tier": {
+            "$ref": "#/components/schemas/Tier"
+          },
+          "issuer": {
+            "type": "string",
+            "examples": [
+              "meok-attestation-api"
+            ]
+          },
+          "kid": {
+            "type": "string",
+            "description": "Key id, e.g. v1"
+          },
+          "verify_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "signature_sha256_hmac": {
+            "type": "string",
+            "description": "Base64url of HMAC-SHA256 over canonical-JSON payload bytes",
+            "examples": [
+              "a4f8c2b6e9d3..."
+            ]
+          }
+        }
+      },
+      "VerifyRequest": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/Cert"
+          },
+          {
+            "type": "object",
+            "required": [
+              "cert"
+            ],
+            "properties": {
+              "cert": {
+                "$ref": "#/components/schemas/Cert"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "payload",
+              "signature_sha256_hmac"
+            ],
+            "properties": {
+              "payload": {
+                "type": "object"
+              },
+              "signature_sha256_hmac": {
+                "type": "string"
+              }
+            }
+          }
+        ]
+      },
+      "VerifyResponse": {
+        "type": "object",
+        "required": [
+          "valid",
+          "message"
+        ],
+        "properties": {
+          "valid": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "cert_id": {
+            "type": "string"
+          },
+          "verify_url": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "type": "string"
+          }
+        }
+      },
+      "HealthResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "ok"
+            ]
+          },
+          "service": {
+            "type": "string"
+          },
+          "kid": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          }
+        }
+      },
+      "ProvisionRequest": {
+        "type": "object",
+        "description": "Provision an API key after Stripe checkout. `session_id` must be a paid + complete Stripe Checkout Session. Server fetches authoritative email + tier from Stripe (request-body email/tier are ignored).",
+        "properties": {
+          "session_id": {
+            "type": "string",
+            "description": "Stripe Checkout Session id (cs_test_\u2026 or cs_live_\u2026)",
+            "examples": [
+              "cs_live_b1abcXYZ..."
+            ]
+          },
+          "master_key": {
+            "type": "string",
+            "description": "Break-glass support recovery only. Use `X-Master-Key` header instead."
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "Used only in legacy email-only mode (MEOK_PROVISION_REQUIRE_SESSION_ID=0)"
+          }
+        }
+      },
+      "ProvisionResponse": {
+        "type": "object",
+        "properties": {
+          "api_key": {
+            "type": "string",
+            "description": "Derived deterministically from email + tier."
+          },
+          "tier": {
+            "$ref": "#/components/schemas/Tier"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "tags": [
+          "meta"
+        ],
+        "summary": "Root \u2014 HTML docs + catalogue",
+        "responses": {
+          "200": {
+            "description": "Human-readable HTML page",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "tags": [
+          "meta"
+        ],
+        "summary": "Liveness probe",
+        "description": "200 + JSON status if process is alive and signing key is loaded.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/robots.txt": {
+      "get": {
+        "tags": [
+          "meta"
+        ],
+        "summary": "robots.txt",
+        "responses": {
+          "200": {
+            "description": "text/plain"
+          }
+        }
+      }
+    },
+    "/llms.txt": {
+      "get": {
+        "tags": [
+          "meta"
+        ],
+        "summary": "llms.txt \u2014 machine-readable identity for AI crawlers",
+        "responses": {
+          "200": {
+            "description": "text/plain"
+          }
+        }
+      }
+    },
+    "/sign": {
+      "post": {
+        "tags": [
+          "sign"
+        ],
+        "summary": "Issue a signed attestation",
+        "description": "Requires a valid API key (`X-API-Key` header OR `api_key` in body). Returns the full cert including HMAC-SHA256 signature, issuer, kid, and `verify_url`.\n\nThe `tier` on the returned cert is the tier resolved from your key \u2014 request-body `tier` is ignored to prevent privilege escalation.\n\nFree tier sigs are clearly marked UNVERIFIED so they can never be confused with paid evidence.",
+        "security": [
+          {
+            "ApiKeyHeader": []
+          },
+          {
+            "ApiKeyBody": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Signed cert",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cert"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing / invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid or missing API key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/verify": {
+      "post": {
+        "tags": [
+          "verify"
+        ],
+        "summary": "Verify a signed cert (public, no auth)",
+        "description": "POST the full cert (or `{ \"cert\": {...} }`, or `{ \"payload\": {...}, \"signature_sha256_hmac\": \"...\" }`) and get back `{ valid, message }`.\n\n**Public + rate-limited.** Auditors, regulators, and customers can verify your chain without installing anything. This is the trust anchor of the whole MEOK ecosystem.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VerifyRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Verification result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VerifyResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/verify/{cert_id}": {
+      "get": {
+        "tags": [
+          "verify"
+        ],
+        "summary": "Verify a cert by id (HTML)",
+        "parameters": [
+          {
+            "name": "cert_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "HTML verify page (human-readable)",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v/{cert_id}": {
+      "get": {
+        "tags": [
+          "verify"
+        ],
+        "summary": "Verify a cert by id (HTML, short alias)",
+        "parameters": [
+          {
+            "name": "cert_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "HTML verify page",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/provision": {
+      "post": {
+        "tags": [
+          "lifecycle"
+        ],
+        "summary": "Provision API key after Stripe checkout",
+        "description": "Customer self-serve \u2014 POST a paid Stripe Checkout Session id and the server resolves your authoritative email + tier from Stripe, then returns the derived API key.",
+        "security": [
+          {
+            "MasterKey": []
+          },
+          {}
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProvisionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Provisioned key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProvisionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Stripe session not paid / not complete",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/webhook": {
+      "post": {
+        "tags": [
+          "lifecycle"
+        ],
+        "summary": "Stripe billing webhook (signed)",
+        "description": "Handles `checkout.session.completed` events. Requires Stripe-Signature header validated against MEOK_STRIPE_WEBHOOK_SECRET.",
+        "security": [
+          {
+            "StripeSignature": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Stripe event payload"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledged"
+          },
+          "400": {
+            "description": "Invalid signature or payload"
+          }
+        }
+      }
+    },
+    "/payg/balance": {
+      "get": {
+        "tags": [
+          "lifecycle"
+        ],
+        "summary": "Look up PAYG balance by token",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Balance + remaining calls",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "balance_gbp": {
+                      "type": "number"
+                    },
+                    "calls_remaining": {
+                      "type": "integer"
+                    },
+                    "rate_gbp": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing or invalid token"
+          }
+        }
+      }
+    },
+    "/payg/webhook": {
+      "post": {
+        "tags": [
+          "lifecycle"
+        ],
+        "summary": "PAYG Stripe webhook",
+        "security": [
+          {
+            "StripeSignature": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Acknowledged"
+          }
+        }
+      }
+    },
+    "/api/audit": {
+      "get": {
+        "tags": [
+          "lifecycle"
+        ],
+        "summary": "Append-only signed audit ledger (Move #14)",
+        "description": "Returns the chain of recorded sign + verify events with HMAC-SHA256 chained hashes. Every event includes prev_hash + hash; clients can re-derive each link to confirm the ledger is tamper-evident.\n\nStorage: Upstash Redis (preferred), Vercel Postgres (fallback), or in-memory (dev only).",
+        "parameters": [
+          {
+            "name": "since",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "description": "Epoch ms \u2014 return events newer than this"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 500,
+              "default": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ledger events",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "stats": {
+                      "type": "object"
+                    },
+                    "since": {
+                      "type": "integer"
+                    },
+                    "limit": {
+                      "type": "integer"
+                    },
+                    "events": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/webhooks/subscribe": {
+      "post": {
+        "tags": [
+          "lifecycle"
+        ],
+        "summary": "Subscribe a webhook URL (Move #30)",
+        "description": "Register an HTTPS URL to receive signed POSTs on `sign` / `verify` events. Returns a `webhook_id` + `secret` \u2014 store the secret to verify inbound webhooks and to unsubscribe later.\n\nEach delivered POST carries `X-Meok-Signature: sha256=<hmac>` (using your secret), `X-Meok-Timestamp` (epoch ms \u2014 reject anything older than 5 min for replay protection), `X-Meok-Event`, and `X-Meok-Webhook-Id`.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "url"
+                ],
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "^https://"
+                  },
+                  "api_key": {
+                    "type": "string"
+                  },
+                  "events": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "sign",
+                        "verify"
+                      ]
+                    },
+                    "default": [
+                      "sign",
+                      "verify"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/webhooks/unsubscribe": {
+      "post": {
+        "tags": [
+          "lifecycle"
+        ],
+        "summary": "Disable a webhook by id + secret",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "webhook_id",
+                  "secret"
+                ],
+                "properties": {
+                  "webhook_id": {
+                    "type": "string"
+                  },
+                  "secret": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Disabled"
+          },
+          "401": {
+            "description": "Wrong secret"
+          }
+        }
+      }
+    },
+    "/api/webhooks/list": {
+      "get": {
+        "tags": [
+          "lifecycle"
+        ],
+        "summary": "List webhooks for an API key",
+        "parameters": [
+          {
+            "name": "api_key",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Webhooks (secret hidden)"
+          }
+        }
+      }
+    },
+    "/acp": {
+      "post": {
+        "tags": [
+          "lifecycle"
+        ],
+        "summary": "Agent Communication Protocol (ACP) endpoint \u2014 Move #9",
+        "description": "ACP-conformant message endpoint. Accepts `agent.health`, `agent.list_capabilities`, and `agent.invoke` envelopes. Wraps the same sign/verify backends \u2014 single crypto source of truth.\n\nSee `_acp.AGENT_CARD` for the published capabilities. Auth via `X-API-Key` header for `sign` invocations.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "kind"
+                ],
+                "properties": {
+                  "message_id": {
+                    "type": "string"
+                  },
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "agent.health",
+                      "agent.list_capabilities",
+                      "agent.invoke"
+                    ]
+                  },
+                  "payload": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "ACP response envelope"
+          },
+          "400": {
+            "description": "Unknown kind or tool"
+          },
+          "401": {
+            "description": "Sign requires API key"
+          }
+        }
+      }
+    }
+  }
+}

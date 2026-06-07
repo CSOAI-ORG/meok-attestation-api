@@ -1,0 +1,6 @@
+[project]
+name = "meok-attestation-api"
+version = "1.0.0"
+description = "MEOK AI Labs attestation signing and verification API."
+requires-python = ">=3.9"
+dependencies = []
