@@ -1404,6 +1404,31 @@ class handler(BaseHTTPRequestHandler):
             return self._json(200, cert)
 
         if path == "/verify":
+            # SIGIL hash-chain verification — the tamper-evident audit trail (honey
+            # receipts, tool-call audit). Anyone can POST a SIGIL chain and confirm it's
+            # intact WITHOUT backend trust: receipt = sha256(prev_receipt + line)[:16].
+            chain = body.get("sigil_chain")
+            if chain is not None:
+                import hashlib as _hl
+                _GEN = "MEOK-SIGIL-GENESIS"
+                prev = (chain[0].get("prev") if chain else _GEN) or _GEN
+                verified, broken_at = 0, None
+                for r in chain:
+                    calc = _hl.sha256(f"{prev}{r.get('line','')}".encode()).hexdigest()[:16]
+                    if calc != r.get("receipt"):
+                        broken_at = r.get("seq", verified)
+                        break
+                    prev, verified = r["receipt"], verified + 1
+                return self._json(200, {
+                    "valid": broken_at is None,
+                    "kind": "sigil_chain",
+                    "verified": verified,
+                    "total": len(chain),
+                    "head": (chain[-1].get("receipt") if chain else _GEN),
+                    "broken_at": broken_at,
+                    "message": "SIGIL chain intact" if broken_at is None
+                               else f"chain broken at seq {broken_at}",
+                })
             cert = body if body.get("payload") else body.get("cert") or {}
             ok, msg = verify_attestation(cert)
             return self._json(200, {
