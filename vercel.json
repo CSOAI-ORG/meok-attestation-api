@@ -13,6 +13,10 @@
       "dest": "/api/signup.py"
     },
     {
+      "src": "^/verify(?:/.*)?$",
+      "dest": "/api/verify.py"
+    },
+    {
       "handle": "filesystem"
     },
     {
