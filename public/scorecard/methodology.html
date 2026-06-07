@@ -1,0 +1,23 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
+<title>How proofof.ai scores MCP servers — the 100-point rubric</title>
+<meta name=description content="The proofof.ai MCP Scorecard rubric: 10 categories x 10 points measuring production-readiness of any MCP server.">
+<link rel=canonical href="https://proofof.ai/scorecard/methodology.html"><style>body{font:16px/1.6 -apple-system,Segoe UI,Roboto,sans-serif;max-width:860px;margin:0 auto;padding:24px;color:#111}
+a{color:#5b21b6}h1{font-size:1.7em;margin:.2em 0}.score{font-size:2.6em;font-weight:800;color:#5b21b6}
+table{border-collapse:collapse;width:100%;margin:1em 0}td,th{border:1px solid #e5e7eb;padding:7px 10px;text-align:left}
+th{background:#faf5ff}.bar{height:9px;background:#ede9fe;border-radius:5px}.fill{height:9px;background:#7c3aed;border-radius:5px}
+code{background:#f4f4f5;padding:2px 6px;border-radius:4px}.muted{color:#6b7280}.grade{display:inline-block;padding:3px 10px;border-radius:99px;color:#fff;font-weight:700}
+header,footer{border-bottom:1px solid #eee;margin-bottom:16px;padding-bottom:8px}footer{border:0;border-top:1px solid #eee;margin-top:32px;font-size:.9em}</style></head><body>
+<header><a href="/scorecard/">← MCP Scorecard</a></header><h1>How we score MCP servers</h1>
+<p>Every MCP server is scored 0–100 across <strong>10 categories</strong> (10 points each), using static analysis (AST + filesystem), PyPI health, and directory presence.</p>
+<table><tr><th>Category</th><th>What it measures</th></tr>
+<tr><td>README</td><td>length, install command, client config block</td></tr>
+<tr><td>Tool design</td><td>tools present + share with meaningful descriptions</td></tr>
+<tr><td>Examples</td><td>examples dir / config block</td></tr>
+<tr><td>Tests + CI</td><td>test suite + CI workflows</td></tr>
+<tr><td>Transports</td><td>stdio / streamable-http declared</td></tr>
+<tr><td>Metadata</td><td>server.json, OSI license, glama/smithery, icon, llms.txt</td></tr>
+<tr><td>Reliability</td><td>imports cleanly, published, bounded tool count</td></tr>
+<tr><td>Security</td><td>SECURITY.md, clean import, OSI license</td></tr>
+<tr><td>Docs surface</td><td>changelog, llms.txt, well-known card, directory listings</td></tr>
+<tr><td>Provenance / Revenue</td><td>attestation, Stripe, PAYG, upsell</td></tr></table>
+<footer><a href="https://proofof.ai">proofof.ai</a> — the MCP ratings agency.</footer></body></html>

@@ -1,0 +1,1360 @@
+# MEOK AI Labs — MCP Catalogue (full)
+
+> 339 production MCP servers by MEOK AI Labs, scored on the proofof.ai 100-point rubric. EU AI Act, DORA, NIS2, CRA, agent-infra, transport, aquaculture + more. Each is pip-installable + in the Anthropic MCP registry.
+
+## agent-mcp-router-mcp (95/100)
+Agent MCP Router MCP — one router for the whole MEOK fleet. Holds 62 MEOK MCPs behind one
+Install: pip install agent-mcp-router-mcp · Tools: list_routes, route_call, register_local_mcp, health_check, bundle_subset, sign_call_chain · Scorecard: https://proofof.ai/scorecard/agent-mcp-router-mcp.html · PyPI: https://pypi.org/project/agent-mcp-router-mcp/
+
+## mcp-spec-compliance-mcp (93/100)
+MCP Spec Compliance MCP — audits any MCP server.json against the official Model Context Protocol
+Install: pip install mcp-spec-compliance-mcp · Tools: audit_server_json, check_required_fields, check_naming_conventions, list_spec_versions, generate_passing_template, sign_conformity_report · Scorecard: https://proofof.ai/scorecard/mcp-spec-compliance-mcp.html · PyPI: https://pypi.org/project/mcp-spec-compliance-mcp/
+
+## agent-commerce-protocol-mcp (90/100)
+Agent Commerce Protocol MCP — bridges Stripe ACP + Google AP2 + Coinbase x402 for agent payments
+Install: pip install agent-commerce-protocol-mcp · Tools: discover_acp_merchants, prepare_payment_intent, sign_payment_intent, verify_acp_response, bridge_to_ap2_mandate, bridge_to_x402_paywall · Scorecard: https://proofof.ai/scorecard/agent-commerce-protocol-mcp.html · PyPI: https://pypi.org/project/agent-commerce-protocol-mcp/
+
+## agent-content-watermark-mcp (90/100)
+Agent Content Watermark MCP — dedicated EU AI Act Article 50(2) GenAI watermarking. Visible +
+Install: pip install agent-content-watermark-mcp · Tools: generate_watermark, verify_watermark, attach_c2pa_manifest, list_modalities, code_of_practice_status, sign_conformity_attestation · Scorecard: https://proofof.ai/scorecard/agent-content-watermark-mcp.html · PyPI: https://pypi.org/project/agent-content-watermark-mcp/
+
+## agent-cost-allocator-mcp (90/100)
+Agent Cost Allocator MCP — multi-tenant LLM cost attribution for chargeback billing. Companion to
+Install: pip install agent-cost-allocator-mcp · Tools: open_ledger, record_charge, tenant_chargeback_summary, full_ledger_summary, product_breakdown, list_ledgers · Scorecard: https://proofof.ai/scorecard/agent-cost-allocator-mcp.html · PyPI: https://pypi.org/project/agent-cost-allocator-mcp/
+
+## agent-data-residency-mcp (90/100)
+Agent data residency + GDPR Chapter V transfer-basis runtime guard. Programmatically answer 'whe...
+Install: pip install agent-data-residency-mcp · Tools: check_residency_policy, get_transfer_basis, list_adequacy_decisions, check_eu_ai_act_data_governance, log_transfer, search_regulation · Scorecard: https://proofof.ai/scorecard/agent-data-residency-mcp.html · PyPI: https://pypi.org/project/agent-data-residency-mcp/
+
+## agent-handoff-certified-mcp (90/100)
+Verifiable agent-to-agent task handoff with signed provenance chain. Initiating agent signs the ...
+Install: pip install agent-handoff-certified-mcp · Tools: initiate_handoff, accept_handoff, verify_chain, list_handoffs, sign_handoff_chain_attestation · Scorecard: https://proofof.ai/scorecard/agent-handoff-certified-mcp.html · PyPI: https://pypi.org/project/agent-handoff-certified-mcp/
+
+## agent-identity-trust-mcp (90/100)
+Agent Identity Trust MCP Server by MEOK AI Labs
+Install: pip install agent-identity-trust-mcp · Tools: register_agent_identity, issue_credential, verify_credential, get_agent_reputation, list_registered_agents · Scorecard: https://proofof.ai/scorecard/agent-identity-trust-mcp.html · PyPI: https://pypi.org/project/agent-identity-trust-mcp/
+
+## agent-incident-relay-mcp (90/100)
+Agent Incident Relay MCP — Article 73 5-clock broadcaster. One incident → simultaneous signed
+Install: pip install agent-incident-relay-mcp · Tools: classify_incident, relay_incident, check_clock_status, generate_authority_payload, sign_relay, list_regimes · Scorecard: https://proofof.ai/scorecard/agent-incident-relay-mcp.html · PyPI: https://pypi.org/project/agent-incident-relay-mcp/
+
+## agent-rate-limiter-mcp (90/100)
+Fleet-wide shared rate limiter for A2A + multi-MCP deployments. Most MCP servers rate-limit inde...
+Install: pip install agent-rate-limiter-mcp · Tools: acquire, release, status, set_quota, reset_counters, sign_rate_limit_attestation · Scorecard: https://proofof.ai/scorecard/agent-rate-limiter-mcp.html · PyPI: https://pypi.org/project/agent-rate-limiter-mcp/
+
+## agent-token-budget-mcp (90/100)
+Agent Token Budget MCP — hard per-session token + spend cap with signed budget-exhausted
+Install: pip install agent-token-budget-mcp · Tools: start_budget, record_call, check_budget, get_summary, list_models, estimate_cost · Scorecard: https://proofof.ai/scorecard/agent-token-budget-mcp.html · PyPI: https://pypi.org/project/agent-token-budget-mcp/
+
+## agent-x402-paywall-mcp (90/100)
+Agent x402 Paywall MCP — Coinbase HTTP 402 protocol + on-chain settlement. Agents pay per-call
+Install: pip install agent-x402-paywall-mcp · Tools: list_supported_chains, build_402_challenge, verify_payment, estimate_settlement_cost, get_payment, list_recent_payments · Scorecard: https://proofof.ai/scorecard/agent-x402-paywall-mcp.html · PyPI: https://pypi.org/project/agent-x402-paywall-mcp/
+
+## ai-incident-reporting-mcp (90/100)
+AI Incident Reporting Compliance MCP. Unified classification + reporting-clock tracker across EU...
+Install: pip install ai-incident-reporting-mcp · Tools: classify_incident, list_regime_clocks, sign_incident_response_attestation · Scorecard: https://proofof.ai/scorecard/ai-incident-reporting-mcp.html · PyPI: https://pypi.org/project/ai-incident-reporting-mcp/
+
+## aml-ai-mcp (90/100)
+6AMLD + UK MLR 2017 + FinCEN BSA AML/CFT compliance for AI-enabled transaction monitoring, sanct...
+Install: pip install aml-ai-mcp · Tools: classify_obliged_entity, kyc_cdd_audit, sanctions_screening, transaction_monitoring, sar_filing_check, search_regulation · Scorecard: https://proofof.ai/scorecard/aml-ai-mcp.html · PyPI: https://pypi.org/project/aml-ai-mcp/
+
+## basel-ai-overlay-mcp (90/100)
+Basel III + SR 11-7 + ECB TRIM AI/ML model risk management for banks deploying AI in credit, cap...
+Install: pip install basel-ai-overlay-mcp · Tools: model_risk_tier, validation_requirements, ecb_trim_check, ifrs9_ecl_audit, frtb_market_risk, search_regulation · Scorecard: https://proofof.ai/scorecard/basel-ai-overlay-mcp.html · PyPI: https://pypi.org/project/basel-ai-overlay-mcp/
+
+## bft-progress-council-mcp (90/100)
+BFT Progress Council MCP — 5-voter Byzantine council halts agentic loops when no real progress is
+Install: pip install bft-progress-council-mcp · Tools: start_session, record_action, council_vote, get_session_summary, estimate_tokens_saved, list_voters · Scorecard: https://proofof.ai/scorecard/bft-progress-council-mcp.html · PyPI: https://pypi.org/project/bft-progress-council-mcp/
+
+## bias-detection-mcp (90/100)
+AI bias detection and fairness assessment for AI agents. Instant bias risk scan, demographic ana...
+Install: pip install bias-detection-mcp · Tools: quick_scan, detect_bias, fairness_metrics, mitigation_recommendations, regulatory_check, analyze_demographic_parity · Scorecard: https://proofof.ai/scorecard/bias-detection-mcp.html · PyPI: https://pypi.org/project/bias-detection-mcp/
+
+## chas-elite-prep-mcp (90/100)
+CHAS / SafeContractor / Constructionline pre-qualification preparation. Health & safety, environ...
+Install: pip install chas-elite-prep-mcp · Tools: chas_readiness_check, list_chas_requirements, h_and_s_policy_audit, sssip_mutual_recognition, supplier_pq_template · Scorecard: https://proofof.ai/scorecard/chas-elite-prep-mcp.html · PyPI: https://pypi.org/project/chas-elite-prep-mcp/
+
+## cisa-kev-mcp (90/100)
+CISA Known Exploited Vulnerabilities feed + remediation deadlines for US federal + critical infr...
+Install: pip install cisa-kev-mcp · Tools: query_kev_catalog, check_remediation_deadline, export_kev_sbom, subscribe_alerts, epss_overlay · Scorecard: https://proofof.ai/scorecard/cisa-kev-mcp.html · PyPI: https://pypi.org/project/cisa-kev-mcp/
+
+## concrete-pump-cpa-mcp (90/100)
+CPA Concrete Pumping Group standards, pump operator certification, BS EN 12001 ground bearing ca...
+Install: pip install concrete-pump-cpa-mcp · Tools: check_cpa_compliance, operator_cert_check, calculate_ground_bearing, exclusion_zone_check, pre_pour_checklist · Scorecard: https://proofof.ai/scorecard/concrete-pump-cpa-mcp.html · PyPI: https://pypi.org/project/concrete-pump-cpa-mcp/
+
+## construction-iso-19650-mcp (90/100)
+ISO 19650 / UK BIM Level 2 compliance for construction projects. EIR, BEP, MIDP, TIDP, and CDE s...
+Install: pip install construction-iso-19650-mcp · Tools: check_bim_maturity, validate_eir, validate_bep, check_cde_structure, list_iso_19650_clauses · Scorecard: https://proofof.ai/scorecard/construction-iso-19650-mcp.html · PyPI: https://pypi.org/project/construction-iso-19650-mcp/
+
+## coppa-ferpa-mcp (90/100)
+Children's privacy compliance: COPPA (US), FERPA (US edu), EU AI Act children's provisions, UK A...
+Install: pip install coppa-ferpa-mcp · Tools: check_under_13_processing, ferpa_audit, aadc_uk_check, eu_ai_act_minors, kids_data_flow_map, search_regulation · Scorecard: https://proofof.ai/scorecard/coppa-ferpa-mcp.html · PyPI: https://pypi.org/project/coppa-ferpa-mcp/
+
+## cra-compliance-mcp (90/100)
+EU Cyber Resilience Act (Regulation 2024/2847) compliance for AI agents. Product classification...
+Install: pip install cra-compliance-mcp · Tools: classify_product, audit_annex_i, sbom_skeleton, vulnerability_reporting_readiness, conformity_assessment_roadmap, enforcement_status · Scorecard: https://proofof.ai/scorecard/cra-compliance-mcp.html · PyPI: https://pypi.org/project/cra-compliance-mcp/
+
+## crane-hire-cpcs-mcp (90/100)
+CPCS / CISRS / NPORS card verification, BS 7121 lift plans, mobile crane / tower crane operator ...
+Install: pip install crane-hire-cpcs-mcp · Tools: verify_cpcs_card, generate_lift_plan, appointed_person_check, crane_categories, loler_thorough_examination · Scorecard: https://proofof.ai/scorecard/crane-hire-cpcs-mcp.html · PyPI: https://pypi.org/project/crane-hire-cpcs-mcp/
+
+## credential-manager-mcp (90/100)
+Credential Manager MCP Server by MEOK AI Labs
+Install: pip install credential-manager-mcp · Tools: issue_credential, verify_credential, revoke_credential, list_credentials, audit_credential_usage · Scorecard: https://proofof.ai/scorecard/credential-manager-mcp.html · PyPI: https://pypi.org/project/credential-manager-mcp/
+
+## csrd-compliance-mcp (90/100)
+Csrd Compliance MCP Server by MEOK AI Labs
+Install: pip install csrd-compliance-mcp · Tools: classify_entity, list_esrs_standards, double_materiality_assessment, ghg_emissions_readiness, ixbrl_taxonomy_check, enforcement_status · Scorecard: https://proofof.ai/scorecard/csrd-compliance-mcp.html · PyPI: https://pypi.org/project/csrd-compliance-mcp/
+
+## dora-compliance-mcp (90/100)
+DORA (EU Digital Operational Resilience Act) compliance for AI agents. 5-pillar audit, incident ...
+Install: pip install dora-compliance-mcp · Tools: classify_entity, list_pillars, audit_pillar, audit_all_pillars, classify_incident, register_of_information_template · Scorecard: https://proofof.ai/scorecard/dora-compliance-mcp.html · PyPI: https://pypi.org/project/dora-compliance-mcp/
+
+## dora-nis2-crosswalk-mcp (90/100)
+DORA × NIS2 Crosswalk MCP — map Regulation (EU) 2022/2554 obligations to Directive (EU) 2022/255...
+Install: pip install dora-nis2-crosswalk-mcp · Tools: list_overlapping_obligations, compare_reporting_clocks, check_dual_compliance, sign_dual_compliance_attestation · Scorecard: https://proofof.ai/scorecard/dora-nis2-crosswalk-mcp.html · PyPI: https://pypi.org/project/dora-nis2-crosswalk-mcp/
+
+## eu-ai-act-compliance-mcp (90/100)
+Eu Ai Act Compliance MCP Server by MEOK AI Labs
+Install: pip install eu-ai-act-compliance-mcp · Tools: quick_scan, deadline_check, classify_ai_risk, check_compliance, generate_documentation, assess_penalties · Scorecard: https://proofof.ai/scorecard/eu-ai-act-compliance-mcp.html · PyPI: https://pypi.org/project/eu-ai-act-compliance-mcp/
+
+## fda-samd-mcp (90/100)
+FDA AI/ML Software as a Medical Device Action Plan + 510(k) + PMA + De Novo pathways for US MedT...
+Install: pip install fda-samd-mcp · Tools: classify_sw_device, regulatory_pathway, pccp_template, good_ml_practice, ai_ml_action_plan, search_regulation · Scorecard: https://proofof.ai/scorecard/fda-samd-mcp.html · PyPI: https://pypi.org/project/fda-samd-mcp/
+
+## hash-utils-ai-mcp (90/100)
+Hash Utils Ai MCP Server by MEOK AI Labs
+Install: pip install hash-utils-ai-mcp · Tools: hash_text, verify_hash, generate_uuid, generate_nanoid · Scorecard: https://proofof.ai/scorecard/hash-utils-ai-mcp.html · PyPI: https://pypi.org/project/hash-utils-ai-mcp/
+
+## haulage-uk-compliance-mcp (90/100)
+UK Operator Licence, tachograph, drivers' hours, DVSA roadside checks for UK haulage operators a...
+Install: pip install haulage-uk-compliance-mcp · Tools: check_operator_licence, calculate_drivers_hours, tachograph_audit, vehicle_safety_check, road_user_levy_check · Scorecard: https://proofof.ai/scorecard/haulage-uk-compliance-mcp.html · PyPI: https://pypi.org/project/haulage-uk-compliance-mcp/
+
+## iso-27001-ai-mcp (90/100)
+Iso 27001 Ai MCP Server by MEOK AI Labs
+Install: pip install iso-27001-ai-mcp · Tools: audit_isms, risk_assessment, gap_analysis, crosswalk_to_ai, generate_soa, incident_classification · Scorecard: https://proofof.ai/scorecard/iso-27001-ai-mcp.html · PyPI: https://pypi.org/project/iso-27001-ai-mcp/
+
+## iso-42005-impact-mcp (90/100)
+ISO/IEC 42005:2025 AI Impact Assessment MCP — first international standard for AI impact
+Install: pip install iso-42005-impact-mcp · Tools: list_phases, impact_categories, assess_phase, run_full_impact_assessment, sign_attestation, cross_walk_eu_ai_act · Scorecard: https://proofof.ai/scorecard/iso-42005-impact-mcp.html · PyPI: https://pypi.org/project/iso-42005-impact-mcp/
+
+## korea-ai-basic-act-mcp (90/100)
+Korea AI Basic Act compliance MCP — in force 22 Jan 2026. High-impact AI + GenAI labelling + MSIT
+Install: pip install korea-ai-basic-act-mcp · Tools: classify_system_impact, check_genai_labelling_required, assess_business_type, get_obligations_checklist, sign_compliance_attestation, cross_walk_eu_ai_act · Scorecard: https://proofof.ai/scorecard/korea-ai-basic-act-mcp.html · PyPI: https://pypi.org/project/korea-ai-basic-act-mcp/
+
+## mdr-medical-device-mcp (90/100)
+EU MDR (Reg 2017/745) and IVDR (Reg 2017/746) compliance for medical device + IVD manufacturers...
+Install: pip install mdr-medical-device-mcp · Tools: classify_medical_device, classify_ivd, samd_ai_ml_check, ce_marking_requirements, search_regulation, list_regulations_in_db · Scorecard: https://proofof.ai/scorecard/mdr-medical-device-mcp.html · PyPI: https://pypi.org/project/mdr-medical-device-mcp/
+
+## meok-aaif-agent-card-mcp (90/100)
+MEOK AAIF Agent Card MCP — Linux Foundation AAIF agent identity bridge. Issues + verifies +
+Install: pip install meok-aaif-agent-card-mcp · Tools: issue_agent_card, publish_card, verify_card, bridge_a2a_to_aaif, bridge_oasf_to_aaif, list_capability_taxonomy · Scorecard: https://proofof.ai/scorecard/meok-aaif-agent-card-mcp.html · PyPI: https://pypi.org/project/meok-aaif-agent-card-mcp/
+
+## meok-agents-md-lint-mcp (90/100)
+MEOK AGENTS.md Linter MCP — validates the cross-vendor coding-agent spec (Cursor / Claude Code /
+Install: pip install meok-agents-md-lint-mcp · Tools: lint_agents_md, check_required_sections, check_security_smells, check_consistency, list_spec_sections, generate_passing_template · Scorecard: https://proofof.ai/scorecard/meok-agents-md-lint-mcp.html · PyPI: https://pypi.org/project/meok-agents-md-lint-mcp/
+
+## meok-ap2-mandate-mcp (90/100)
+MEOK Google AP2 Mandate MCP — issue + verify + revoke signed user-side spend authorisations for
+Install: pip install meok-ap2-mandate-mcp · Tools: issue_mandate, verify_mandate, consume_mandate, revoke_mandate, list_mandate_scopes, crosswalk_psd2 · Scorecard: https://proofof.ai/scorecard/meok-ap2-mandate-mcp.html · PyPI: https://pypi.org/project/meok-ap2-mandate-mcp/
+
+## meok-aquaponics-monitor-mcp (90/100)
+Unified sensor + actuator schema MCP for aquaculture / aquaponic / koi systems. Wraps Atlas
+Install: pip install meok-aquaponics-monitor-mcp · Tools: list_supported_hardware, register_rig, report_readings, safe_range_check, species_catalogue, dose_actuator · Scorecard: https://proofof.ai/scorecard/meok-aquaponics-monitor-mcp.html · PyPI: https://pypi.org/project/meok-aquaponics-monitor-mcp/
+
+## meok-bs7121-mcp (90/100)
+BS 7121 lift-plan compliance for UK crane + hiab operators. Parts 1/3/4/5 clause lookup, Appointed
+Install: pip install meok-bs7121-mcp · Tools: lookup_bs7121_clause, classify_lift_category, triage_cpa_hire_vs_contract_lift, check_ap_competence, validate_lift_plan, calculate_ground_bearing_pressure · Scorecard: https://proofof.ai/scorecard/meok-bs7121-mcp.html · PyPI: https://pypi.org/project/meok-bs7121-mcp/
+
+## meok-c2pa-durable-mcp (90/100)
+MEOK C2PA Durable Content Credentials MCP — C2PA 2.2 with soft + hard binding (Digimarc-compatible)
+Install: pip install meok-c2pa-durable-mcp · Tools: build_durable_manifest, build_soft_binding, merge_hard_and_soft, verify_durable_manifest, list_soft_binding_methods, sign_cose1_envelope · Scorecard: https://proofof.ai/scorecard/meok-c2pa-durable-mcp.html · PyPI: https://pypi.org/project/meok-c2pa-durable-mcp/
+
+## meok-coinbase-x402-receipt-mcp (90/100)
+MEOK Coinbase x402 Receipt MCP — signed settlement receipts for agentic payments
+Install: pip install meok-coinbase-x402-receipt-mcp · Tools: emit_x402_receipt, verify_receipt, crosswalk_to_mica, bridge_to_stripe_acp, list_supported_chains, sign_settlement_chain · Scorecard: https://proofof.ai/scorecard/meok-coinbase-x402-receipt-mcp.html · PyPI: https://pypi.org/project/meok-coinbase-x402-receipt-mcp/
+
+## meok-cra-annex-iv-classifier-mcp (90/100)
+EU Cyber Resilience Act product classifier MCP. Classifies PDEs into CRA hierarchy (default / Class
+Install: pip install meok-cra-annex-iv-classifier-mcp · Tools: classify_product, audit_essential_requirements, generate_doc_template, sign_classification_cert · Scorecard: https://proofof.ai/scorecard/meok-cra-annex-iv-classifier-mcp.html · PyPI: https://pypi.org/project/meok-cra-annex-iv-classifier-mcp/
+
+## meok-cra-art14-reporter-mcp (90/100)
+MEOK CRA Article 14 Reporter MCP — actively-exploited-vulnerability notification with 24h/72h/14d
+Install: pip install meok-cra-art14-reporter-mcp · Tools: classify_vulnerability, open_vulnerability_case, generate_enisa_payload, check_clock_status, list_national_csirts, check_cra_status · Scorecard: https://proofof.ai/scorecard/meok-cra-art14-reporter-mcp.html · PyPI: https://pypi.org/project/meok-cra-art14-reporter-mcp/
+
+## meok-dpia-edpb-template-mcp (90/100)
+DPIA generator for the EDPB harmonised template (adopted 14 Apr 2026) with EU AI Act Article 26(9)
+Install: pip install meok-dpia-edpb-template-mcp · Tools: generate_dpia, map_to_ai_act_article_26_9, signed_dpia_pack, list_template_sections, pricing · Scorecard: https://proofof.ai/scorecard/meok-dpia-edpb-template-mcp.html · PyPI: https://pypi.org/project/meok-dpia-edpb-template-mcp/
+
+## meok-drcf-agent-crosswalk-mcp (90/100)
+UK Digital Regulation Cooperation Forum (DRCF) four-regulator AI agent crosswalk MCP. Maps an AI
+Install: pip install meok-drcf-agent-crosswalk-mcp · Tools: classify_agent_perimeter, map_obligation_to_regulator, generate_drcf_compliance_pack, check_drcf_joint_guidance · Scorecard: https://proofof.ai/scorecard/meok-drcf-agent-crosswalk-mcp.html · PyPI: https://pypi.org/project/meok-drcf-agent-crosswalk-mcp/
+
+## meok-eu-ai-act-art-13-ifu-mcp (90/100)
+MEOK EU AI Act Article 13 Instructions for Use generator — provider-side IFU with 7 mandatory Art
+Install: pip install meok-eu-ai-act-art-13-ifu-mcp · Tools: generate_ifu, check_ifu_completeness, list_art_13_3_elements, list_art_14_oversight_measures, crosswalk_to_fria, generate_human_oversight_section · Scorecard: https://proofof.ai/scorecard/meok-eu-ai-act-art-13-ifu-mcp.html · PyPI: https://pypi.org/project/meok-eu-ai-act-art-13-ifu-mcp/
+
+## meok-eu-ai-act-art-26-fria-mcp (90/100)
+MEOK EU AI Act Article 26(9) Fundamental Rights Impact Assessment generator. Auto-generates FRIA
+Install: pip install meok-eu-ai-act-art-26-fria-mcp · Tools: check_fria_required, generate_fria, list_art_27_elements, list_annex_iii_categories, crosswalk_to_dpia, sign_fria_chain · Scorecard: https://proofof.ai/scorecard/meok-eu-ai-act-art-26-fria-mcp.html · PyPI: https://pypi.org/project/meok-eu-ai-act-art-26-fria-mcp/
+
+## meok-eu-aia-art-9-rms-mcp (90/100)
+MEOK EU AI Act Article 9 Risk Management System generator — 4-step iteration (identify / estimate /
+Install: pip install meok-eu-aia-art-9-rms-mcp · Tools: start_rms, identify_risk, map_mitigation, log_post_market_observation, iterate_rms, validate_rms_completeness · Scorecard: https://proofof.ai/scorecard/meok-eu-aia-art-9-rms-mcp.html · PyPI: https://pypi.org/project/meok-eu-aia-art-9-rms-mcp/
+
+## meok-eu-aigc-icon-mcp (90/100)
+MEOK EU AIGC Icon MCP — EU AI Act Article 50 + Code of Practice 2nd draft AI-generated-content icon
+Install: pip install meok-eu-aigc-icon-mcp · Tools: emit_icon_manifest_entry, emit_html_meta_tags, emit_image_icc_signal, emit_audio_id3_signal, emit_video_keyframe_signal, get_icon_asset_uri · Scorecard: https://proofof.ai/scorecard/meok-eu-aigc-icon-mcp.html · PyPI: https://pypi.org/project/meok-eu-aigc-icon-mcp/
+
+## meok-eu-mobility-package-mcp (90/100)
+EU Mobility Package compliance — EU 561/2006 drivers' hours, 4-week return-to-base, Posted Workers
+Install: pip install meok-eu-mobility-package-mcp · Tools: check_drivers_hours_eu, check_return_to_base_4w, check_vehicle_return_to_base_8w, check_cabotage_3in7, check_smart_tachograph_2_v2, check_imi_posted_worker_declaration · Scorecard: https://proofof.ai/scorecard/meok-eu-mobility-package-mcp.html · PyPI: https://pypi.org/project/meok-eu-mobility-package-mcp/
+
+## meok-eu-platform-worker-mcp (90/100)
+EU Platform Workers Directive (2024/2831) compliance — employment-status presumption
+Install: pip install meok-eu-platform-worker-mcp · Tools: check_employment_status_presumption, check_algorithmic_management_disclosure, check_human_oversight_decisions, check_worker_personal_data_protection, check_algorithmic_transparency_consultation, check_member_state_transposition · Scorecard: https://proofof.ai/scorecard/meok-eu-platform-worker-mcp.html · PyPI: https://pypi.org/project/meok-eu-platform-worker-mcp/
+
+## meok-haulage-governance-bridge-mcp (90/100)
+The MEOK Compliance-to-Governance Bridge. Crosswalk any haulage compliance attestation (DVSA
+Install: pip install meok-haulage-governance-bridge-mcp · Tools: crosswalk_to_ai_act, classify_ai_risk_tier, list_provider_obligations, list_deployer_obligations, generate_fria_inputs, generate_ifu_skeleton · Scorecard: https://proofof.ai/scorecard/meok-haulage-governance-bridge-mcp.html · PyPI: https://pypi.org/project/meok-haulage-governance-bridge-mcp/
+
+## meok-imo-marpol-marine-mcp (90/100)
+IMO MARPOL + marine fuel + container ship compliance MCP. MARPOL Annex VI, EU ETS maritime, CII
+Install: pip install meok-imo-marpol-marine-mcp · Tools: check_marpol_annex_compliance, check_eu_ets_maritime, check_imo_ccc_carbon_intensity, check_eexi_efficiency, check_imdg_code_dangerous_goods, check_bunker_compliance · Scorecard: https://proofof.ai/scorecard/meok-imo-marpol-marine-mcp.html · PyPI: https://pypi.org/project/meok-imo-marpol-marine-mcp/
+
+## meok-livestock-welfare-transport-mcp (90/100)
+UK + EU animal welfare in transport compliance for livestock hauliers. EU REG 1/2005 long journey
+Install: pip install meok-livestock-welfare-transport-mcp · Tools: check_journey_log_long_journey, check_transporter_authorisation, check_driver_competence_certificate, check_vehicle_approval_livestock, check_loading_density_species, check_rest_water_feed_journey · Scorecard: https://proofof.ai/scorecard/meok-livestock-welfare-transport-mcp.html · PyPI: https://pypi.org/project/meok-livestock-welfare-transport-mcp/
+
+## meok-mcp-cardgen-mcp (90/100)
+MEOK MCP Cardgen — generate signed .well-known MCP server cards (SEP-1649 + SEP-1960 + SEP-2127)
+Install: pip install meok-mcp-cardgen-mcp · Tools: emit_sep_1649_card, emit_sep_1960_card, emit_sep_2127_card, emit_all_cards, validate_card, sign_card · Scorecard: https://proofof.ai/scorecard/meok-mcp-cardgen-mcp.html · PyPI: https://pypi.org/project/meok-mcp-cardgen-mcp/
+
+## meok-mcp-injection-scan-mcp (90/100)
+MCP injection / prompt-poisoning / SSRF scanner. 30+ canonical rules covering the April 2026
+Install: pip install meok-mcp-injection-scan-mcp · Tools: scan_mcp_url, audit_tool_descriptions, signed_safety_report, list_rules, pricing · Scorecard: https://proofof.ai/scorecard/meok-mcp-injection-scan-mcp.html · PyPI: https://pypi.org/project/meok-mcp-injection-scan-mcp/
+
+## meok-mcp-test-mcp (90/100)
+MEOK MCP Test MCP — golden-file + schema-drift + tool-failure tests for any MCP server. Drop-in
+Install: pip install meok-mcp-test-mcp · Tools: run_golden_diff, validate_tool_schema, validate_server_json, diff_server_json, check_idempotency_static, generate_test_template · Scorecard: https://proofof.ai/scorecard/meok-mcp-test-mcp.html · PyPI: https://pypi.org/project/meok-mcp-test-mcp/
+
+## meok-nis2-de-register-mcp (90/100)
+Germany NIS2 BSI registration MCP. Generates BSI-portal-ready (Mein Unternehmenskonto) registration
+Install: pip install meok-nis2-de-register-mcp · Tools: validate_org_profile, generate_bsi_packet, submit_to_mein_unternehmenskonto, signed_registration_proof · Scorecard: https://proofof.ai/scorecard/meok-nis2-de-register-mcp.html · PyPI: https://pypi.org/project/meok-nis2-de-register-mcp/
+
+## meok-nis2-nl-register-mcp (90/100)
+NIS2 Netherlands Registration MCP (Wbni-2). Classifies entities Annex I (essential) / Annex II
+Install: pip install meok-nis2-nl-register-mcp · Tools: classify_entity, generate_registration_packet, list_sectors, check_deadline_status, sign_readiness_attestation · Scorecard: https://proofof.ai/scorecard/meok-nis2-nl-register-mcp.html · PyPI: https://pypi.org/project/meok-nis2-nl-register-mcp/
+
+## meok-rspca-aquaculture-mcp (90/100)
+MCP server wrapping RSPCA Assured farmed trout (2025.07) and salmon (2024.05) welfare standards
+Install: pip install meok-rspca-aquaculture-mcp · Tools: list_standards, lookup_clause, gap_analysis, compliance_score, audit_evidence_pack, welfare_attestation · Scorecard: https://proofof.ai/scorecard/meok-rspca-aquaculture-mcp.html · PyPI: https://pypi.org/project/meok-rspca-aquaculture-mcp/
+
+## meok-stripe-acp-checkout-mcp (90/100)
+MEOK Stripe ACP Checkout MCP — ChatGPT shopping bridge. Issues + verifies + signs Stripe Agentic
+Install: pip install meok-stripe-acp-checkout-mcp · Tools: list_acp_catalogue, create_checkout_intent, verify_intent_against_mandate, request_delegated_payment, emit_signed_receipt, list_acp_partners · Scorecard: https://proofof.ai/scorecard/meok-stripe-acp-checkout-mcp.html · PyPI: https://pypi.org/project/meok-stripe-acp-checkout-mcp/
+
+## meok-uk-phv-tfl-mcp (90/100)
+UK Private Hire Vehicle + Hackney Carriage + TfL licensing compliance. PHV driver + vehicle +
+Install: pip install meok-uk-phv-tfl-mcp · Tools: check_phv_driver_licence, check_phv_vehicle_licence, check_phv_operator_licence, check_dbs_enhanced_3year, check_meds_topographical, check_safeguarding_training · Scorecard: https://proofof.ai/scorecard/meok-uk-phv-tfl-mcp.html · PyPI: https://pypi.org/project/meok-uk-phv-tfl-mcp/
+
+## meok-w3c-tdm-rights-mcp (90/100)
+MEOK W3C TDM Rights MCP — EU CDSM Directive Article 4(3) Text + Data Mining opt-out. Issues + scans
+Install: pip install meok-w3c-tdm-rights-mcp · Tools: issue_tdm_reservation, scan_url_for_reservation, verify_c2pa_do_not_train, check_robots_txt, generate_compliant_scraper_config, sign_training_scan · Scorecard: https://proofof.ai/scorecard/meok-w3c-tdm-rights-mcp.html · PyPI: https://pypi.org/project/meok-w3c-tdm-rights-mcp/
+
+## meok-watermark-attest-mcp (90/100)
+AI content watermarking and C2PA attestation MCP server by MEOK AI Labs
+Install: pip install meok-watermark-attest-mcp · Tools: get_deadline_status, classify_obligations, generate_disclosure_text, audit_content_pipeline, sign_watermark_attestation, c2pa_generate_manifest · Scorecard: https://proofof.ai/scorecard/meok-watermark-attest-mcp.html · PyPI: https://pypi.org/project/meok-watermark-attest-mcp/
+
+## meok-x402-wrap-mcp (90/100)
+MEOK x402 Wrap MCP — 1-line USDC paywall for any FastMCP tool. Coinbase x402 + on-chain settlement
+Install: pip install meok-x402-wrap-mcp · Tools: wrap_tool, decode_payment_header, generate_402_challenge, verify_settlement, list_chains, sign_receipt · Scorecard: https://proofof.ai/scorecard/meok-x402-wrap-mcp.html · PyPI: https://pypi.org/project/meok-x402-wrap-mcp/
+
+## mica-crypto-mcp (90/100)
+Markets in Crypto-Assets (MiCA) Regulation (EU) 2023/1114 compliance for EU crypto-asset issuers...
+Install: pip install mica-crypto-mcp · Tools: classify_crypto_asset, check_casp_authorisation, whitepaper_requirements, market_abuse_check, aml_overlay, search_regulation · Scorecard: https://proofof.ai/scorecard/mica-crypto-mcp.html · PyPI: https://pypi.org/project/mica-crypto-mcp/
+
+## mifid-ii-ai-mcp (90/100)
+MiFID II Article 17 algorithmic trading + RTS 6 testing/risk controls + best execution AI compli...
+Install: pip install mifid-ii-ai-mcp · Tools: classify_algo_strategy, rts_6_testing, best_execution_audit, market_abuse_overlay, hft_notification, search_regulation · Scorecard: https://proofof.ai/scorecard/mifid-ii-ai-mcp.html · PyPI: https://pypi.org/project/mifid-ii-ai-mcp/
+
+## mitre-atlas-mcp (90/100)
+MITRE ATLAS — Adversarial Threat Landscape for AI Systems. Tactics + techniques for attacking AI...
+Install: pip install mitre-atlas-mcp · Tools: query_atlas_technique, list_atlas_tactics, case_study_lookup, mitigation_for_technique, map_to_owasp_llm · Scorecard: https://proofof.ai/scorecard/mitre-atlas-mcp.html · PyPI: https://pypi.org/project/mitre-atlas-mcp/
+
+## mitre-attack-mcp (90/100)
+MITRE ATT&CK matrix lookup, tactic/technique/sub-technique mapper, and incident-to-technique cor...
+Install: pip install mitre-attack-mcp · Tools: query_technique, list_tactics, map_incident, group_threat_actor, mitigation_lookup · Scorecard: https://proofof.ai/scorecard/mitre-attack-mcp.html · PyPI: https://pypi.org/project/mitre-attack-mcp/
+
+## nrswa-ai-mcp (90/100)
+UK street works compliance. Section 50 licences, S58 deferral, S74 overrun penalties, NRSWA accr...
+Install: pip install nrswa-ai-mcp · Tools: check_s50_licence, classify_works, calculate_s74_overrun, nrswa_accreditation_check, noticing_timeline · Scorecard: https://proofof.ai/scorecard/nrswa-ai-mcp.html · PyPI: https://pypi.org/project/nrswa-ai-mcp/
+
+## otp-ai-mcp (90/100)
+Otp Ai MCP Server by MEOK AI Labs
+Install: pip install otp-ai-mcp · Tools: generate_otp, verify_otp, generate_secret, get_qr_uri · Scorecard: https://proofof.ai/scorecard/otp-ai-mcp.html · PyPI: https://pypi.org/project/otp-ai-mcp/
+
+## pci-dss-mcp (90/100)
+Pci Dss MCP Server by MEOK AI Labs
+Install: pip install pci-dss-mcp · Tools: assess_pci_compliance, check_cardholder_data, network_segmentation_check, vulnerability_scan_check, generate_saq · Scorecard: https://proofof.ai/scorecard/pci-dss-mcp.html · PyPI: https://pypi.org/project/pci-dss-mcp/
+
+## sbom-cyclonedx-mcp (90/100)
+Software Bill of Materials generation + validation in CycloneDX 1.6 and SPDX 2.3 formats. Requir...
+Install: pip install sbom-cyclonedx-mcp · Tools: generate_sbom_cyclonedx, generate_sbom_spdx, validate_sbom, vex_attach, regulation_map · Scorecard: https://proofof.ai/scorecard/sbom-cyclonedx-mcp.html · PyPI: https://pypi.org/project/sbom-cyclonedx-mcp/
+
+## sigstore-cosign-mcp (90/100)
+Sigstore cosign + rekor transparency log verification for signed container images + git tags + b...
+Install: pip install sigstore-cosign-mcp · Tools: verify_image_signature, query_rekor_log, verify_attestation, check_keyless_identity, list_trusted_certs · Scorecard: https://proofof.ai/scorecard/sigstore-cosign-mcp.html · PyPI: https://pypi.org/project/sigstore-cosign-mcp/
+
+## skip-hire-ai-mcp (90/100)
+UK Waste Carrier Registration, EA waste codes, hazardous waste consignment notes for skip hire a...
+Install: pip install skip-hire-ai-mcp · Tools: check_waste_carrier_registration, ewc_code_lookup, consignment_note_template, waste_transfer_note, duty_of_care_check · Scorecard: https://proofof.ai/scorecard/skip-hire-ai-mcp.html · PyPI: https://pypi.org/project/skip-hire-ai-mcp/
+
+## slsa-supply-chain-mcp (90/100)
+SLSA (Supply chain Levels for Software Artifacts) v1.0 framework. Compute SLSA level + remediati...
+Install: pip install slsa-supply-chain-mcp · Tools: compute_slsa_level, validate_provenance, remediation_to_l3, list_requirements, verify_signed_artefact · Scorecard: https://proofof.ai/scorecard/slsa-supply-chain-mcp.html · PyPI: https://pypi.org/project/slsa-supply-chain-mcp/
+
+## trust-chain-mcp (90/100)
+Trust Chain MCP server. Tools: create trust anchor, verify chain, add attestation. Built by MEOK AI
+Install: pip install trust-chain-mcp · Tools: create_trust_anchor, verify_chain, add_attestation, get_trust_score, revoke_trust · Scorecard: https://proofof.ai/scorecard/trust-chain-mcp.html · PyPI: https://pypi.org/project/trust-chain-mcp/
+
+## uk-ai-bill-compliance-mcp (90/100)
+UK AI Regulation Compliance MCP. Automates audits against the UK AI White Paper five principles ...
+Install: pip install uk-ai-bill-compliance-mcp · Tools: classify_system, audit_principle, audit_sector_regulator, ai_bill_readiness, sign_uk_ai_readiness_attestation, enforcement_status · Scorecard: https://proofof.ai/scorecard/uk-ai-bill-compliance-mcp.html · PyPI: https://pypi.org/project/uk-ai-bill-compliance-mcp/
+
+## watermarking-authenticity-mcp (90/100)
+EU AI Act Article 50 watermarking + C2PA 2.1 compliance. NEW: 2 December 2026 deadline (compress...
+Install: pip install watermarking-authenticity-mcp · Tools: check_watermark_compliance, generate_c2pa_manifest, list_c2pa_supported_formats, detect_ai_content, watermarking_readiness, get_article_50_timeline · Scorecard: https://proofof.ai/scorecard/watermarking-authenticity-mcp.html · PyPI: https://pypi.org/project/watermarking-authenticity-mcp/
+
+## webhook-ai-mcp (90/100)
+Webhook Ai tools for AI agents. Capabilities: validate webhook signature, log webhook event, replay
+Install: pip install webhook-ai-mcp · Tools: validate_webhook_signature, log_webhook_event, replay_events, register_endpoint, generate_webhook_secret · Scorecard: https://proofof.ai/scorecard/webhook-ai-mcp.html · PyPI: https://pypi.org/project/webhook-ai-mcp/
+
+## agent-replay-debugger-mcp (88/100)
+Agent Replay Debugger MCP — record every agent step + deterministic replay. Step-debugger for
+Install: pip install agent-replay-debugger-mcp · Tools: start_recording, record_step, replay_step, timeline, branch_from, search_steps · Scorecard: https://proofof.ai/scorecard/agent-replay-debugger-mcp.html · PyPI: https://pypi.org/project/agent-replay-debugger-mcp/
+
+## eudi-wallet-mcp (88/100)
+EUDI Wallet MCP — EU Digital Identity Wallet under eIDAS 2.0 for AI agent authentication via
+Install: pip install eudi-wallet-mcp · Tools: list_credential_types, prepare_credential_offer, create_presentation_request, verify_presented_credential, check_revocation_status, generate_selective_disclosure · Scorecard: https://proofof.ai/scorecard/eudi-wallet-mcp.html · PyPI: https://pypi.org/project/eudi-wallet-mcp/
+
+## firmware-attestation-mcp (88/100)
+Firmware Attestation MCP — hardware trust layer for sovereign AI. Scan firmware, check
+Install: pip install firmware-attestation-mcp · Tools: scan_firmware, check_ant_signatures, attest_firmware, gate_inference, list_threat_model · Scorecard: https://proofof.ai/scorecard/firmware-attestation-mcp.html · PyPI: https://pypi.org/project/firmware-attestation-mcp/
+
+## fsa-food-safety-mcp (88/100)
+UK Food Standards Agency + EU Reg 178/2002 + HACCP + allergen labelling compliance for food prod...
+Install: pip install fsa-food-safety-mcp · Tools: classify_food_business, haccp_audit, allergen_labelling_check, traceability_one_up_one_down, recall_procedure_template, search_regulation · Scorecard: https://proofof.ai/scorecard/fsa-food-safety-mcp.html · PyPI: https://pypi.org/project/fsa-food-safety-mcp/
+
+## oasf-agent-directory-mcp (88/100)
+OASF Agent Directory MCP — bridges Cisco's Open Agentic Schema Framework + AGNTCY directory under
+Install: pip install oasf-agent-directory-mcp · Tools: describe_agent_as_oasf, validate_oasf_schema, publish_to_agntcy_directory, search_oasf_directory, bridge_mcp_to_oasf, bridge_a2a_to_oasf · Scorecard: https://proofof.ai/scorecard/oasf-agent-directory-mcp.html · PyPI: https://pypi.org/project/oasf-agent-directory-mcp/
+
+## accounting-ai-mcp (86/100)
+Accounting Ai MCP Server by MEOK AI Labs
+Install: pip install accounting-ai-mcp · Tools: generate_invoice, categorize_expenses, calculate_vat, profit_and_loss, bank_reconciliation · Scorecard: https://proofof.ai/scorecard/accounting-ai-mcp.html · PyPI: https://pypi.org/project/accounting-ai-mcp/
+
+## agent-commerce-payments-mcp (86/100)
+Agent Commerce Payments MCP Server by MEOK AI Labs
+Install: pip install agent-commerce-payments-mcp · Tools: create_invoice, process_payment, escrow_funds, release_escrow, payment_history · Scorecard: https://proofof.ai/scorecard/agent-commerce-payments-mcp.html · PyPI: https://pypi.org/project/agent-commerce-payments-mcp/
+
+## agent-delegation-mcp (86/100)
+Agent Delegation MCP Server by MEOK AI Labs
+Install: pip install agent-delegation-mcp · Tools: create_task, delegate_task, get_task_status, list_available_agents, complete_task · Scorecard: https://proofof.ai/scorecard/agent-delegation-mcp.html · PyPI: https://pypi.org/project/agent-delegation-mcp/
+
+## agent-negotiation-mcp (86/100)
+Agent Negotiation MCP Server by MEOK AI Labs
+Install: pip install agent-negotiation-mcp · Tools: propose_deal, evaluate_offer, counter_offer, run_auction, negotiation_status · Scorecard: https://proofof.ai/scorecard/agent-negotiation-mcp.html · PyPI: https://pypi.org/project/agent-negotiation-mcp/
+
+## agent-orchestrator-mcp (86/100)
+Agent Orchestrator MCP Server by MEOK AI Labs
+Install: pip install agent-orchestrator-mcp · Tools: create_agent, list_agents, delegate_task, complete_task, acquire_files, release_files · Scorecard: https://proofof.ai/scorecard/agent-orchestrator-mcp.html · PyPI: https://pypi.org/project/agent-orchestrator-mcp/
+
+## agriculture-robotics-mcp (86/100)
+Agriculture Robotics MCP Server by MEOK AI Labs
+Install: pip install agriculture-robotics-mcp · Tools: robot_safety_check, spray_plan_calculator, harvest_optimization, drone_flight_plan, soil_analysis, irrigation_schedule · Scorecard: https://proofof.ai/scorecard/agriculture-robotics-mcp.html · PyPI: https://pypi.org/project/agriculture-robotics-mcp/
+
+## ai-gateway-mcp (86/100)
+Ai Gateway MCP Server by MEOK AI Labs
+Install: pip install ai-gateway-mcp · Tools: route_request, list_models, cost_estimator, get_gateway_stats · Scorecard: https://proofof.ai/scorecard/ai-gateway-mcp.html · PyPI: https://pypi.org/project/ai-gateway-mcp/
+
+## ai-ops-mcp (86/100)
+Ai Ops MCP Server by MEOK AI Labs
+Install: pip install ai-ops-mcp · Tools: system_health_check, check_service, security_scan, get_process_status, maintenance_schedule · Scorecard: https://proofof.ai/scorecard/ai-ops-mcp.html · PyPI: https://pypi.org/project/ai-ops-mcp/
+
+## ai-self-audit-mcp (86/100)
+Ai Self Audit MCP Server by MEOK AI Labs
+Install: pip install ai-self-audit-mcp · Tools: self_audit, audit_conversation, get_certificate, regulatory_pulse, get_audit_trail · Scorecard: https://proofof.ai/scorecard/ai-self-audit-mcp.html · PyPI: https://pypi.org/project/ai-self-audit-mcp/
+
+## airspace-monitor-mcp (86/100)
+Airspace Monitor MCP Server by MEOK AI Labs
+Install: pip install airspace-monitor-mcp · Tools: check_airspace, get_no_fly_zones, get_drone_regulations, plan_flight · Scorecard: https://proofof.ai/scorecard/airspace-monitor-mcp.html · PyPI: https://pypi.org/project/airspace-monitor-mcp/
+
+## api-tester-ai-mcp (86/100)
+Api Tester Ai MCP Server by MEOK AI Labs
+Install: pip install api-tester-ai-mcp · Tools: send_request, validate_response, check_headers, generate_curl · Scorecard: https://proofof.ai/scorecard/api-tester-ai-mcp.html · PyPI: https://pypi.org/project/api-tester-ai-mcp/
+
+## ascii-art-ai-mcp (86/100)
+Ascii Art Ai MCP Server by MEOK AI Labs
+Install: pip install ascii-art-ai-mcp · Tools: text_to_ascii, generate_box, table_formatter, progress_bar_generator · Scorecard: https://proofof.ai/scorecard/ascii-art-ai-mcp.html · PyPI: https://pypi.org/project/ascii-art-ai-mcp/
+
+## backup-ai-mcp (86/100)
+Backup Ai MCP Server by MEOK AI Labs
+Install: pip install backup-ai-mcp · Tools: create_backup_plan, verify_backup, list_backups, calculate_backup_size, retention_policy · Scorecard: https://proofof.ai/scorecard/backup-ai-mcp.html · PyPI: https://pypi.org/project/backup-ai-mcp/
+
+## blockchain-verification-mcp (86/100)
+Blockchain Verification MCP Server by MEOK AI Labs
+Install: pip install blockchain-verification-mcp · Tools: mint_certificate, verify_certificate, audit_trail, integrity_check · Scorecard: https://proofof.ai/scorecard/blockchain-verification-mcp.html · PyPI: https://pypi.org/project/blockchain-verification-mcp/
+
+## canada-aida-ai-mcp (86/100)
+Canada Aida Ai MCP Server by MEOK AI Labs
+Install: pip install canada-aida-ai-mcp · Tools: classify_ai_system, impact_assessment, compliance_check, crosswalk_to_eu_ai_act, generate_documentation · Scorecard: https://proofof.ai/scorecard/canada-aida-ai-mcp.html · PyPI: https://pypi.org/project/canada-aida-ai-mcp/
+
+## care-home-cqc-mcp (86/100)
+UK Care Quality Commission (CQC) Single Assessment Framework compliance for care homes. AI-assisted
+Install: pip install care-home-cqc-mcp · Tools: map_to_quality_statement, ai_tool_governance_check, notifications_audit, mcap_template, medication_administration_log_check · Scorecard: https://proofof.ai/scorecard/care-home-cqc-mcp.html · PyPI: https://pypi.org/project/care-home-cqc-mcp/
+
+## changelog-ai-mcp (86/100)
+Changelog Ai MCP Server by MEOK AI Labs
+Install: pip install changelog-ai-mcp · Tools: parse_changelog, generate_entry, bump_version, compare_versions · Scorecard: https://proofof.ai/scorecard/changelog-ai-mcp.html · PyPI: https://pypi.org/project/changelog-ai-mcp/
+
+## ci-cd-generator-ai-mcp (86/100)
+Ci Cd Generator Ai MCP Server by MEOK AI Labs
+Install: pip install ci-cd-generator-ai-mcp · Tools: generate_pipeline, validate_config, list_templates, optimize_stages · Scorecard: https://proofof.ai/scorecard/ci-cd-generator-ai-mcp.html · PyPI: https://pypi.org/project/ci-cd-generator-ai-mcp/
+
+## cli-builder-ai-mcp (86/100)
+Cli Builder Ai MCP Server by MEOK AI Labs
+Install: pip install cli-builder-ai-mcp · Tools: generate_argparse, generate_click, parse_help_text, generate_manpage · Scorecard: https://proofof.ai/scorecard/cli-builder-ai-mcp.html · PyPI: https://pypi.org/project/cli-builder-ai-mcp/
+
+## clipboard-ai-mcp (86/100)
+Clipboard Ai MCP Server by MEOK AI Labs
+Install: pip install clipboard-ai-mcp · Tools: copy_text, paste_text, clipboard_history, clear_clipboard · Scorecard: https://proofof.ai/scorecard/clipboard-ai-mcp.html · PyPI: https://pypi.org/project/clipboard-ai-mcp/
+
+## cobol-bridge-mcp (86/100)
+AI-assisted COBOL → modern stack bridge. Parse COBOL programs, map to Python/Java/Go, generate t...
+Install: pip install cobol-bridge-mcp · Tools: parse_cobol_program, identify_business_rules, estimate_migration_complexity, plan_migration_phases, generate_test_harness · Scorecard: https://proofof.ai/scorecard/cobol-bridge-mcp.html · PyPI: https://pypi.org/project/cobol-bridge-mcp/
+
+## code-reviewer-ai-mcp (86/100)
+Code Reviewer Ai MCP Server by MEOK AI Labs
+Install: pip install code-reviewer-ai-mcp · Tools: review_code, check_style, find_bugs, suggest_improvements, security_scan · Scorecard: https://proofof.ai/scorecard/code-reviewer-ai-mcp.html · PyPI: https://pypi.org/project/code-reviewer-ai-mcp/
+
+## color-ai-mcp (86/100)
+Color Ai MCP Server by MEOK AI Labs
+Install: pip install color-ai-mcp · Tools: hex_to_rgb, generate_palette, check_contrast, suggest_accessible · Scorecard: https://proofof.ai/scorecard/color-ai-mcp.html · PyPI: https://pypi.org/project/color-ai-mcp/
+
+## commit-message-ai-mcp (86/100)
+Commit Message Ai MCP Server by MEOK AI Labs
+Install: pip install commit-message-ai-mcp · Tools: generate_commit_message, analyze_diff, suggest_type, validate_conventional · Scorecard: https://proofof.ai/scorecard/commit-message-ai-mcp.html · PyPI: https://pypi.org/project/commit-message-ai-mcp/
+
+## compression-ai-mcp (86/100)
+Compression Ai MCP Server by MEOK AI Labs
+Install: pip install compression-ai-mcp · Tools: estimate_ratio, suggest_algorithm, calculate_savings, benchmark_data · Scorecard: https://proofof.ai/scorecard/compression-ai-mcp.html · PyPI: https://pypi.org/project/compression-ai-mcp/
+
+## config-validator-ai-mcp (86/100)
+Config Validator Ai MCP Server by MEOK AI Labs
+Install: pip install config-validator-ai-mcp · Tools: validate_toml, validate_ini, validate_dotenv, suggest_fixes · Scorecard: https://proofof.ai/scorecard/config-validator-ai-mcp.html · PyPI: https://pypi.org/project/config-validator-ai-mcp/
+
+## consciousness-engine-mcp (86/100)
+Consciousness Engine MCP Server by MEOK AI Labs
+Install: pip install consciousness-engine-mcp · Tools: get_consciousness_state, enter_dream_state, trigger_reflection, deliberate_council, get_emotional_state, get_dream_log · Scorecard: https://proofof.ai/scorecard/consciousness-engine-mcp.html · PyPI: https://pypi.org/project/consciousness-engine-mcp/
+
+## content-registry-mcp (86/100)
+Content Registry MCP Server by MEOK AI Labs
+Install: pip install content-registry-mcp · Tools: register_content, verify_content, search_registry, get_provenance_chain, revoke_registration · Scorecard: https://proofof.ai/scorecard/content-registry-mcp.html · PyPI: https://pypi.org/project/content-registry-mcp/
+
+## creativity-engine-mcp (86/100)
+Creativity Engine MCP Server by MEOK AI Labs
+Install: pip install creativity-engine-mcp · Tools: find_bisociations, assess_creativity, compute_novelty, suggest_exploration, get_qd_archive_stats · Scorecard: https://proofof.ai/scorecard/creativity-engine-mcp.html · PyPI: https://pypi.org/project/creativity-engine-mcp/
+
+## crm-ai-mcp (86/100)
+Crm Ai MCP Server by MEOK AI Labs
+Install: pip install crm-ai-mcp · Tools: lead_scorer, deal_stage_predictor, followup_scheduler, customer_health_score, churn_predictor · Scorecard: https://proofof.ai/scorecard/crm-ai-mcp.html · PyPI: https://pypi.org/project/crm-ai-mcp/
+
+## cron-ai-mcp (86/100)
+Cron Ai MCP Server by MEOK AI Labs
+Install: pip install cron-ai-mcp · Tools: parse_cron, generate_cron, next_runs, explain_cron · Scorecard: https://proofof.ai/scorecard/cron-ai-mcp.html · PyPI: https://pypi.org/project/cron-ai-mcp/
+
+## csoai-governance-crosswalk-mcp (86/100)
+Csoai Governance Crosswalk MCP Server by MEOK AI Labs
+Install: pip install csoai-governance-crosswalk-mcp · Tools: query_crosswalk, crosswalk_bridge, compliance_gap_analysis, get_unified_crosswalk, search_by_topic, list_frameworks · Scorecard: https://proofof.ai/scorecard/csoai-governance-crosswalk-mcp.html · PyPI: https://pypi.org/project/csoai-governance-crosswalk-mcp/
+
+## csv-analytics-mcp (86/100)
+Csv Analytics MCP Server by MEOK AI Labs
+Install: pip install csv-analytics-mcp · Tools: load_csv, query_data, describe_columns, aggregate, export_chart_data, pivot_table · Scorecard: https://proofof.ai/scorecard/csv-analytics-mcp.html · PyPI: https://pypi.org/project/csv-analytics-mcp/
+
+## currency-converter-ai-mcp (86/100)
+Currency Converter Ai MCP Server by MEOK AI Labs
+Install: pip install currency-converter-ai-mcp · Tools: convert_currency, batch_convert, get_rate, get_all_rates, get_historical_rate, get_rate_trend · Scorecard: https://proofof.ai/scorecard/currency-converter-ai-mcp.html · PyPI: https://pypi.org/project/currency-converter-ai-mcp/
+
+## customer-support-ai-mcp (86/100)
+Customer Support Ai MCP Server by MEOK AI Labs
+Install: pip install customer-support-ai-mcp · Tools: classify_ticket, draft_response, analyze_sentiment, detect_escalation, generate_faq · Scorecard: https://proofof.ai/scorecard/customer-support-ai-mcp.html · PyPI: https://pypi.org/project/customer-support-ai-mcp/
+
+## cybersecurity-ai-mcp (86/100)
+Cybersecurity Ai MCP Server by MEOK AI Labs
+Install: pip install cybersecurity-ai-mcp · Tools: classify_vulnerability, lookup_cve, check_security_headers, analyze_password_strength, generate_threat_model · Scorecard: https://proofof.ai/scorecard/cybersecurity-ai-mcp.html · PyPI: https://pypi.org/project/cybersecurity-ai-mcp/
+
+## data-science-ai-mcp (86/100)
+Data Science Ai MCP Server by MEOK AI Labs
+Install: pip install data-science-ai-mcp · Tools: feature_importance, model_comparison, dataset_profiler, correlation_finder, visualization_recommender · Scorecard: https://proofof.ai/scorecard/data-science-ai-mcp.html · PyPI: https://pypi.org/project/data-science-ai-mcp/
+
+## dataprivacy-ai-mcp (86/100)
+Dataprivacy Ai MCP Server by MEOK AI Labs
+Install: pip install dataprivacy-ai-mcp · Tools: classify_personal_data, assess_lawful_basis, generate_dpia, check_data_transfer, calculate_breach_severity, generate_privacy_notice · Scorecard: https://proofof.ai/scorecard/dataprivacy-ai-mcp.html · PyPI: https://pypi.org/project/dataprivacy-ai-mcp/
+
+## date-calculator-ai-mcp (86/100)
+Date Calculator Ai MCP Server by MEOK AI Labs
+Install: pip install date-calculator-ai-mcp · Tools: days_between, add_business_days, next_weekday, format_date · Scorecard: https://proofof.ai/scorecard/date-calculator-ai-mcp.html · PyPI: https://pypi.org/project/date-calculator-ai-mcp/
+
+## deepfake-detector-mcp (86/100)
+Deepfake Detector MCP Server by MEOK AI Labs
+Install: pip install deepfake-detector-mcp · Tools: detect_deepfake, analyze_audio_authenticity, check_image_provenance, generate_authenticity_report · Scorecard: https://proofof.ai/scorecard/deepfake-detector-mcp.html · PyPI: https://pypi.org/project/deepfake-detector-mcp/
+
+## devops-ai-mcp (86/100)
+Devops Ai MCP Server by MEOK AI Labs
+Install: pip install devops-ai-mcp · Tools: docker_compose_generator, cicd_pipeline_builder, log_analyzer, incident_classifier, runbook_generator · Scorecard: https://proofof.ai/scorecard/devops-ai-mcp.html · PyPI: https://pypi.org/project/devops-ai-mcp/
+
+## diff-ai-mcp (86/100)
+Diff Ai MCP Server by MEOK AI Labs
+Install: pip install diff-ai-mcp · Tools: diff_texts, diff_files, generate_patch, apply_patch · Scorecard: https://proofof.ai/scorecard/diff-ai-mcp.html · PyPI: https://pypi.org/project/diff-ai-mcp/
+
+## docker-helper-ai-mcp (86/100)
+Docker Helper Ai MCP Server by MEOK AI Labs
+Install: pip install docker-helper-ai-mcp · Tools: generate_dockerfile, parse_compose, optimize_image, security_scan_data · Scorecard: https://proofof.ai/scorecard/docker-helper-ai-mcp.html · PyPI: https://pypi.org/project/docker-helper-ai-mcp/
+
+## dockerfile-generator-ai-mcp (86/100)
+Dockerfile Generator Ai MCP Server by MEOK AI Labs
+Install: pip install dockerfile-generator-ai-mcp · Tools: generate_dockerfile, optimize_layers, validate_dockerfile, suggest_base_image · Scorecard: https://proofof.ai/scorecard/dockerfile-generator-ai-mcp.html · PyPI: https://pypi.org/project/dockerfile-generator-ai-mcp/
+
+## document-comparison-ai-mcp (86/100)
+Document Comparison Ai MCP Server by MEOK AI Labs
+Install: pip install document-comparison-ai-mcp · Tools: compare_documents, compare_versions, store_document, get_document, list_versions, compute_similarity · Scorecard: https://proofof.ai/scorecard/document-comparison-ai-mcp.html · PyPI: https://pypi.org/project/document-comparison-ai-mcp/
+
+## drone-airspace-governance-mcp (86/100)
+Drone Airspace Governance MCP Server by MEOK AI Labs
+Install: pip install drone-airspace-governance-mcp · Tools: classify_operation, bvlos_risk_assessment, remote_id_compliance, autonomous_decision_governance · Scorecard: https://proofof.ai/scorecard/drone-airspace-governance-mcp.html · PyPI: https://pypi.org/project/drone-airspace-governance-mcp/
+
+## ecommerce-ai-mcp (86/100)
+Ecommerce Ai MCP Server by MEOK AI Labs
+Install: pip install ecommerce-ai-mcp · Tools: write_product_description, optimize_pricing, summarize_reviews, forecast_inventory, generate_seo_meta · Scorecard: https://proofof.ai/scorecard/ecommerce-ai-mcp.html · PyPI: https://pypi.org/project/ecommerce-ai-mcp/
+
+## education-ai-mcp (86/100)
+Education Ai MCP Server by MEOK AI Labs
+Install: pip install education-ai-mcp · Tools: generate_lesson_plan, create_quiz, analyze_student_progress, recommend_learning_path, generate_rubric · Scorecard: https://proofof.ai/scorecard/education-ai-mcp.html · PyPI: https://pypi.org/project/education-ai-mcp/
+
+## email-automation-mcp (86/100)
+Email Automation MCP Server by MEOK AI Labs
+Install: pip install email-automation-mcp · Tools: send_email, read_inbox, search_emails, create_draft, list_folders · Scorecard: https://proofof.ai/scorecard/email-automation-mcp.html · PyPI: https://pypi.org/project/email-automation-mcp/
+
+## email-validator-ai-mcp (86/100)
+Email Validator Ai MCP Server by MEOK AI Labs
+Install: pip install email-validator-ai-mcp · Tools: validate_email, check_mx, detect_disposable, suggest_correction · Scorecard: https://proofof.ai/scorecard/email-validator-ai-mcp.html · PyPI: https://pypi.org/project/email-validator-ai-mcp/
+
+## emoji-ai-mcp (86/100)
+Emoji Ai MCP Server by MEOK AI Labs
+Install: pip install emoji-ai-mcp · Tools: search_emoji, suggest_for_text, emoji_to_text, count_emojis · Scorecard: https://proofof.ai/scorecard/emoji-ai-mcp.html · PyPI: https://pypi.org/project/emoji-ai-mcp/
+
+## encoder-ai-mcp (86/100)
+Encoder Ai MCP Server by MEOK AI Labs
+Install: pip install encoder-ai-mcp · Tools: encode_base64, decode_base64, encode_url, encode_html, to_hex · Scorecard: https://proofof.ai/scorecard/encoder-ai-mcp.html · PyPI: https://pypi.org/project/encoder-ai-mcp/
+
+## env-manager-ai-mcp (86/100)
+Env Manager Ai MCP Server by MEOK AI Labs
+Install: pip install env-manager-ai-mcp · Tools: parse_env_file, validate_env, generate_env_template, compare_envs · Scorecard: https://proofof.ai/scorecard/env-manager-ai-mcp.html · PyPI: https://pypi.org/project/env-manager-ai-mcp/
+
+## event-planning-ai-mcp (86/100)
+Event Planning Ai MCP Server by MEOK AI Labs
+Install: pip install event-planning-ai-mcp · Tools: calculate_venue_capacity, plan_budget, optimize_schedule, manage_guest_list, estimate_catering · Scorecard: https://proofof.ai/scorecard/event-planning-ai-mcp.html · PyPI: https://pypi.org/project/event-planning-ai-mcp/
+
+## expense-tracker-ai-mcp (86/100)
+Expense Tracker Ai MCP Server by MEOK AI Labs
+Install: pip install expense-tracker-ai-mcp · Tools: add_expense, get_expenses, set_budget, get_budget_status, get_category_summary, get_monthly_summary · Scorecard: https://proofof.ai/scorecard/expense-tracker-ai-mcp.html · PyPI: https://pypi.org/project/expense-tracker-ai-mcp/
+
+## faker-ai-mcp (86/100)
+Faker Ai MCP Server by MEOK AI Labs
+Install: pip install faker-ai-mcp · Tools: generate_fake_data, generate_profile, generate_address, generate_company, generate_dataset · Scorecard: https://proofof.ai/scorecard/faker-ai-mcp.html · PyPI: https://pypi.org/project/faker-ai-mcp/
+
+## feedback-analyzer-ai-mcp (86/100)
+Feedback Analyzer Ai MCP Server by MEOK AI Labs
+Install: pip install feedback-analyzer-ai-mcp · Tools: analyze_feedback, extract_themes, sentiment_trend, generate_summary · Scorecard: https://proofof.ai/scorecard/feedback-analyzer-ai-mcp.html · PyPI: https://pypi.org/project/feedback-analyzer-ai-mcp/
+
+## file-organizer-ai-mcp (86/100)
+File Organizer Ai MCP Server by MEOK AI Labs
+Install: pip install file-organizer-ai-mcp · Tools: categorize_by_extension, find_duplicates_by_hash, calculate_directory_size, generate_tree · Scorecard: https://proofof.ai/scorecard/file-organizer-ai-mcp.html · PyPI: https://pypi.org/project/file-organizer-ai-mcp/
+
+## flashcard-ai-mcp (86/100)
+Flashcard Ai MCP Server by MEOK AI Labs
+Install: pip install flashcard-ai-mcp · Tools: create_deck, add_card, quiz_session, get_stats · Scorecard: https://proofof.ai/scorecard/flashcard-ai-mcp.html · PyPI: https://pypi.org/project/flashcard-ai-mcp/
+
+## flight-logger-mcp (86/100)
+Flight Logger MCP Server by MEOK AI Labs
+Install: pip install flight-logger-mcp · Tools: log_flight, flight_summary, compliance_report, list_drones · Scorecard: https://proofof.ai/scorecard/flight-logger-mcp.html · PyPI: https://pypi.org/project/flight-logger-mcp/
+
+## focus-timer-ai-mcp (86/100)
+Focus Timer Ai MCP Server by MEOK AI Labs
+Install: pip install focus-timer-ai-mcp · Tools: start_focus, pause_focus, resume_focus, end_focus, get_sessions, get_analytics · Scorecard: https://proofof.ai/scorecard/focus-timer-ai-mcp.html · PyPI: https://pypi.org/project/focus-timer-ai-mcp/
+
+## gardening-ai-mcp (86/100)
+Gardening Ai MCP Server by MEOK AI Labs
+Install: pip install gardening-ai-mcp · Tools: identify_plant, generate_watering_schedule, analyze_soil, companion_planting, diagnose_pest · Scorecard: https://proofof.ai/scorecard/gardening-ai-mcp.html · PyPI: https://pypi.org/project/gardening-ai-mcp/
+
+## gdpr-compliance-ai-mcp (86/100)
+Gdpr Compliance Ai MCP Server by MEOK AI Labs
+Install: pip install gdpr-compliance-ai-mcp · Tools: classify_processing, lawful_basis_assessment, dpia_generator, rights_request_handler, breach_notification, crosswalk_to_eu_ai_act · Scorecard: https://proofof.ai/scorecard/gdpr-compliance-ai-mcp.html · PyPI: https://pypi.org/project/gdpr-compliance-ai-mcp/
+
+## git-helper-ai-mcp (86/100)
+Git Helper Ai MCP Server by MEOK AI Labs
+Install: pip install git-helper-ai-mcp · Tools: parse_diff, generate_commit_message, analyze_branch, changelog_generator · Scorecard: https://proofof.ai/scorecard/git-helper-ai-mcp.html · PyPI: https://pypi.org/project/git-helper-ai-mcp/
+
+## grammar-fix-ai-mcp (86/100)
+Grammar Fix Ai MCP Server by MEOK AI Labs
+Install: pip install grammar-fix-ai-mcp · Tools: fix_grammar, check_spelling, improve_readability, analyze_tone · Scorecard: https://proofof.ai/scorecard/grammar-fix-ai-mcp.html · PyPI: https://pypi.org/project/grammar-fix-ai-mcp/
+
+## healthcare-ai-governance-mcp (86/100)
+Healthcare Ai Governance MCP Server by MEOK AI Labs
+Install: pip install healthcare-ai-governance-mcp · Tools: classify_samd, check_cds_exemption, hipaa_ai_check, who_health_ai_ethics, dual_compliance_check · Scorecard: https://proofof.ai/scorecard/healthcare-ai-governance-mcp.html · PyPI: https://pypi.org/project/healthcare-ai-governance-mcp/
+
+## hipaa-compliance-mcp (86/100)
+Hipaa Compliance MCP Server by MEOK AI Labs
+Install: pip install hipaa-compliance-mcp · Tools: assess_hipaa_compliance, check_phi_handling, generate_baa, breach_notification_check, minimum_necessary_check, predict_risk_neural · Scorecard: https://proofof.ai/scorecard/hipaa-compliance-mcp.html · PyPI: https://pypi.org/project/hipaa-compliance-mcp/
+
+## hr-management-ai-mcp (86/100)
+Hr Management Ai MCP Server by MEOK AI Labs
+Install: pip install hr-management-ai-mcp · Tools: leave_calculator, payroll_estimator, performance_review, onboarding_checklist, compliance_checker · Scorecard: https://proofof.ai/scorecard/hr-management-ai-mcp.html · PyPI: https://pypi.org/project/hr-management-ai-mcp/
+
+## hydration-reminder-ai-mcp (86/100)
+Hydration Reminder Ai MCP Server by MEOK AI Labs
+Install: pip install hydration-reminder-ai-mcp · Tools: log_water_intake, get_daily_hydration, calculate_target, get_hydration_tips · Scorecard: https://proofof.ai/scorecard/hydration-reminder-ai-mcp.html · PyPI: https://pypi.org/project/hydration-reminder-ai-mcp/
+
+## icon-generator-ai-mcp (86/100)
+Icon Generator Ai MCP Server by MEOK AI Labs
+Install: pip install icon-generator-ai-mcp · Tools: generate_icon_svg, list_icon_sets, search_icons, convert_format · Scorecard: https://proofof.ai/scorecard/icon-generator-ai-mcp.html · PyPI: https://pypi.org/project/icon-generator-ai-mcp/
+
+## insurance-verification-mcp (86/100)
+Insurance Verification MCP Server by MEOK AI Labs
+Install: pip install insurance-verification-mcp · Tools: verify_eligibility, prior_authorization_check, claim_status, fraud_indicators · Scorecard: https://proofof.ai/scorecard/insurance-verification-mcp.html · PyPI: https://pypi.org/project/insurance-verification-mcp/
+
+## inventory-management-ai-mcp (86/100)
+Inventory Management Ai MCP Server by MEOK AI Labs
+Install: pip install inventory-management-ai-mcp · Tools: reorder_point, demand_forecast, sku_optimizer, warehouse_layout, shrinkage_detector · Scorecard: https://proofof.ai/scorecard/inventory-management-ai-mcp.html · PyPI: https://pypi.org/project/inventory-management-ai-mcp/
+
+## invoice-generator-ai-mcp (86/100)
+Invoice Generator Ai MCP Server by MEOK AI Labs
+Install: pip install invoice-generator-ai-mcp · Tools: generate_invoice, calculate_totals, validate_invoice, list_templates · Scorecard: https://proofof.ai/scorecard/invoice-generator-ai-mcp.html · PyPI: https://pypi.org/project/invoice-generator-ai-mcp/
+
+## ip-network-ai-mcp (86/100)
+Ip Network Ai MCP Server by MEOK AI Labs
+Install: pip install ip-network-ai-mcp · Tools: parse_ip, subnet_calculator, cidr_to_range, dns_lookup_data · Scorecard: https://proofof.ai/scorecard/ip-network-ai-mcp.html · PyPI: https://pypi.org/project/ip-network-ai-mcp/
+
+## iso-42001-ai-mcp (86/100)
+Iso 42001 Ai MCP Server by MEOK AI Labs
+Install: pip install iso-42001-ai-mcp · Tools: audit_management_system, assess_ai_risk, generate_policy_template, check_annex_controls, crosswalk_to_eu_ai_act, create_certification_checklist · Scorecard: https://proofof.ai/scorecard/iso-42001-ai-mcp.html · PyPI: https://pypi.org/project/iso-42001-ai-mcp/
+
+## job-description-ai-mcp (86/100)
+Job Description Ai MCP Server by MEOK AI Labs
+Install: pip install job-description-ai-mcp · Tools: generate_job_description, analyze_requirements, suggest_salary_range, check_bias · Scorecard: https://proofof.ai/scorecard/job-description-ai-mcp.html · PyPI: https://pypi.org/project/job-description-ai-mcp/
+
+## keyword-extractor-ai-mcp (86/100)
+Keyword Extractor Ai MCP Server by MEOK AI Labs
+Install: pip install keyword-extractor-ai-mcp · Tools: extract_keywords, analyze_density, suggest_tags, compare_keywords · Scorecard: https://proofof.ai/scorecard/keyword-extractor-ai-mcp.html · PyPI: https://pypi.org/project/keyword-extractor-ai-mcp/
+
+## landlaw-ai-mcp (86/100)
+Landlaw Ai MCP Server by MEOK AI Labs
+Install: pip install landlaw-ai-mcp · Tools: search_land_registry, check_planning_permission, explain_covenant, calculate_sdlt, draft_section_notice, check_right_of_way · Scorecard: https://proofof.ai/scorecard/landlaw-ai-mcp.html · PyPI: https://pypi.org/project/landlaw-ai-mcp/
+
+## legal-document-ai-mcp (86/100)
+Legal Document Ai MCP Server by MEOK AI Labs
+Install: pip install legal-document-ai-mcp · Tools: generate_nda, explain_clause, define_legal_term, check_compliance, case_summary · Scorecard: https://proofof.ai/scorecard/legal-document-ai-mcp.html · PyPI: https://pypi.org/project/legal-document-ai-mcp/
+
+## license-checker-ai-mcp (86/100)
+License Checker Ai MCP Server by MEOK AI Labs
+Install: pip install license-checker-ai-mcp · Tools: identify_license, check_compatibility, generate_license, explain_terms · Scorecard: https://proofof.ai/scorecard/license-checker-ai-mcp.html · PyPI: https://pypi.org/project/license-checker-ai-mcp/
+
+## linkedin-outreach-mcp (86/100)
+Linkedin Outreach MCP Server by MEOK AI Labs
+Install: pip install linkedin-outreach-mcp · Tools: generate_connection_request, generate_inmessage, generate_post, analyze_profile, generate_outreach_sequence, generate_comment · Scorecard: https://proofof.ai/scorecard/linkedin-outreach-mcp.html · PyPI: https://pypi.org/project/linkedin-outreach-mcp/
+
+## logistics-ai-mcp (86/100)
+Logistics Ai MCP Server by MEOK AI Labs
+Install: pip install logistics-ai-mcp · Tools: track_shipment, optimize_route, warehouse_inventory, estimate_delivery, customs_documentation · Scorecard: https://proofof.ai/scorecard/logistics-ai-mcp.html · PyPI: https://pypi.org/project/logistics-ai-mcp/
+
+## lorem-ipsum-ai-mcp (86/100)
+Lorem Ipsum Ai MCP Server by MEOK AI Labs
+Install: pip install lorem-ipsum-ai-mcp · Tools: generate_paragraphs, generate_sentences, generate_words, generate_structured · Scorecard: https://proofof.ai/scorecard/lorem-ipsum-ai-mcp.html · PyPI: https://pypi.org/project/lorem-ipsum-ai-mcp/
+
+## markdown-ai-mcp (86/100)
+Markdown Ai MCP Server by MEOK AI Labs
+Install: pip install markdown-ai-mcp · Tools: convert_to_html, generate_toc, lint_markdown, format_table · Scorecard: https://proofof.ai/scorecard/markdown-ai-mcp.html · PyPI: https://pypi.org/project/markdown-ai-mcp/
+
+## marketing-analytics-ai-mcp (86/100)
+Marketing Analytics Ai MCP Server by MEOK AI Labs
+Install: pip install marketing-analytics-ai-mcp · Tools: campaign_roi, ab_test_analyze, funnel_optimizer, attribution_model, ad_copy_generator · Scorecard: https://proofof.ai/scorecard/marketing-analytics-ai-mcp.html · PyPI: https://pypi.org/project/marketing-analytics-ai-mcp/
+
+## math-solver-ai-mcp (86/100)
+Math Solver Ai MCP Server by MEOK AI Labs
+Install: pip install math-solver-ai-mcp · Tools: solve_equation, statistics_summary, matrix_operations, probability_calculator · Scorecard: https://proofof.ai/scorecard/math-solver-ai-mcp.html · PyPI: https://pypi.org/project/math-solver-ai-mcp/
+
+## meal-planner-ai-mcp (86/100)
+Meal Planner Ai MCP Server by MEOK AI Labs
+Install: pip install meal-planner-ai-mcp · Tools: plan_meals, calculate_macros, generate_shopping_list, suggest_substitutes · Scorecard: https://proofof.ai/scorecard/meal-planner-ai-mcp.html · PyPI: https://pypi.org/project/meal-planner-ai-mcp/
+
+## meditation-guide-ai-mcp (86/100)
+Meditation Guide Ai MCP Server by MEOK AI Labs
+Install: pip install meditation-guide-ai-mcp · Tools: get_meditation, track_session, get_breathing_exercise, suggest_practice · Scorecard: https://proofof.ai/scorecard/meditation-guide-ai-mcp.html · PyPI: https://pypi.org/project/meditation-guide-ai-mcp/
+
+## meeting-summarizer-ai-mcp (86/100)
+Meeting Summarizer Ai MCP Server by MEOK AI Labs
+Install: pip install meeting-summarizer-ai-mcp · Tools: summarize_meeting, extract_action_items, identify_decisions, generate_followup · Scorecard: https://proofof.ai/scorecard/meeting-summarizer-ai-mcp.html · PyPI: https://pypi.org/project/meeting-summarizer-ai-mcp/
+
+## memory-search-mcp (86/100)
+Memory Search MCP Server by MEOK AI Labs
+Install: pip install memory-search-mcp · Tools: record_memory, search_memory, add_knowledge, search_knowledge, list_memories, get_memory_stats · Scorecard: https://proofof.ai/scorecard/memory-search-mcp.html · PyPI: https://pypi.org/project/memory-search-mcp/
+
+## meok-asc-rspca-crosswalk-mcp (86/100)
+Flagship aquaculture crosswalk — one evidence pack satisfies ASC + RSPCA Assured + GlobalG.A.P. IFA
+Install: pip install meok-asc-rspca-crosswalk-mcp · Tools: list_crosswalk_topics, crosswalk_topic, map_evidence_to_schemes, unified_audit_pack, retailer_requirement_check · Scorecard: https://proofof.ai/scorecard/meok-asc-rspca-crosswalk-mcp.html · PyPI: https://pypi.org/project/meok-asc-rspca-crosswalk-mcp/
+
+## meok-governance-smithery (86/100)
+MEOK Governance Engine - 62 AI governance tools. EU AI Act + NIST + ISO 42001 + crosswalks. Most
+Install: pip install meok-governance-smithery · Tools: health_check, get_info · Scorecard: https://proofof.ai/scorecard/meok-governance-smithery.html · PyPI: https://pypi.org/project/meok-governance-smithery/
+
+## meok-laia-aquatic-mcp (86/100)
+England Animal Welfare (Licensing of Activities Involving Animals) Regulations 2018 — LAIA — for
+Install: pip install meok-laia-aquatic-mcp · Tools: list_activities, welfare_checklist, licence_gap_analysis, inspector_pack · Scorecard: https://proofof.ai/scorecard/meok-laia-aquatic-mcp.html · PyPI: https://pypi.org/project/meok-laia-aquatic-mcp/
+
+## meok-law-mcp (86/100)
+MEOK LAW MCP — region-aware AI governance on the real CSOAI crosswalks. Tools: applicable rules by
+Install: pip install meok-law-mcp · Tools: law_overview, law_applicable, law_crosswalk, law_social_contract, law_register · Scorecard: https://proofof.ai/scorecard/meok-law-mcp.html · PyPI: https://pypi.org/project/meok-law-mcp/
+
+## meok-libp2p-agent-mesh-mcp (86/100)
+MEOK libp2p Agent Mesh MCP — peer-to-peer agent discovery + addressing. PeerID + multiaddr + signed
+Install: pip install meok-libp2p-agent-mesh-mcp · Tools: mint_peer_id, generate_peer_keypair, compose_multiaddr, parse_multiaddr, sign_agent_record, verify_agent_record · Scorecard: https://proofof.ai/scorecard/meok-libp2p-agent-mesh-mcp.html · PyPI: https://pypi.org/project/meok-libp2p-agent-mesh-mcp/
+
+## mock-server-ai-mcp (86/100)
+Mock Server Ai MCP Server by MEOK AI Labs
+Install: pip install mock-server-ai-mcp · Tools: create_endpoint, list_endpoints, generate_mock_data, validate_schema · Scorecard: https://proofof.ai/scorecard/mock-server-ai-mcp.html · PyPI: https://pypi.org/project/mock-server-ai-mcp/
+
+## mortgage-calculator-ai-mcp (86/100)
+Mortgage Calculator Ai MCP Server by MEOK AI Labs
+Install: pip install mortgage-calculator-ai-mcp · Tools: calculate_mortgage, compare_rates, amortization_schedule, affordability_check · Scorecard: https://proofof.ai/scorecard/mortgage-calculator-ai-mcp.html · PyPI: https://pypi.org/project/mortgage-calculator-ai-mcp/
+
+## music-production-ai-mcp (86/100)
+Music Production Ai MCP Server by MEOK AI Labs
+Install: pip install music-production-ai-mcp · Tools: generate_chord_progression, detect_tempo, find_key, analyze_lyrics, mixing_recommendations · Scorecard: https://proofof.ai/scorecard/music-production-ai-mcp.html · PyPI: https://pypi.org/project/music-production-ai-mcp/
+
+## nis2-compliance-mcp (86/100)
+NIS2 Directive (EU 2022/2555) compliance for AI agents. 10 Article 21 risk-management measures a...
+Install: pip install nis2-compliance-mcp · Tools: classify_entity, list_article_21_measures, audit_article_21, classify_incident, management_body_checklist, get_nis2_certificate · Scorecard: https://proofof.ai/scorecard/nis2-compliance-mcp.html · PyPI: https://pypi.org/project/nis2-compliance-mcp/
+
+## nist-rmf-ai-mcp (86/100)
+Nist Rmf Ai MCP Server by MEOK AI Labs
+Install: pip install nist-rmf-ai-mcp · Tools: assess_risk_profile, map_ai_impact, generate_risk_controls, crosswalk_to_eu_ai_act, create_risk_report, check_trustworthy_characteristics · Scorecard: https://proofof.ai/scorecard/nist-rmf-ai-mcp.html · PyPI: https://pypi.org/project/nist-rmf-ai-mcp/
+
+## note-taking-ai-mcp (86/100)
+Note Taking Ai MCP Server by MEOK AI Labs
+Install: pip install note-taking-ai-mcp · Tools: create_note, search_notes, summarize_notes, export_markdown · Scorecard: https://proofof.ai/scorecard/note-taking-ai-mcp.html · PyPI: https://pypi.org/project/note-taking-ai-mcp/
+
+## notification-ai-mcp (86/100)
+Notification Ai MCP Server by MEOK AI Labs
+Install: pip install notification-ai-mcp · Tools: send_notification, list_notifications, mark_read, get_preferences · Scorecard: https://proofof.ai/scorecard/notification-ai-mcp.html · PyPI: https://pypi.org/project/notification-ai-mcp/
+
+## nutrition-tracker-ai-mcp (86/100)
+Nutrition Tracker Ai MCP Server by MEOK AI Labs
+Install: pip install nutrition-tracker-ai-mcp · Tools: log_meal, get_daily_summary, check_nutrient_balance, suggest_foods, get_calorie_estimate · Scorecard: https://proofof.ai/scorecard/nutrition-tracker-ai-mcp.html · PyPI: https://pypi.org/project/nutrition-tracker-ai-mcp/
+
+## optometry-ai-safety-mcp (86/100)
+Optometry Ai Safety MCP Server by MEOK AI Labs
+Install: pip install optometry-ai-safety-mcp · Tools: classify_optometry_device, check_fda_samd, ce_marking_checklist, ophthalmic_bias_audit · Scorecard: https://proofof.ai/scorecard/optometry-ai-safety-mcp.html · PyPI: https://pypi.org/project/optometry-ai-safety-mcp/
+
+## owasp-agentic-mcp (86/100)
+Owasp Agentic MCP Server by MEOK AI Labs
+Install: pip install owasp-agentic-mcp · Tools: assess_agent_security, check_prompt_injection, check_tool_poisoning, check_excessive_agency, check_data_leakage · Scorecard: https://proofof.ai/scorecard/owasp-agentic-mcp.html · PyPI: https://pypi.org/project/owasp-agentic-mcp/
+
+## patient-safety-ai-mcp (86/100)
+Patient Safety Ai MCP Server by MEOK AI Labs
+Install: pip install patient-safety-ai-mcp · Tools: check_drug_interactions, assess_patient_risk, validate_dosage, generate_safety_alert, check_allergy_conflicts · Scorecard: https://proofof.ai/scorecard/patient-safety-ai-mcp.html · PyPI: https://pypi.org/project/patient-safety-ai-mcp/
+
+## pdf-document-mcp (86/100)
+Pdf Document MCP Server by MEOK AI Labs
+Install: pip install pdf-document-mcp · Tools: extract_text_from_pdf, convert_pdf_to_markdown, merge_pdfs, extract_tables, summarize_document · Scorecard: https://proofof.ai/scorecard/pdf-document-mcp.html · PyPI: https://pypi.org/project/pdf-document-mcp/
+
+## pdf-merge-ai-mcp (86/100)
+Pdf Merge Ai MCP Server by MEOK AI Labs
+Install: pip install pdf-merge-ai-mcp · Tools: merge_info, split_info, get_metadata, validate_pdf · Scorecard: https://proofof.ai/scorecard/pdf-merge-ai-mcp.html · PyPI: https://pypi.org/project/pdf-merge-ai-mcp/
+
+## pdf-tools-ai-mcp (86/100)
+Pdf Tools Ai MCP Server by MEOK AI Labs
+Install: pip install pdf-tools-ai-mcp · Tools: extract_text, count_pages, get_metadata, merge_pages_data · Scorecard: https://proofof.ai/scorecard/pdf-tools-ai-mcp.html · PyPI: https://pypi.org/project/pdf-tools-ai-mcp/
+
+## performance-ai-mcp (86/100)
+Performance Ai MCP Server by MEOK AI Labs
+Install: pip install performance-ai-mcp · Tools: analyze_waterfall_data, suggest_optimizations, calculate_core_web_vitals, image_optimization_hints · Scorecard: https://proofof.ai/scorecard/performance-ai-mcp.html · PyPI: https://pypi.org/project/performance-ai-mcp/
+
+## personal-finance-ai-mcp (86/100)
+Personal Finance Ai MCP Server by MEOK AI Labs
+Install: pip install personal-finance-ai-mcp · Tools: track_budget, calculate_savings, plan_debt_payoff, analyze_investment, estimate_tax · Scorecard: https://proofof.ai/scorecard/personal-finance-ai-mcp.html · PyPI: https://pypi.org/project/personal-finance-ai-mcp/
+
+## photography-ai-mcp (86/100)
+Photography Ai MCP Server by MEOK AI Labs
+Install: pip install photography-ai-mcp · Tools: analyze_exif, map_photo_locations, find_duplicates, extract_color_palette, edit_metadata · Scorecard: https://proofof.ai/scorecard/photography-ai-mcp.html · PyPI: https://pypi.org/project/photography-ai-mcp/
+
+## planthire-ai-mcp (86/100)
+Planthire Ai MCP Server by MEOK AI Labs
+Install: pip install planthire-ai-mcp · Tools: search_equipment, get_rental_quote, check_availability, create_booking, get_safety_checklist, calculate_transport · Scorecard: https://proofof.ai/scorecard/planthire-ai-mcp.html · PyPI: https://pypi.org/project/planthire-ai-mcp/
+
+## pomodoro-ai-mcp (86/100)
+Pomodoro Ai MCP Server by MEOK AI Labs
+Install: pip install pomodoro-ai-mcp · Tools: start_session, stop_session, get_stats, configure_timer, get_productivity_report · Scorecard: https://proofof.ai/scorecard/pomodoro-ai-mcp.html · PyPI: https://pypi.org/project/pomodoro-ai-mcp/
+
+## price-tracker-ai-mcp (86/100)
+Price Tracker Ai MCP Server by MEOK AI Labs
+Install: pip install price-tracker-ai-mcp · Tools: track_price, get_price_history, set_alert, compare_prices · Scorecard: https://proofof.ai/scorecard/price-tracker-ai-mcp.html · PyPI: https://pypi.org/project/price-tracker-ai-mcp/
+
+## project-management-ai-mcp (86/100)
+Project Management Ai MCP Server by MEOK AI Labs
+Install: pip install project-management-ai-mcp · Tools: decompose_task, plan_sprint, assess_risks, estimate_timeline, generate_standup · Scorecard: https://proofof.ai/scorecard/project-management-ai-mcp.html · PyPI: https://pypi.org/project/project-management-ai-mcp/
+
+## proofof-ai-mcp (86/100)
+Proofof Ai MCP Server by MEOK AI Labs
+Install: pip install proofof-ai-mcp · Tools: verify_text_origin, detect_deepfake_image, generate_content_certificate, verify_certificate, check_provenance, get_verification_stats · Scorecard: https://proofof.ai/scorecard/proofof-ai-mcp.html · PyPI: https://pypi.org/project/proofof-ai-mcp/
+
+## qidi-printer-mcp (86/100)
+Qidi Printer MCP Server by MEOK AI Labs
+Install: pip install qidi-printer-mcp · Tools: printer_status, get_temperatures, start_print, pause_print, resume_print, cancel_print · Scorecard: https://proofof.ai/scorecard/qidi-printer-mcp.html · PyPI: https://pypi.org/project/qidi-printer-mcp/
+
+## qr-code-ai-mcp (86/100)
+Qr Code Ai MCP Server by MEOK AI Labs
+Install: pip install qr-code-ai-mcp · Tools: generate_qr_data, decode_qr_data, create_vcard_qr, create_wifi_qr · Scorecard: https://proofof.ai/scorecard/qr-code-ai-mcp.html · PyPI: https://pypi.org/project/qr-code-ai-mcp/
+
+## quiz-generator-ai-mcp (86/100)
+Quiz Generator Ai MCP Server by MEOK AI Labs
+Install: pip install quiz-generator-ai-mcp · Tools: generate_quiz, validate_answers, generate_flashcards, assess_difficulty · Scorecard: https://proofof.ai/scorecard/quiz-generator-ai-mcp.html · PyPI: https://pypi.org/project/quiz-generator-ai-mcp/
+
+## rag-knowledge-mcp (86/100)
+Rag Knowledge MCP Server by MEOK AI Labs
+Install: pip install rag-knowledge-mcp · Tools: semantic_search, knowledge_graph_query, index_document, extract_entities_tool, cross_reference · Scorecard: https://proofof.ai/scorecard/rag-knowledge-mcp.html · PyPI: https://pypi.org/project/rag-knowledge-mcp/
+
+## recipe-finder-ai-mcp (86/100)
+Recipe Finder Ai MCP Server by MEOK AI Labs
+Install: pip install recipe-finder-ai-mcp · Tools: find_recipe, substitute_ingredient, plan_weekly_meals, estimate_nutrition · Scorecard: https://proofof.ai/scorecard/recipe-finder-ai-mcp.html · PyPI: https://pypi.org/project/recipe-finder-ai-mcp/
+
+## recruitment-ai-mcp (86/100)
+Recruitment Ai MCP Server by MEOK AI Labs
+Install: pip install recruitment-ai-mcp · Tools: generate_job_description, score_cv, generate_interview_questions, benchmark_salary, draft_offer_letter · Scorecard: https://proofof.ai/scorecard/recruitment-ai-mcp.html · PyPI: https://pypi.org/project/recruitment-ai-mcp/
+
+## risk-assessment-ai-mcp (86/100)
+Risk Assessment Ai MCP Server by MEOK AI Labs
+Install: pip install risk-assessment-ai-mcp · Tools: assess_risk, create_risk_register, add_risk, get_risk_register, update_risk_status, create_mitigation_plan · Scorecard: https://proofof.ai/scorecard/risk-assessment-ai-mcp.html · PyPI: https://pypi.org/project/risk-assessment-ai-mcp/
+
+## robotics-control-mcp (86/100)
+Robotics Control MCP Server by MEOK AI Labs
+Install: pip install robotics-control-mcp · Tools: list_devices, send_command, read_sensor, set_servo, run_gcode, emergency_stop · Scorecard: https://proofof.ai/scorecard/robotics-control-mcp.html · PyPI: https://pypi.org/project/robotics-control-mcp/
+
+## schema-validator-ai-mcp (86/100)
+Schema Validator Ai MCP Server by MEOK AI Labs
+Install: pip install schema-validator-ai-mcp · Tools: validate_json_schema, generate_schema, convert_openapi, validate_types · Scorecard: https://proofof.ai/scorecard/schema-validator-ai-mcp.html · PyPI: https://pypi.org/project/schema-validator-ai-mcp/
+
+## sentiment-analysis-ai-mcp (86/100)
+Sentiment Analysis Ai MCP Server by MEOK AI Labs
+Install: pip install sentiment-analysis-ai-mcp · Tools: analyze_sentiment, batch_analyze, compare_sentiments, extract_emotions · Scorecard: https://proofof.ai/scorecard/sentiment-analysis-ai-mcp.html · PyPI: https://pypi.org/project/sentiment-analysis-ai-mcp/
+
+## seo-checker-ai-mcp (86/100)
+Seo Checker Ai MCP Server by MEOK AI Labs
+Install: pip install seo-checker-ai-mcp · Tools: analyze_title, check_meta_description, validate_schema_markup, heading_analysis · Scorecard: https://proofof.ai/scorecard/seo-checker-ai-mcp.html · PyPI: https://pypi.org/project/seo-checker-ai-mcp/
+
+## slack-enterprise-mcp (86/100)
+Slack Enterprise MCP Server by MEOK AI Labs
+Install: pip install slack-enterprise-mcp · Tools: send_message, search_messages, list_channels, get_thread, create_channel, set_channel_topic · Scorecard: https://proofof.ai/scorecard/slack-enterprise-mcp.html · PyPI: https://pypi.org/project/slack-enterprise-mcp/
+
+## sleep-tracker-ai-mcp (86/100)
+Sleep Tracker Ai MCP Server by MEOK AI Labs
+Install: pip install sleep-tracker-ai-mcp · Tools: log_sleep, get_sleep_stats, analyze_patterns, get_recommendations · Scorecard: https://proofof.ai/scorecard/sleep-tracker-ai-mcp.html · PyPI: https://pypi.org/project/sleep-tracker-ai-mcp/
+
+## slugify-ai-mcp (86/100)
+Slugify Ai MCP Server by MEOK AI Labs
+Install: pip install slugify-ai-mcp · Tools: slugify, deslugify, batch_slugify, generate_seo_slug · Scorecard: https://proofof.ai/scorecard/slugify-ai-mcp.html · PyPI: https://pypi.org/project/slugify-ai-mcp/
+
+## soc2-compliance-ai-mcp (86/100)
+Soc2 Compliance Ai MCP Server by MEOK AI Labs
+Install: pip install soc2-compliance-ai-mcp · Tools: assess_trust_principles, control_gap_analysis, generate_control_matrix, risk_assessment, crosswalk_to_iso27001, readiness_checklist · Scorecard: https://proofof.ai/scorecard/soc2-compliance-ai-mcp.html · PyPI: https://pypi.org/project/soc2-compliance-ai-mcp/
+
+## social-media-ai-mcp (86/100)
+Social Media Ai MCP Server by MEOK AI Labs
+Install: pip install social-media-ai-mcp · Tools: schedule_post, generate_hashtags, analyze_engagement, plan_content_calendar, get_audience_insights · Scorecard: https://proofof.ai/scorecard/social-media-ai-mcp.html · PyPI: https://pypi.org/project/social-media-ai-mcp/
+
+## stock-analyzer-ai-mcp (86/100)
+AI-powered stock analyzer ai MCP server for agents. Supports analyze stock, calculate ratios
+Install: pip install stock-analyzer-ai-mcp · Tools: analyze_stock, calculate_ratios, compare_stocks, get_sector_performance · Scorecard: https://proofof.ai/scorecard/stock-analyzer-ai-mcp.html · PyPI: https://pypi.org/project/stock-analyzer-ai-mcp/
+
+## string-utils-ai-mcp (86/100)
+String Utils Ai tools for AI agents. Capabilities: slugify, camel to snake, truncate smart. Built
+Install: pip install string-utils-ai-mcp · Tools: slugify, camel_to_snake, truncate_smart, extract_numbers · Scorecard: https://proofof.ai/scorecard/string-utils-ai-mcp.html · PyPI: https://pypi.org/project/string-utils-ai-mcp/
+
+## subscription-tracker-ai-mcp (86/100)
+MCP server for subscription tracker ai. Features add subscription, get total spend, list
+Install: pip install subscription-tracker-ai-mcp · Tools: add_subscription, get_total_spend, list_subscriptions, find_duplicates · Scorecard: https://proofof.ai/scorecard/subscription-tracker-ai-mcp.html · PyPI: https://pypi.org/project/subscription-tracker-ai-mcp/
+
+## summarizer-ai-mcp (86/100)
+MCP server for summarizer ai. Features summarize text, extract key points, generate abstract. From
+Install: pip install summarizer-ai-mcp · Tools: summarize_text, extract_key_points, generate_abstract, compare_summaries · Scorecard: https://proofof.ai/scorecard/summarizer-ai-mcp.html · PyPI: https://pypi.org/project/summarizer-ai-mcp/
+
+## supply-chain-mcp (86/100)
+Supply chain management and logistics tools for AI agents. Capabilities: shipment tracking
+Install: pip install supply-chain-mcp · Tools: track_shipment, manage_inventory, supplier_scorecard, demand_forecast, optimize_routing · Scorecard: https://proofof.ai/scorecard/supply-chain-mcp.html · PyPI: https://pypi.org/project/supply-chain-mcp/
+
+## survey-builder-ai-mcp (86/100)
+AI-powered survey builder ai MCP server for agents. Supports create survey, validate questions
+Install: pip install survey-builder-ai-mcp · Tools: create_survey, validate_questions, analyze_responses, generate_report · Scorecard: https://proofof.ai/scorecard/survey-builder-ai-mcp.html · PyPI: https://pypi.org/project/survey-builder-ai-mcp/
+
+## tax-calculator-ai-mcp (86/100)
+AI-powered tax calculator ai MCP server for agents. Supports calculate income tax, calculate vat
+Install: pip install tax-calculator-ai-mcp · Tools: calculate_income_tax, calculate_vat, estimate_corporation_tax, calculate_capital_gains, get_tax_deadlines · Scorecard: https://proofof.ai/scorecard/tax-calculator-ai-mcp.html · PyPI: https://pypi.org/project/tax-calculator-ai-mcp/
+
+## test-case-generator-ai-mcp (86/100)
+AI-powered test case generator ai MCP server for agents. Supports generate test cases, generate
+Install: pip install test-case-generator-ai-mcp · Tools: generate_test_cases, generate_edge_cases, generate_test_matrix, assess_coverage · Scorecard: https://proofof.ai/scorecard/test-case-generator-ai-mcp.html · PyPI: https://pypi.org/project/test-case-generator-ai-mcp/
+
+## text-stats-ai-mcp (86/100)
+MCP server for text stats ai. Features word count, reading time, keyword density. From MEOK AI Labs.
+Install: pip install text-stats-ai-mcp · Tools: word_count, reading_time, keyword_density, sentiment_score · Scorecard: https://proofof.ai/scorecard/text-stats-ai-mcp.html · PyPI: https://pypi.org/project/text-stats-ai-mcp/
+
+## time-tracker-ai-mcp (86/100)
+Time Tracker Ai tools for AI agents. Capabilities: start timer, stop timer, get report. Built by
+Install: pip install time-tracker-ai-mcp · Tools: start_timer, stop_timer, get_report, list_entries · Scorecard: https://proofof.ai/scorecard/time-tracker-ai-mcp.html · PyPI: https://pypi.org/project/time-tracker-ai-mcp/
+
+## tone-rewriter-ai-mcp (86/100)
+Tone Rewriter Ai MCP server. Tools: analyze tone, rewrite tone, compare tones. Built by MEOK AI
+Install: pip install tone-rewriter-ai-mcp · Tools: analyze_tone, rewrite_tone, compare_tones, suggest_tone · Scorecard: https://proofof.ai/scorecard/tone-rewriter-ai-mcp.html · PyPI: https://pypi.org/project/tone-rewriter-ai-mcp/
+
+## translation-ai-mcp (86/100)
+Translation Ai automation via MCP. Includes translate text, detect language, check grammar. By MEOK
+Install: pip install translation-ai-mcp · Tools: translate_text, detect_language, check_grammar, adjust_tone, validate_localization · Scorecard: https://proofof.ai/scorecard/translation-ai-mcp.html · PyPI: https://pypi.org/project/translation-ai-mcp/
+
+## translator-pro-ai-mcp (86/100)
+AI-powered translator pro ai MCP server for agents. Supports translate text, detect language
+Install: pip install translator-pro-ai-mcp · Tools: translate_text, detect_language, compare_translations, get_supported_languages · Scorecard: https://proofof.ai/scorecard/translator-pro-ai-mcp.html · PyPI: https://pypi.org/project/translator-pro-ai-mcp/
+
+## uk-ai-act-mcp (86/100)
+UK AI regulation compliance tools for AI agents. Capabilities: UK risk classification, AISI
+Install: pip install uk-ai-act-mcp · Tools: classify_uk_risk, check_aisi_alignment, compare_eu_uk, assess_readiness, generate_impact_assessment · Scorecard: https://proofof.ai/scorecard/uk-ai-act-mcp.html · PyPI: https://pypi.org/project/uk-ai-act-mcp/
+
+## unit-converter-ai-mcp (86/100)
+AI-powered unit converter ai MCP server for agents. Supports convert length, convert weight
+Install: pip install unit-converter-ai-mcp · Tools: convert_length, convert_weight, convert_temperature, convert_currency_data · Scorecard: https://proofof.ai/scorecard/unit-converter-ai-mcp.html · PyPI: https://pypi.org/project/unit-converter-ai-mcp/
+
+## url-ai-mcp (86/100)
+Url Ai MCP server. Tools: parse url, shorten url data, check url safety. Built by MEOK AI Labs.
+Install: pip install url-ai-mcp · Tools: parse_url, shorten_url_data, check_url_safety, extract_metadata · Scorecard: https://proofof.ai/scorecard/url-ai-mcp.html · PyPI: https://pypi.org/project/url-ai-mcp/
+
+## uuid-ai-mcp (86/100)
+AI-powered uuid ai MCP server for agents. Supports generate uuid, parse uuid, generate ulid. By
+Install: pip install uuid-ai-mcp · Tools: generate_uuid, parse_uuid, generate_ulid, generate_nanoid, batch_generate · Scorecard: https://proofof.ai/scorecard/uuid-ai-mcp.html · PyPI: https://pypi.org/project/uuid-ai-mcp/
+
+## validator-ai-mcp (86/100)
+AI-powered validator ai MCP server for agents. Supports validate json, validate email, validate
+Install: pip install validator-ai-mcp · Tools: validate_json, validate_email, validate_url, validate_data_quality, validate_api_response · Scorecard: https://proofof.ai/scorecard/validator-ai-mcp.html · PyPI: https://pypi.org/project/validator-ai-mcp/
+
+## vector-knowledge-graph-mcp (86/100)
+AI-powered vector knowledge graph MCP server for agents. Supports add node, add edge, semantic node
+Install: pip install vector-knowledge-graph-mcp · Tools: add_node, add_edge, semantic_node_search, trace_compliance_chain, find_gaps · Scorecard: https://proofof.ai/scorecard/vector-knowledge-graph-mcp.html · PyPI: https://pypi.org/project/vector-knowledge-graph-mcp/
+
+## video-editing-ai-mcp (86/100)
+Video Editing Ai MCP server. Tools: split scenes, generate subtitles, thumbnail data. Built by MEOK
+Install: pip install video-editing-ai-mcp · Tools: split_scenes, generate_subtitles, thumbnail_data, recommend_color_grading, convert_aspect_ratio · Scorecard: https://proofof.ai/scorecard/video-editing-ai-mcp.html · PyPI: https://pypi.org/project/video-editing-ai-mcp/
+
+## voice-audio-mcp (86/100)
+Voice Audio MCP server. Tools: text to speech, list voices, transcribe. Built by MEOK AI Labs.
+Install: pip install voice-audio-mcp · Tools: transcribe_audio, analyze_audio, detect_language, estimate_duration · Scorecard: https://proofof.ai/scorecard/voice-audio-mcp.html · PyPI: https://pypi.org/project/voice-audio-mcp/
+
+## weather-ai-mcp (86/100)
+Weather Ai tools for AI agents. Capabilities: get current conditions, get forecast, get historical
+Install: pip install weather-ai-mcp · Tools: get_current_conditions, get_forecast, get_historical_weather, get_agricultural_alerts, get_severe_weather_warnings · Scorecard: https://proofof.ai/scorecard/weather-ai-mcp.html · PyPI: https://pypi.org/project/weather-ai-mcp/
+
+## workout-planner-ai-mcp (86/100)
+MCP server for workout planner ai. Features create workout, track progress, suggest exercises. From
+Install: pip install workout-planner-ai-mcp · Tools: create_workout, track_progress, suggest_exercises, calculate_volume · Scorecard: https://proofof.ai/scorecard/workout-planner-ai-mcp.html · PyPI: https://pypi.org/project/workout-planner-ai-mcp/
+
+## writing-assistant-ai-mcp (86/100)
+Writing Assistant Ai tools for AI agents. Capabilities: generate headlines, score readability
+Install: pip install writing-assistant-ai-mcp · Tools: generate_headlines, score_readability, analyze_tone, build_outline, check_similarity · Scorecard: https://proofof.ai/scorecard/writing-assistant-ai-mcp.html · PyPI: https://pypi.org/project/writing-assistant-ai-mcp/
+
+## yaml-ai-mcp (86/100)
+AI-powered yaml ai MCP server for agents. Supports validate yaml, convert yaml json, lint yaml. By
+Install: pip install yaml-ai-mcp · Tools: validate_yaml, convert_yaml_json, lint_yaml, merge_yaml · Scorecard: https://proofof.ai/scorecard/yaml-ai-mcp.html · PyPI: https://pypi.org/project/yaml-ai-mcp/
+
+## agent-prompt-injection-firewall-mcp (84/100)
+The WAF for agents. Pattern-based + heuristic firewall scans prompts, RAG documents, tool argume...
+Install: pip install agent-prompt-injection-firewall-mcp · Tools: scan_prompt, define_custom_rule, list_rules, scan_log, sign_firewall_attestation · Scorecard: https://proofof.ai/scorecard/agent-prompt-injection-firewall-mcp.html · PyPI: https://pypi.org/project/agent-prompt-injection-firewall-mcp/
+
+## ai-bom-mcp (84/100)
+AI Bill of Materials (AI-BOM) generator + auditor MCP — CycloneDX ML-BOM, SPDX 3.0 AI profile, E...
+Install: pip install ai-bom-mcp · Tools: generate_ai_bom, audit_ai_bom_completeness, map_to_regulation, required_fields · Scorecard: https://proofof.ai/scorecard/ai-bom-mcp.html · PyPI: https://pypi.org/project/ai-bom-mcp/
+
+## meok-ai-reflection-mcp (84/100)
+MEOK AI Labs - ai-reflection MCP server extracted from SOV3
+Install: pip install meok-ai-reflection-mcp · Tools: trigger_reflection, trigger_creativity_cycle, find_bisociations · Scorecard: https://proofof.ai/scorecard/meok-ai-reflection-mcp.html · PyPI: https://pypi.org/project/meok-ai-reflection-mcp/
+
+## meok-bft-governance-mcp (84/100)
+MEOK AI Labs - bft-governance MCP server extracted from SOV3
+Install: pip install meok-bft-governance-mcp · Tools: submit_council_proposal, vote_on_proposal, get_agent_registry_stats · Scorecard: https://proofof.ai/scorecard/meok-bft-governance-mcp.html · PyPI: https://pypi.org/project/meok-bft-governance-mcp/
+
+## cqc-compliance-mcp (84/100)
+cqc-compliance-mcp for domiciliary opticians
+Install: pip install cqc-compliance-mcp · Tools: generate_annual_report, generate_staff_training · Scorecard: https://proofof.ai/scorecard/cqc-compliance-mcp.html · PyPI: https://pypi.org/project/cqc-compliance-mcp/
+
+## dispense-record-mcp (84/100)
+GOC-compliant optical dispense record validation. Captures prescription, lens choice, fitting
+Install: pip install dispense-record-mcp · Tools: validate_dispense_record, rx_transcription_check, lens_suitability, supplier_traceability, flag_dispensing_complaint_risk · Scorecard: https://proofof.ai/scorecard/dispense-record-mcp.html · PyPI: https://pypi.org/project/dispense-record-mcp/
+
+## domiciliary-care-mcp (84/100)
+UK domiciliary care provider compliance — DBS checks, CQC registration, Working Time Regulations
+Install: pip install domiciliary-care-mcp · Tools: dbs_check_audit, lone_worker_safety_check, medication_competency_check, rota_wtr_check, incident_report_template · Scorecard: https://proofof.ai/scorecard/domiciliary-care-mcp.html · PyPI: https://pypi.org/project/domiciliary-care-mcp/
+
+## gos-claim-validator-mcp (84/100)
+Validate NHS General Ophthalmic Services (GOS) claims pre-submission. Catches errors in GOS 1-6
+Install: pip install gos-claim-validator-mcp · Tools: validate_gos1, validate_gos3, validate_gos6, check_entitlement, flag_recall_period · Scorecard: https://proofof.ai/scorecard/gos-claim-validator-mcp.html · PyPI: https://pypi.org/project/gos-claim-validator-mcp/
+
+## meok-allmi-hiab-mcp (84/100)
+UK lorry-loader (hiab) compliance — ALLMI ACoP, BS 7121-4 lift planning, LOLER Thorough
+Install: pip install meok-allmi-hiab-mcp · Tools: generate_hiab_lift_plan, triage_contract_lift_threshold, check_allmi_thorough_examination, check_cpcs_a36, check_slinger_a40_a73, capture_brick_grab_pod · Scorecard: https://proofof.ai/scorecard/meok-allmi-hiab-mcp.html · PyPI: https://pypi.org/project/meok-allmi-hiab-mcp/
+
+## meok-cold-chain-pharma-mcp (84/100)
+Pharmaceutical cold-chain + Good Distribution Practice compliance — MHRA WDA(H), EU/UK GDP 2013/C
+Install: pip install meok-cold-chain-pharma-mcp · Tools: check_gdp_compliance, check_qualified_person_responsible, check_temperature_excursion, check_who_pq_compliance, check_serialisation_falsified_medicines, prepare_mhra_audit_pack · Scorecard: https://proofof.ai/scorecard/meok-cold-chain-pharma-mcp.html · PyPI: https://pypi.org/project/meok-cold-chain-pharma-mcp/
+
+## meok-cpa-contract-lift-mcp (84/100)
+UK crane / hiab / plant-hire — CPA Model Conditions of Hire (2011, am. 2021) Hire-only vs Contract
+Install: pip install meok-cpa-contract-lift-mcp · Tools: triage_at_quote, validate_cpa_hire_quote, validate_cpa_contract_lift_quote, generate_cpa_hire_tcs, generate_cpa_contract_lift_tcs, analyze_baldwins_v_vision_relevance · Scorecard: https://proofof.ai/scorecard/meok-cpa-contract-lift-mcp.html · PyPI: https://pypi.org/project/meok-cpa-contract-lift-mcp/
+
+## meok-dvsa-olicence-mcp (84/100)
+UK DVSA Operator Licence audit + Traffic Commissioner Public Inquiry brief generator. Comprehensive
+Install: pip install meok-dvsa-olicence-mcp · Tools: audit_o_licence_compliance, check_financial_standing, check_tm_continuous_effective_control, audit_pmi_compliance, generate_public_inquiry_brief, forecast_pi_risk · Scorecard: https://proofof.ai/scorecard/meok-dvsa-olicence-mcp.html · PyPI: https://pypi.org/project/meok-dvsa-olicence-mcp/
+
+## meok-enterprise-compliance-suite (84/100)
+MEOK Enterprise Compliance Suite — End-to-end EU AI Act, GDPR, NIS2, DORA, ISO, SOC2, HIPAA, PCI
+Install: pip install meok-enterprise-compliance-suite · Tools: suite_status, eu_ai_act_compliance_check, cross_framework_compliance_matrix, article_50_transparency_check, bias_detection_scan, generate_conformity_assessment · Scorecard: https://proofof.ai/scorecard/meok-enterprise-compliance-suite.html · PyPI: https://pypi.org/project/meok-enterprise-compliance-suite/
+
+## meok-ev-recall-transport-mcp (84/100)
+EV-recall transport compliance — ADR Class 9 (UN3480/3481/3536/3556/3557/3558), DGSA workflow
+Install: pip install meok-ev-recall-transport-mcp · Tools: classify_ev_transport_risk, generate_adr_class9_documentation, check_driver_adr_endorsement, validate_vehicle_fire_suppression, check_orange_plate_placarding, route_thermal_runaway_risk · Scorecard: https://proofof.ai/scorecard/meok-ev-recall-transport-mcp.html · PyPI: https://pypi.org/project/meok-ev-recall-transport-mcp/
+
+## meok-fmcsa-hours-of-service-mcp (84/100)
+US FMCSA Hours of Service + CSA score forecast + ELD mandate + New Entrant Safety Audit prep. 49
+Install: pip install meok-fmcsa-hours-of-service-mcp · Tools: check_property_carrying_hos, check_passenger_carrying_hos, check_short_haul_exemption, check_eld_mandate_compliance, check_eld_supplier_registered, forecast_csa_score · Scorecard: https://proofof.ai/scorecard/meok-fmcsa-hours-of-service-mcp.html · PyPI: https://pypi.org/project/meok-fmcsa-hours-of-service-mcp/
+
+## meok-fors-clocs-mcp (84/100)
+FORS Bronze/Silver/Gold + CLOCS + DVSA Earned Recognition audit-prep toolkit for UK haulage and
+Install: pip install meok-fors-clocs-mcp · Tools: check_fors_bronze_readiness, check_fors_silver_readiness, check_fors_gold_readiness, prepare_fors_audit_pack, check_clocs_compliance, audit_dvsa_earned_recognition_data_feed · Scorecard: https://proofof.ai/scorecard/meok-fors-clocs-mcp.html · PyPI: https://pypi.org/project/meok-fors-clocs-mcp/
+
+## meok-iata-dgr-air-cargo-mcp (84/100)
+IATA DGR air-cargo compliance — ICAO Annex 18, IATA DGR 66, lithium-battery PI 965-970, Shipper's
+Install: pip install meok-iata-dgr-air-cargo-mcp · Tools: classify_air_dangerous_good, check_lithium_battery_air_transport, check_state_of_charge_air, generate_iata_shippers_declaration, check_passenger_vs_cargo_aircraft, validate_un_specification_packaging · Scorecard: https://proofof.ai/scorecard/meok-iata-dgr-air-cargo-mcp.html · PyPI: https://pypi.org/project/meok-iata-dgr-air-cargo-mcp/
+
+## meok-iru-tir-international-mcp (84/100)
+International road transport compliance: TIR Carnet, CMR consignment note, ADR dangerous goods
+Install: pip install meok-iru-tir-international-mcp · Tools: check_tir_carnet_requirements, generate_tir_carnet_paperwork, validate_iru_associate_member, check_aeo_status, check_cmr_consignment_note, check_dangerous_goods_adr_international · Scorecard: https://proofof.ai/scorecard/meok-iru-tir-international-mcp.html · PyPI: https://pypi.org/project/meok-iru-tir-international-mcp/
+
+## meok-nhvr-australia-mcp (84/100)
+Australia National Heavy Vehicle Regulator (NHVR) compliance MCP. Heavy Vehicle National Law
+Install: pip install meok-nhvr-australia-mcp · Tools: check_fatigue_management, check_nhvas_module_compliance, check_chain_of_responsibility, check_pbs_vehicle_compliance, check_ewd_compliance, check_state_specific_rules · Scorecard: https://proofof.ai/scorecard/meok-nhvr-australia-mcp.html · PyPI: https://pypi.org/project/meok-nhvr-australia-mcp/
+
+## meok-rail-freight-uk-mcp (84/100)
+UK rail freight compliance — ORR licensing, ROGS safety certificate, Railway Interoperability
+Install: pip install meok-rail-freight-uk-mcp · Tools: check_orr_licence_compliance, check_railway_interoperability_directive, check_tsi_loc_pas_freight, check_rsl_safety_certificate, check_dgsa_rail_class7_class1, prepare_orr_inspection_pack · Scorecard: https://proofof.ai/scorecard/meok-rail-freight-uk-mcp.html · PyPI: https://pypi.org/project/meok-rail-freight-uk-mcp/
+
+## meok-tacho-audit-mcp (84/100)
+UK haulage tachograph audit + drivers' hours + DVSA OCRS Red prevention. Smart Tachograph 2 (July
+Install: pip install meok-tacho-audit-mcp · Tools: check_smart_tacho_2_readiness, analyze_drivers_hours, summarize_infringements, calculate_ocrs_band, forecast_ocrs_90_day, generate_public_inquiry_brief · Scorecard: https://proofof.ai/scorecard/meok-tacho-audit-mcp.html · PyPI: https://pypi.org/project/meok-tacho-audit-mcp/
+
+## meok-transport-canada-hos-mcp (84/100)
+Canadian Hours of Service (SOR/2005-313) + NSC Standard 9 + ELD mandate (T-T-019) + Provincial MoT
+Install: pip install meok-transport-canada-hos-mcp · Tools: check_canada_hos_south_60th, check_canada_hos_north_60th, check_eld_canada_mandate, check_cycle_switch, check_nsc_carrier_safety, audit_cross_border_us_canada · Scorecard: https://proofof.ai/scorecard/meok-transport-canada-hos-mcp.html · PyPI: https://pypi.org/project/meok-transport-canada-hos-mcp/
+
+## meok-uae-rta-transport-mcp (84/100)
+UAE Federal Transport + Emirate RTA compliance — Federal Decree-Law 38/2022 driver hours, mid-day
+Install: pip install meok-uae-rta-transport-mcp · Tools: check_uae_federal_drivers_hours, check_emirate_specific_rules, check_uae_vehicle_inspection, check_adr_gcc_dangerous_goods, check_emiratisation_quota, prepare_rta_audit_pack · Scorecard: https://proofof.ai/scorecard/meok-uae-rta-transport-mcp.html · PyPI: https://pypi.org/project/meok-uae-rta-transport-mcp/
+
+## meok-uas-commercial-drone-mcp (84/100)
+Commercial drone / UAS compliance toolkit — UK CAA CAP 722, Open / Specific / Certified categories
+Install: pip install meok-uas-commercial-drone-mcp · Tools: check_caa_operator_authorisation, check_uas_open_category, check_uas_specific_category, check_uas_certified_category, check_remote_pilot_competence, check_far_part_107_us · Scorecard: https://proofof.ai/scorecard/meok-uas-commercial-drone-mcp.html · PyPI: https://pypi.org/project/meok-uas-commercial-drone-mcp/
+
+## meok-uk-adm-article22c-mcp (84/100)
+UK Article 22C Automated Decision-Making compliance MCP. Ships with the Code of Practice on AI and
+Install: pip install meok-uk-adm-article22c-mcp · Tools: assess_adm_compliance, generate_article22c_log, generate_human_review_record, check_appeal_window, generate_adm_dpia, generate_appeal_packet · Scorecard: https://proofof.ai/scorecard/meok-uk-adm-article22c-mcp.html · PyPI: https://pypi.org/project/meok-uk-adm-article22c-mcp/
+
+## meok-uk-fhi-mcp (84/100)
+MCP server wrapping the UK aquaculture regulatory stack — CEFAS Fish Health Inspectorate AW1 APB
+Install: pip install meok-uk-fhi-mcp · Tools: list_permits, generate_aw1, discharge_consent_check, movement_document, ipaffs_check, disease_notification_check · Scorecard: https://proofof.ai/scorecard/meok-uk-fhi-mcp.html · PyPI: https://pypi.org/project/meok-uk-fhi-mcp/
+
+## meok-vehicle-handover-mcp (84/100)
+Vehicle handover compliance — NAMA Vehicle Grading, BVRLA Fair Wear & Tear, photographic POD
+Install: pip install meok-vehicle-handover-mcp · Tools: grade_vehicle_condition, validate_pod_photo_set, compare_collection_delivery, apply_bvrla_fair_wear_tear, generate_dispute_pack, calculate_rha_vs_actual_liability · Scorecard: https://proofof.ai/scorecard/meok-vehicle-handover-mcp.html · PyPI: https://pypi.org/project/meok-vehicle-handover-mcp/
+
+## mhra-samd-optometry-mcp (84/100)
+MHRA Software as a Medical Device (SaMD) compliance for AI-enabled optometry tools — fundus image
+Install: pip install mhra-samd-optometry-mcp · Tools: classify_samd_uk, conformity_pathway, dataset_quality_check, pms_template, ai_safety_log · Scorecard: https://proofof.ai/scorecard/mhra-samd-optometry-mcp.html · PyPI: https://pypi.org/project/mhra-samd-optometry-mcp/
+
+## meok-neural-health-monitor-mcp (84/100)
+MEOK AI Labs - neural-health-monitor MCP server extracted from SOV3
+Install: pip install meok-neural-health-monitor-mcp · Tools: get_neural_model_info, get_consciousness_state, trigger_neural_retrain · Scorecard: https://proofof.ai/scorecard/meok-neural-health-monitor-mcp.html · PyPI: https://pypi.org/project/meok-neural-health-monitor-mcp/
+
+## optical-care-home-bridge-mcp (84/100)
+Bridge between domiciliary optometry visits + care-home governance. Handles consent capacity
+Install: pip install optical-care-home-bridge-mcp · Tools: mca_capacity_check, gos6_visit_eligibility, post_visit_care_plan_sync, safeguarding_red_flags, registered_optometrist_audit · Scorecard: https://proofof.ai/scorecard/optical-care-home-bridge-mcp.html · PyPI: https://pypi.org/project/optical-care-home-bridge-mcp/
+
+## meok-quantum-scoring-mcp (84/100)
+MEOK AI Labs - quantum-scoring MCP server extracted from SOV3
+Install: pip install meok-quantum-scoring-mcp · Tools: quantum_memory_search, quantum_score_memories · Scorecard: https://proofof.ai/scorecard/meok-quantum-scoring-mcp.html · PyPI: https://pypi.org/project/meok-quantum-scoring-mcp/
+
+## restaurant-ai-mcp (84/100)
+Restaurant Ai MCP Server by MEOK AI Labs
+Install: pip install restaurant-ai-mcp · Tools: optimize_menu, calculate_food_cost, manage_reservation, analyze_reviews, check_allergens · Scorecard: https://proofof.ai/scorecard/restaurant-ai-mcp.html · PyPI: https://pypi.org/project/restaurant-ai-mcp/
+
+## sql-builder-ai-mcp (84/100)
+Sql Builder Ai MCP Server by MEOK AI Labs
+Install: pip install sql-builder-ai-mcp · Tools: build_select, build_insert, explain_query, optimize_query_hints · Scorecard: https://proofof.ai/scorecard/sql-builder-ai-mcp.html · PyPI: https://pypi.org/project/sql-builder-ai-mcp/
+
+## meok-mcp-hardening-mcp (83/100)
+MEOK MCP Hardening MCP — automated security red-team for any MCP server. Maps OWASP LLM Top 10
+Install: pip install meok-mcp-hardening-mcp · Tools: audit_server_json, audit_tool_description, check_destructive_surface, check_supply_chain, list_owasp_findings, generate_hardened_template · Scorecard: https://proofof.ai/scorecard/meok-mcp-hardening-mcp.html · PyPI: https://pypi.org/project/meok-mcp-hardening-mcp/
+
+## care-membrane-mcp (80/100)
+Care Membrane MCP Server by MEOK AI Labs
+Install: pip install care-membrane-mcp · Tools: validate_care, detect_threats, analyze_care_patterns, predict_relationship_evolution, evaluate_care_membrane, get_care_probes · Scorecard: https://proofof.ai/scorecard/care-membrane-mcp.html · PyPI: https://pypi.org/project/care-membrane-mcp/
+
+## meok-koikeeper-ai-mcp (80/100)
+Koi-pond MCP server — varieties database (Gosanke + secondary), pond stocking calc, koi-specific
+Install: pip install meok-koikeeper-ai-mcp · Tools: identify_koi, pond_stocking, seasonal_feeding, diagnose_koi_disease, winter_prep_checklist, list_varieties · Scorecard: https://proofof.ai/scorecard/meok-koikeeper-ai-mcp.html · PyPI: https://pypi.org/project/meok-koikeeper-ai-mcp/
+
+## muckaway-ai-mcp (80/100)
+Muckaway Ai MCP Server by MEOK AI Labs
+Install: pip install muckaway-ai-mcp · Tools: estimate_waste_volume, get_skip_pricing, check_waste_type, calculate_transport, find_nearest_tip, generate_waste_transfer_note · Scorecard: https://proofof.ai/scorecard/muckaway-ai-mcp.html · PyPI: https://pypi.org/project/muckaway-ai-mcp/
+
+## web-research-mcp (80/100)
+
+Install: pip install web-research-mcp · Tools: web_search, browse_page, extract_article, research_topic, get_weather, deep_research · Scorecard: https://proofof.ai/scorecard/web-research-mcp.html · PyPI: https://pypi.org/project/web-research-mcp/
+
+## care-home-scheduling-mcp (79/100)
+care-home-scheduling-mcp for domiciliary opticians
+Install: pip install care-home-scheduling-mcp · Tools: optimise_route, book_block_contract · Scorecard: https://proofof.ai/scorecard/care-home-scheduling-mcp.html · PyPI: https://pypi.org/project/care-home-scheduling-mcp/
+
+## nhs-gos-claims-mcp (79/100)
+nhs-gos-claims-mcp for domiciliary opticians
+Install: pip install nhs-gos-claims-mcp · Tools: submit_gos1, submit_gos6, get_claims_report · Scorecard: https://proofof.ai/scorecard/nhs-gos-claims-mcp.html · PyPI: https://pypi.org/project/nhs-gos-claims-mcp/
+
+## optometry-patient-mcp (79/100)
+FHIR-based patient records for domiciliary opticians
+Install: pip install optometry-patient-mcp · Tools: create_patient, get_patient, schedule_test, submit_nhs_claim · Scorecard: https://proofof.ai/scorecard/optometry-patient-mcp.html · PyPI: https://pypi.org/project/optometry-patient-mcp/
+
+## agent-audit-logger-mcp (78/100)
+Hash-chained HMAC-signed audit log MCP for A2A (agent-to-agent) calls. Every tool-call, agent-ha...
+Install: pip install agent-audit-logger-mcp · Tools: log, verify_chain, search, daily_stats, sign_day_attestation · Scorecard: https://proofof.ai/scorecard/agent-audit-logger-mcp.html · PyPI: https://pypi.org/project/agent-audit-logger-mcp/
+
+## agent-policy-enforcement-mcp (78/100)
+Per-agent-pair IAM for A2A. Define policies ('orchestrator may call billing only when amount<100...
+Install: pip install agent-policy-enforcement-mcp · Tools: define_policy, evaluate_call, list_policies, remove_policy, decision_log, sign_policy_attestation · Scorecard: https://proofof.ai/scorecard/agent-policy-enforcement-mcp.html · PyPI: https://pypi.org/project/agent-policy-enforcement-mcp/
+
+## gods-eye-geospatial-mcp (78/100)
+Gods Eye Geospatial MCP Server by MEOK AI Labs
+Install: pip install gods-eye-geospatial-mcp · Tools: list_data_sources, situational_query, check_data_provenance, care_membrane_policy, sign_data_provenance_attestation · Scorecard: https://proofof.ai/scorecard/gods-eye-geospatial-mcp.html · PyPI: https://pypi.org/project/gods-eye-geospatial-mcp/
+
+## jwt-ai-mcp (78/100)
+Jwt Ai MCP Server by MEOK AI Labs
+Install: pip install jwt-ai-mcp · Tools: decode_jwt, validate_jwt, generate_jwt, inspect_claims, verify_expiration · Scorecard: https://proofof.ai/scorecard/jwt-ai-mcp.html · PyPI: https://pypi.org/project/jwt-ai-mcp/
+
+## meok-abci-bridge-mcp (76/100)
+MEOK ABCI Bridge MCP — read-only Tendermint / Cosmos blockchain query for agents. Built-in registry
+Install: pip install meok-abci-bridge-mcp · Tools: list_chains, abci_info, abci_query, get_block, get_tx, get_validators · Scorecard: https://proofof.ai/scorecard/meok-abci-bridge-mcp.html · PyPI: https://pypi.org/project/meok-abci-bridge-mcp/
+
+## a2a-governance-bridge-mcp (74/100)
+A2a Governance Bridge MCP Server by MEOK AI Labs
+Install: pip install a2a-governance-bridge-mcp · Tools: verify_agent_compliance, authorize_a2a_transaction, get_trust_registry, get_a2a_audit_trail, cross_agent_risk_score · Scorecard: https://proofof.ai/scorecard/a2a-governance-bridge-mcp.html · PyPI: https://pypi.org/project/a2a-governance-bridge-mcp/
+
+## accessibility-ai-mcp (74/100)
+Accessibility Ai MCP Server by MEOK AI Labs
+Install: pip install accessibility-ai-mcp · Tools: check_color_contrast, suggest_alt_text, check_heading_hierarchy, aria_validator · Scorecard: https://proofof.ai/scorecard/accessibility-ai-mcp.html · PyPI: https://pypi.org/project/accessibility-ai-mcp/
+
+## ad-copy-ai-mcp (74/100)
+Ad Copy Ai MCP Server by MEOK AI Labs
+Install: pip install ad-copy-ai-mcp · Tools: generate_ad_copy, generate_variants, create_campaign, get_campaign, add_creative, get_performance · Scorecard: https://proofof.ai/scorecard/ad-copy-ai-mcp.html · PyPI: https://pypi.org/project/ad-copy-ai-mcp/
+
+## api-docs-generator-ai-mcp (74/100)
+Api Docs Generator Ai MCP Server by MEOK AI Labs
+Install: pip install api-docs-generator-ai-mcp · Tools: generate_endpoint, generate_schema, generate_full_spec, add_auth_to_spec, validate_spec · Scorecard: https://proofof.ai/scorecard/api-docs-generator-ai-mcp.html · PyPI: https://pypi.org/project/api-docs-generator-ai-mcp/
+
+## blockchain-ai-mcp (74/100)
+Blockchain Ai MCP Server by MEOK AI Labs
+Install: pip install blockchain-ai-mcp · Tools: wallet_analyzer, transaction_tracer, smart_contract_auditor, gas_estimator, token_metadata · Scorecard: https://proofof.ai/scorecard/blockchain-ai-mcp.html · PyPI: https://pypi.org/project/blockchain-ai-mcp/
+
+## budget-planner-ai-mcp (74/100)
+Budget Planner Ai MCP Server by MEOK AI Labs
+Install: pip install budget-planner-ai-mcp · Tools: create_budget, add_expense, add_income, get_budget_status, get_transactions, create_goal · Scorecard: https://proofof.ai/scorecard/budget-planner-ai-mcp.html · PyPI: https://pypi.org/project/budget-planner-ai-mcp/
+
+## calendar-ai-mcp (74/100)
+Calendar Ai MCP Server by MEOK AI Labs
+Install: pip install calendar-ai-mcp · Tools: create_event, find_free_slot, calculate_duration, timezone_convert · Scorecard: https://proofof.ai/scorecard/calendar-ai-mcp.html · PyPI: https://pypi.org/project/calendar-ai-mcp/
+
+## churn-predictor-ai-mcp (74/100)
+Churn Predictor Ai MCP Server by MEOK AI Labs
+Install: pip install churn-predictor-ai-mcp · Tools: predict_churn, batch_predict_churn, get_customer_risk, track_customer, update_customer_signals, get_at_risk_customers · Scorecard: https://proofof.ai/scorecard/churn-predictor-ai-mcp.html · PyPI: https://pypi.org/project/churn-predictor-ai-mcp/
+
+## citation-finder-ai-mcp (74/100)
+Citation Finder Ai MCP Server by MEOK AI Labs
+Install: pip install citation-finder-ai-mcp · Tools: find_citations, format_citation, check_doi, generate_bibliography · Scorecard: https://proofof.ai/scorecard/citation-finder-ai-mcp.html · PyPI: https://pypi.org/project/citation-finder-ai-mcp/
+
+## clinical-trials-ai-mcp (74/100)
+Clinical Trials Ai MCP Server by MEOK AI Labs
+Install: pip install clinical-trials-ai-mcp · Tools: search_trials, check_eligibility, get_trial_details, compare_trials, get_trial_endpoints · Scorecard: https://proofof.ai/scorecard/clinical-trials-ai-mcp.html · PyPI: https://pypi.org/project/clinical-trials-ai-mcp/
+
+## code-executor-mcp (74/100)
+Code Executor MCP Server by MEOK AI Labs
+Install: pip install code-executor-mcp · Tools: execute_code, run_command, run_tests, read_file, list_sandbox_files, get_safety_rules · Scorecard: https://proofof.ai/scorecard/code-executor-mcp.html · PyPI: https://pypi.org/project/code-executor-mcp/
+
+## competitor-monitor-ai-mcp (74/100)
+Competitor Monitor Ai MCP Server by MEOK AI Labs
+Install: pip install competitor-monitor-ai-mcp · Tools: add_competitor, get_competitor_info, track_mention, get_mentions, update_pricing, get_pricing_history · Scorecard: https://proofof.ai/scorecard/competitor-monitor-ai-mcp.html · PyPI: https://pypi.org/project/competitor-monitor-ai-mcp/
+
+## content-calendar-ai-mcp (74/100)
+Content Calendar Ai MCP Server by MEOK AI Labs
+Install: pip install content-calendar-ai-mcp · Tools: schedule_content, get_calendar, get_upcoming, update_content, delete_content, create_campaign · Scorecard: https://proofof.ai/scorecard/content-calendar-ai-mcp.html · PyPI: https://pypi.org/project/content-calendar-ai-mcp/
+
+## contract-review-ai-mcp (74/100)
+Contract Review Ai MCP Server by MEOK AI Labs
+Install: pip install contract-review-ai-mcp · Tools: analyze_contract, extract_clauses, identify_risks, compare_contracts, summarize_contract, check_favourable_terms · Scorecard: https://proofof.ai/scorecard/contract-review-ai-mcp.html · PyPI: https://pypi.org/project/contract-review-ai-mcp/
+
+## crypto-tracker-ai-mcp (74/100)
+Crypto Tracker Ai MCP Server by MEOK AI Labs
+Install: pip install crypto-tracker-ai-mcp · Tools: track_price, compare_cryptos, calculate_portfolio, get_market_cap · Scorecard: https://proofof.ai/scorecard/crypto-tracker-ai-mcp.html · PyPI: https://pypi.org/project/crypto-tracker-ai-mcp/
+
+## csv-tools-ai-mcp (74/100)
+Csv Tools Ai MCP Server by MEOK AI Labs
+Install: pip install csv-tools-ai-mcp · Tools: parse_csv, validate_headers, detect_delimiter, convert_to_json · Scorecard: https://proofof.ai/scorecard/csv-tools-ai-mcp.html · PyPI: https://pypi.org/project/csv-tools-ai-mcp/
+
+## database-universal-mcp (74/100)
+Database Universal MCP Server by MEOK AI Labs
+Install: pip install database-universal-mcp · Tools: query_sql, list_tables, describe_table, insert_row, export_to_csv · Scorecard: https://proofof.ai/scorecard/database-universal-mcp.html · PyPI: https://pypi.org/project/database-universal-mcp/
+
+## dependency-updater-ai-mcp (74/100)
+Dependency Updater Ai MCP Server by MEOK AI Labs
+Install: pip install dependency-updater-ai-mcp · Tools: check_outdated, suggest_updates, check_vulnerabilities, generate_lockfile · Scorecard: https://proofof.ai/scorecard/dependency-updater-ai-mcp.html · PyPI: https://pypi.org/project/dependency-updater-ai-mcp/
+
+## explainability-report-mcp (74/100)
+Explainability Report MCP Server by MEOK AI Labs
+Install: pip install explainability-report-mcp · Tools: quick_scan, generate_model_card, explain_decision, transparency_audit, create_impact_assessment · Scorecard: https://proofof.ai/scorecard/explainability-report-mcp.html · PyPI: https://pypi.org/project/explainability-report-mcp/
+
+## fishkeeper-ai-mcp (74/100)
+Fishkeeper Ai MCP Server by MEOK AI Labs
+Install: pip install fishkeeper-ai-mcp · Tools: analyze_water_params, identify_fish, check_compatibility, diagnose_disease, calculate_stocking, get_feeding_schedule · Scorecard: https://proofof.ai/scorecard/fishkeeper-ai-mcp.html · PyPI: https://pypi.org/project/fishkeeper-ai-mcp/
+
+## fitness-ai-mcp (74/100)
+Fitness Ai MCP Server by MEOK AI Labs
+Install: pip install fitness-ai-mcp · Tools: generate_workout, track_calories, calculate_body_composition, build_training_plan, check_exercise_form · Scorecard: https://proofof.ai/scorecard/fitness-ai-mcp.html · PyPI: https://pypi.org/project/fitness-ai-mcp/
+
+## geolocation-ai-mcp (74/100)
+Geolocation Ai MCP Server by MEOK AI Labs
+Install: pip install geolocation-ai-mcp · Tools: geolocate_ip, calculate_distance, parse_coordinates, timezone_from_coords, ip_to_coordinates · Scorecard: https://proofof.ai/scorecard/geolocation-ai-mcp.html · PyPI: https://pypi.org/project/geolocation-ai-mcp/
+
+## habit-tracker-ai-mcp (74/100)
+Habit Tracker Ai MCP Server by MEOK AI Labs
+Install: pip install habit-tracker-ai-mcp · Tools: create_habit, log_completion, get_habit_streak, get_habit_history, get_all_habits, delete_habit · Scorecard: https://proofof.ai/scorecard/habit-tracker-ai-mcp.html · PyPI: https://pypi.org/project/habit-tracker-ai-mcp/
+
+## health-check-ai-mcp (74/100)
+Health Check Ai MCP Server by MEOK AI Labs
+Install: pip install health-check-ai-mcp · Tools: check_endpoint, batch_check, get_uptime_report, configure_monitor · Scorecard: https://proofof.ai/scorecard/health-check-ai-mcp.html · PyPI: https://pypi.org/project/health-check-ai-mcp/
+
+## healthcare-fhir-mcp (74/100)
+Healthcare Fhir MCP Server by MEOK AI Labs
+Install: pip install healthcare-fhir-mcp · Tools: search_patients, get_patient, search_conditions, search_medications, search_observations, create_observation · Scorecard: https://proofof.ai/scorecard/healthcare-fhir-mcp.html · PyPI: https://pypi.org/project/healthcare-fhir-mcp/
+
+## html-parser-ai-mcp (74/100)
+Html Parser Ai MCP Server by MEOK AI Labs
+Install: pip install html-parser-ai-mcp · Tools: extract_links, extract_text, validate_html, find_meta_tags · Scorecard: https://proofof.ai/scorecard/html-parser-ai-mcp.html · PyPI: https://pypi.org/project/html-parser-ai-mcp/
+
+## image-metadata-ai-mcp (74/100)
+Image Metadata Ai MCP Server by MEOK AI Labs
+Install: pip install image-metadata-ai-mcp · Tools: detect_format, get_dimensions, read_exif, strip_metadata · Scorecard: https://proofof.ai/scorecard/image-metadata-ai-mcp.html · PyPI: https://pypi.org/project/image-metadata-ai-mcp/
+
+## json-ai-mcp (74/100)
+Json Ai MCP Server by MEOK AI Labs
+Install: pip install json-ai-mcp · Tools: validate_json, transform_json, diff_json, flatten_json · Scorecard: https://proofof.ai/scorecard/json-ai-mcp.html · PyPI: https://pypi.org/project/json-ai-mcp/
+
+## lead-scoring-ai-mcp (74/100)
+Lead Scoring Ai MCP Server by MEOK AI Labs
+Install: pip install lead-scoring-ai-mcp · Tools: score_lead, add_lead, update_lead_activity, get_lead_score, get_all_leads, get_lead_activities · Scorecard: https://proofof.ai/scorecard/lead-scoring-ai-mcp.html · PyPI: https://pypi.org/project/lead-scoring-ai-mcp/
+
+## llm-compliance-comparison-mcp (74/100)
+Llm Compliance Comparison MCP Server by MEOK AI Labs
+Install: pip install llm-compliance-comparison-mcp · Tools: compare_providers, recommend_for_use_case, provider_risk_profile, compliance_matrix, crosswalk_providers · Scorecard: https://proofof.ai/scorecard/llm-compliance-comparison-mcp.html · PyPI: https://pypi.org/project/llm-compliance-comparison-mcp/
+
+## meok-enterprise-compliance-checker (74/100)
+MEOK Enterprise Compliance Checker — EU AI Act, DORA, GDPR automated gap analysis. £5K-15K audits
+Install: pip install meok-enterprise-compliance-checker · Tools:  · Scorecard: https://proofof.ai/scorecard/meok-enterprise-compliance-checker.html · PyPI: https://pypi.org/project/meok-enterprise-compliance-checker/
+
+## meok-governance-engine-mcp (74/100)
+Governance Engine MCP Server by MEOK AI Labs
+Install: pip install meok-governance-engine-mcp · Tools: full_governance_report, which_frameworks_apply, compliance_cost_estimator, list_all_tools, compliance_score_engine, get_full_audit_trail · Scorecard: https://proofof.ai/scorecard/meok-governance-engine-mcp.html · PyPI: https://pypi.org/project/meok-governance-engine-mcp/
+
+## meok-omnibus-tracker-mcp (74/100)
+EU Digital Omnibus AI Act tracker - Track delay status by article. First-mover advantage for SEO + b
+Install: pip install meok-omnibus-tracker-mcp · Tools: query_article, get_trilogue_status, generate_compliance_update · Scorecard: https://proofof.ai/scorecard/meok-omnibus-tracker-mcp.html · PyPI: https://pypi.org/project/meok-omnibus-tracker-mcp/
+
+## password-ai-mcp (74/100)
+Password Ai MCP Server by MEOK AI Labs
+Install: pip install password-ai-mcp · Tools: generate_password, check_strength, hash_password, estimate_crack_time · Scorecard: https://proofof.ai/scorecard/password-ai-mcp.html · PyPI: https://pypi.org/project/password-ai-mcp/
+
+## pet-care-ai-mcp (74/100)
+Pet Care Ai MCP Server by MEOK AI Labs
+Install: pip install pet-care-ai-mcp · Tools: generate_feeding_schedule, track_vaccinations, identify_breed, check_health_symptoms, get_training_recommendations · Scorecard: https://proofof.ai/scorecard/pet-care-ai-mcp.html · PyPI: https://pypi.org/project/pet-care-ai-mcp/
+
+## plagiarism-checker-ai-mcp (74/100)
+Plagiarism Checker Ai MCP Server by MEOK AI Labs
+Install: pip install plagiarism-checker-ai-mcp · Tools: check_text_similarity, analyze_writing_style, check_citation_completeness, generate_originality_report · Scorecard: https://proofof.ai/scorecard/plagiarism-checker-ai-mcp.html · PyPI: https://pypi.org/project/plagiarism-checker-ai-mcp/
+
+## rag-knowledge-graph-mcp (74/100)
+Rag Knowledge Graph MCP Server by MEOK AI Labs
+Install: pip install rag-knowledge-graph-mcp · Tools: index_document, rag_query, add_graph_edge, graph_query, get_knowledge_stats · Scorecard: https://proofof.ai/scorecard/rag-knowledge-graph-mcp.html · PyPI: https://pypi.org/project/rag-knowledge-graph-mcp/
+
+## readme-generator-ai-mcp (74/100)
+Readme Generator Ai MCP Server by MEOK AI Labs
+Install: pip install readme-generator-ai-mcp · Tools: generate_readme, analyze_project, suggest_sections, generate_badges · Scorecard: https://proofof.ai/scorecard/readme-generator-ai-mcp.html · PyPI: https://pypi.org/project/readme-generator-ai-mcp/
+
+## real-estate-listing-mcp (74/100)
+Real Estate Listing MCP Server by MEOK AI Labs
+Install: pip install real-estate-listing-mcp · Tools: estimate_valuation, generate_listing, find_comparable_sales, calculate_mortgage, analyze_neighborhood · Scorecard: https://proofof.ai/scorecard/real-estate-listing-mcp.html · PyPI: https://pypi.org/project/real-estate-listing-mcp/
+
+## regex-ai-mcp (74/100)
+Regex Ai MCP Server by MEOK AI Labs
+Install: pip install regex-ai-mcp · Tools: build_regex, test_regex, explain_regex, extract_matches · Scorecard: https://proofof.ai/scorecard/regex-ai-mcp.html · PyPI: https://pypi.org/project/regex-ai-mcp/
+
+## regulatory-webhook-mcp (74/100)
+Regulatory Webhook MCP Server by MEOK AI Labs
+Install: pip install regulatory-webhook-mcp · Tools: subscribe, unsubscribe, get_recent_changes, check_for_updates, register_webhook, trigger_webhook · Scorecard: https://proofof.ai/scorecard/regulatory-webhook-mcp.html · PyPI: https://pypi.org/project/regulatory-webhook-mcp/
+
+## resume-parser-ai-mcp (74/100)
+Resume Parser Ai MCP Server by MEOK AI Labs
+Install: pip install resume-parser-ai-mcp · Tools: parse_resume, extract_skills, match_job, score_resume · Scorecard: https://proofof.ai/scorecard/resume-parser-ai-mcp.html · PyPI: https://pypi.org/project/resume-parser-ai-mcp/
+
+## scam-detector-mcp (74/100)
+Scam Detector MCP Server by MEOK AI Labs
+Install: pip install scam-detector-mcp · Tools: quick_check, analyze_url, detect_social_engineering, verify_sender, report_scam · Scorecard: https://proofof.ai/scorecard/scam-detector-mcp.html · PyPI: https://pypi.org/project/scam-detector-mcp/
+
+## security-scanner-ai-mcp (74/100)
+Security Scanner Ai MCP Server by MEOK AI Labs
+Install: pip install security-scanner-ai-mcp · Tools: scan_dependencies, check_headers, scan_secrets, owasp_check, scan_owasp_2021 · Scorecard: https://proofof.ai/scorecard/security-scanner-ai-mcp.html · PyPI: https://pypi.org/project/security-scanner-ai-mcp/
+
+## self-healing-infrastructure-mcp (74/100)
+Self Healing Infrastructure MCP Server by MEOK AI Labs
+Install: pip install self-healing-infrastructure-mcp · Tools: node_health_check, cluster_health_check, restart_service, cost_report, auto_remediate, gpu_orchestration · Scorecard: https://proofof.ai/scorecard/self-healing-infrastructure-mcp.html · PyPI: https://pypi.org/project/self-healing-infrastructure-mcp/
+
+## stripe-billing-mcp (74/100)
+Stripe Billing MCP Server by MEOK AI Labs
+Install: pip install stripe-billing-mcp · Tools: create_customer, search_customers, create_subscription, cancel_subscription, list_invoices, create_checkout_session · Scorecard: https://proofof.ai/scorecard/stripe-billing-mcp.html · PyPI: https://pypi.org/project/stripe-billing-mcp/
+
+## meok-attestation-verify (53/100)
+Tiny zero-dependency verifier for MEOK AI Labs compliance attestations (DORA, NIS2, CRA, EU AI Act, 
+Install: pip install meok-attestation-verify · Tools:  · Scorecard: https://proofof.ai/scorecard/meok-attestation-verify.html · PyPI: https://pypi.org/project/meok-attestation-verify/
+
+## mcp-scorecard-mcp (18/100)
+
+Install: pip install mcp-scorecard-mcp · Tools:  · Scorecard: https://proofof.ai/scorecard/mcp-scorecard-mcp.html · PyPI: https://pypi.org/project/mcp-scorecard-mcp/
+

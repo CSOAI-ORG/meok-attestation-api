@@ -1,0 +1,344 @@
+# proofof.ai — MCP Scorecard
+
+> 339 MCP servers scored on a 100-point production-readiness rubric. Fleet avg 85/100.
+
+## Ranked servers
+- [agent-mcp-router-mcp](https://proofof.ai/scorecard/agent-mcp-router-mcp.html): 95/100 — Agent MCP Router MCP — one router for the whole MEOK fleet. Holds 62 M
+- [mcp-spec-compliance-mcp](https://proofof.ai/scorecard/mcp-spec-compliance-mcp.html): 93/100 — MCP Spec Compliance MCP — audits any MCP server.json against the offic
+- [agent-commerce-protocol-mcp](https://proofof.ai/scorecard/agent-commerce-protocol-mcp.html): 90/100 — Agent Commerce Protocol MCP — bridges Stripe ACP + Google AP2 + Coinba
+- [agent-content-watermark-mcp](https://proofof.ai/scorecard/agent-content-watermark-mcp.html): 90/100 — Agent Content Watermark MCP — dedicated EU AI Act Article 50(2) GenAI 
+- [agent-cost-allocator-mcp](https://proofof.ai/scorecard/agent-cost-allocator-mcp.html): 90/100 — Agent Cost Allocator MCP — multi-tenant LLM cost attribution for charg
+- [agent-data-residency-mcp](https://proofof.ai/scorecard/agent-data-residency-mcp.html): 90/100 — Agent data residency + GDPR Chapter V transfer-basis runtime guard. Pr
+- [agent-handoff-certified-mcp](https://proofof.ai/scorecard/agent-handoff-certified-mcp.html): 90/100 — Verifiable agent-to-agent task handoff with signed provenance chain. I
+- [agent-identity-trust-mcp](https://proofof.ai/scorecard/agent-identity-trust-mcp.html): 90/100 — Agent Identity Trust MCP Server by MEOK AI Labs
+- [agent-incident-relay-mcp](https://proofof.ai/scorecard/agent-incident-relay-mcp.html): 90/100 — Agent Incident Relay MCP — Article 73 5-clock broadcaster. One inciden
+- [agent-rate-limiter-mcp](https://proofof.ai/scorecard/agent-rate-limiter-mcp.html): 90/100 — Fleet-wide shared rate limiter for A2A + multi-MCP deployments. Most M
+- [agent-token-budget-mcp](https://proofof.ai/scorecard/agent-token-budget-mcp.html): 90/100 — Agent Token Budget MCP — hard per-session token + spend cap with signe
+- [agent-x402-paywall-mcp](https://proofof.ai/scorecard/agent-x402-paywall-mcp.html): 90/100 — Agent x402 Paywall MCP — Coinbase HTTP 402 protocol + on-chain settlem
+- [ai-incident-reporting-mcp](https://proofof.ai/scorecard/ai-incident-reporting-mcp.html): 90/100 — AI Incident Reporting Compliance MCP. Unified classification + reporti
+- [aml-ai-mcp](https://proofof.ai/scorecard/aml-ai-mcp.html): 90/100 — 6AMLD + UK MLR 2017 + FinCEN BSA AML/CFT compliance for AI-enabled tra
+- [basel-ai-overlay-mcp](https://proofof.ai/scorecard/basel-ai-overlay-mcp.html): 90/100 — Basel III + SR 11-7 + ECB TRIM AI/ML model risk management for banks d
+- [bft-progress-council-mcp](https://proofof.ai/scorecard/bft-progress-council-mcp.html): 90/100 — BFT Progress Council MCP — 5-voter Byzantine council halts agentic loo
+- [bias-detection-mcp](https://proofof.ai/scorecard/bias-detection-mcp.html): 90/100 — AI bias detection and fairness assessment for AI agents. Instant bias 
+- [chas-elite-prep-mcp](https://proofof.ai/scorecard/chas-elite-prep-mcp.html): 90/100 — CHAS / SafeContractor / Constructionline pre-qualification preparation
+- [cisa-kev-mcp](https://proofof.ai/scorecard/cisa-kev-mcp.html): 90/100 — CISA Known Exploited Vulnerabilities feed + remediation deadlines for 
+- [concrete-pump-cpa-mcp](https://proofof.ai/scorecard/concrete-pump-cpa-mcp.html): 90/100 — CPA Concrete Pumping Group standards, pump operator certification, BS 
+- [construction-iso-19650-mcp](https://proofof.ai/scorecard/construction-iso-19650-mcp.html): 90/100 — ISO 19650 / UK BIM Level 2 compliance for construction projects. EIR, 
+- [coppa-ferpa-mcp](https://proofof.ai/scorecard/coppa-ferpa-mcp.html): 90/100 — Children's privacy compliance: COPPA (US), FERPA (US edu), EU AI Act c
+- [cra-compliance-mcp](https://proofof.ai/scorecard/cra-compliance-mcp.html): 90/100 — EU Cyber Resilience Act (Regulation 2024/2847) compliance for AI agent
+- [crane-hire-cpcs-mcp](https://proofof.ai/scorecard/crane-hire-cpcs-mcp.html): 90/100 — CPCS / CISRS / NPORS card verification, BS 7121 lift plans, mobile cra
+- [credential-manager-mcp](https://proofof.ai/scorecard/credential-manager-mcp.html): 90/100 — Credential Manager MCP Server by MEOK AI Labs
+- [csrd-compliance-mcp](https://proofof.ai/scorecard/csrd-compliance-mcp.html): 90/100 — Csrd Compliance MCP Server by MEOK AI Labs
+- [dora-compliance-mcp](https://proofof.ai/scorecard/dora-compliance-mcp.html): 90/100 — DORA (EU Digital Operational Resilience Act) compliance for AI agents.
+- [dora-nis2-crosswalk-mcp](https://proofof.ai/scorecard/dora-nis2-crosswalk-mcp.html): 90/100 — DORA × NIS2 Crosswalk MCP — map Regulation (EU) 2022/2554 obligations 
+- [eu-ai-act-compliance-mcp](https://proofof.ai/scorecard/eu-ai-act-compliance-mcp.html): 90/100 — Eu Ai Act Compliance MCP Server by MEOK AI Labs
+- [fda-samd-mcp](https://proofof.ai/scorecard/fda-samd-mcp.html): 90/100 — FDA AI/ML Software as a Medical Device Action Plan + 510(k) + PMA + De
+- [hash-utils-ai-mcp](https://proofof.ai/scorecard/hash-utils-ai-mcp.html): 90/100 — Hash Utils Ai MCP Server by MEOK AI Labs
+- [haulage-uk-compliance-mcp](https://proofof.ai/scorecard/haulage-uk-compliance-mcp.html): 90/100 — UK Operator Licence, tachograph, drivers' hours, DVSA roadside checks 
+- [iso-27001-ai-mcp](https://proofof.ai/scorecard/iso-27001-ai-mcp.html): 90/100 — Iso 27001 Ai MCP Server by MEOK AI Labs
+- [iso-42005-impact-mcp](https://proofof.ai/scorecard/iso-42005-impact-mcp.html): 90/100 — ISO/IEC 42005:2025 AI Impact Assessment MCP — first international stan
+- [korea-ai-basic-act-mcp](https://proofof.ai/scorecard/korea-ai-basic-act-mcp.html): 90/100 — Korea AI Basic Act compliance MCP — in force 22 Jan 2026. High-impact 
+- [mdr-medical-device-mcp](https://proofof.ai/scorecard/mdr-medical-device-mcp.html): 90/100 — EU MDR (Reg 2017/745) and IVDR (Reg 2017/746) compliance for medical d
+- [meok-aaif-agent-card-mcp](https://proofof.ai/scorecard/meok-aaif-agent-card-mcp.html): 90/100 — MEOK AAIF Agent Card MCP — Linux Foundation AAIF agent identity bridge
+- [meok-agents-md-lint-mcp](https://proofof.ai/scorecard/meok-agents-md-lint-mcp.html): 90/100 — MEOK AGENTS.md Linter MCP — validates the cross-vendor coding-agent sp
+- [meok-ap2-mandate-mcp](https://proofof.ai/scorecard/meok-ap2-mandate-mcp.html): 90/100 — MEOK Google AP2 Mandate MCP — issue + verify + revoke signed user-side
+- [meok-aquaponics-monitor-mcp](https://proofof.ai/scorecard/meok-aquaponics-monitor-mcp.html): 90/100 — Unified sensor + actuator schema MCP for aquaculture / aquaponic / koi
+- [meok-bs7121-mcp](https://proofof.ai/scorecard/meok-bs7121-mcp.html): 90/100 — BS 7121 lift-plan compliance for UK crane + hiab operators. Parts 1/3/
+- [meok-c2pa-durable-mcp](https://proofof.ai/scorecard/meok-c2pa-durable-mcp.html): 90/100 — MEOK C2PA Durable Content Credentials MCP — C2PA 2.2 with soft + hard 
+- [meok-coinbase-x402-receipt-mcp](https://proofof.ai/scorecard/meok-coinbase-x402-receipt-mcp.html): 90/100 — MEOK Coinbase x402 Receipt MCP — signed settlement receipts for agenti
+- [meok-cra-annex-iv-classifier-mcp](https://proofof.ai/scorecard/meok-cra-annex-iv-classifier-mcp.html): 90/100 — EU Cyber Resilience Act product classifier MCP. Classifies PDEs into C
+- [meok-cra-art14-reporter-mcp](https://proofof.ai/scorecard/meok-cra-art14-reporter-mcp.html): 90/100 — MEOK CRA Article 14 Reporter MCP — actively-exploited-vulnerability no
+- [meok-dpia-edpb-template-mcp](https://proofof.ai/scorecard/meok-dpia-edpb-template-mcp.html): 90/100 — DPIA generator for the EDPB harmonised template (adopted 14 Apr 2026) 
+- [meok-drcf-agent-crosswalk-mcp](https://proofof.ai/scorecard/meok-drcf-agent-crosswalk-mcp.html): 90/100 — UK Digital Regulation Cooperation Forum (DRCF) four-regulator AI agent
+- [meok-eu-ai-act-art-13-ifu-mcp](https://proofof.ai/scorecard/meok-eu-ai-act-art-13-ifu-mcp.html): 90/100 — MEOK EU AI Act Article 13 Instructions for Use generator — provider-si
+- [meok-eu-ai-act-art-26-fria-mcp](https://proofof.ai/scorecard/meok-eu-ai-act-art-26-fria-mcp.html): 90/100 — MEOK EU AI Act Article 26(9) Fundamental Rights Impact Assessment gene
+- [meok-eu-aia-art-9-rms-mcp](https://proofof.ai/scorecard/meok-eu-aia-art-9-rms-mcp.html): 90/100 — MEOK EU AI Act Article 9 Risk Management System generator — 4-step ite
+- [meok-eu-aigc-icon-mcp](https://proofof.ai/scorecard/meok-eu-aigc-icon-mcp.html): 90/100 — MEOK EU AIGC Icon MCP — EU AI Act Article 50 + Code of Practice 2nd dr
+- [meok-eu-mobility-package-mcp](https://proofof.ai/scorecard/meok-eu-mobility-package-mcp.html): 90/100 — EU Mobility Package compliance — EU 561/2006 drivers' hours, 4-week re
+- [meok-eu-platform-worker-mcp](https://proofof.ai/scorecard/meok-eu-platform-worker-mcp.html): 90/100 — EU Platform Workers Directive (2024/2831) compliance — employment-stat
+- [meok-haulage-governance-bridge-mcp](https://proofof.ai/scorecard/meok-haulage-governance-bridge-mcp.html): 90/100 — The MEOK Compliance-to-Governance Bridge. Crosswalk any haulage compli
+- [meok-imo-marpol-marine-mcp](https://proofof.ai/scorecard/meok-imo-marpol-marine-mcp.html): 90/100 — IMO MARPOL + marine fuel + container ship compliance MCP. MARPOL Annex
+- [meok-livestock-welfare-transport-mcp](https://proofof.ai/scorecard/meok-livestock-welfare-transport-mcp.html): 90/100 — UK + EU animal welfare in transport compliance for livestock hauliers.
+- [meok-mcp-cardgen-mcp](https://proofof.ai/scorecard/meok-mcp-cardgen-mcp.html): 90/100 — MEOK MCP Cardgen — generate signed .well-known MCP server cards (SEP-1
+- [meok-mcp-injection-scan-mcp](https://proofof.ai/scorecard/meok-mcp-injection-scan-mcp.html): 90/100 — MCP injection / prompt-poisoning / SSRF scanner. 30+ canonical rules c
+- [meok-mcp-test-mcp](https://proofof.ai/scorecard/meok-mcp-test-mcp.html): 90/100 — MEOK MCP Test MCP — golden-file + schema-drift + tool-failure tests fo
+- [meok-nis2-de-register-mcp](https://proofof.ai/scorecard/meok-nis2-de-register-mcp.html): 90/100 — Germany NIS2 BSI registration MCP. Generates BSI-portal-ready (Mein Un
+- [meok-nis2-nl-register-mcp](https://proofof.ai/scorecard/meok-nis2-nl-register-mcp.html): 90/100 — NIS2 Netherlands Registration MCP (Wbni-2). Classifies entities Annex 
+- [meok-rspca-aquaculture-mcp](https://proofof.ai/scorecard/meok-rspca-aquaculture-mcp.html): 90/100 — MCP server wrapping RSPCA Assured farmed trout (2025.07) and salmon (2
+- [meok-stripe-acp-checkout-mcp](https://proofof.ai/scorecard/meok-stripe-acp-checkout-mcp.html): 90/100 — MEOK Stripe ACP Checkout MCP — ChatGPT shopping bridge. Issues + verif
+- [meok-uk-phv-tfl-mcp](https://proofof.ai/scorecard/meok-uk-phv-tfl-mcp.html): 90/100 — UK Private Hire Vehicle + Hackney Carriage + TfL licensing compliance.
+- [meok-w3c-tdm-rights-mcp](https://proofof.ai/scorecard/meok-w3c-tdm-rights-mcp.html): 90/100 — MEOK W3C TDM Rights MCP — EU CDSM Directive Article 4(3) Text + Data M
+- [meok-watermark-attest-mcp](https://proofof.ai/scorecard/meok-watermark-attest-mcp.html): 90/100 — AI content watermarking and C2PA attestation MCP server by MEOK AI Lab
+- [meok-x402-wrap-mcp](https://proofof.ai/scorecard/meok-x402-wrap-mcp.html): 90/100 — MEOK x402 Wrap MCP — 1-line USDC paywall for any FastMCP tool. Coinbas
+- [mica-crypto-mcp](https://proofof.ai/scorecard/mica-crypto-mcp.html): 90/100 — Markets in Crypto-Assets (MiCA) Regulation (EU) 2023/1114 compliance f
+- [mifid-ii-ai-mcp](https://proofof.ai/scorecard/mifid-ii-ai-mcp.html): 90/100 — MiFID II Article 17 algorithmic trading + RTS 6 testing/risk controls 
+- [mitre-atlas-mcp](https://proofof.ai/scorecard/mitre-atlas-mcp.html): 90/100 — MITRE ATLAS — Adversarial Threat Landscape for AI Systems. Tactics + t
+- [mitre-attack-mcp](https://proofof.ai/scorecard/mitre-attack-mcp.html): 90/100 — MITRE ATT&CK matrix lookup, tactic/technique/sub-technique mapper, and
+- [nrswa-ai-mcp](https://proofof.ai/scorecard/nrswa-ai-mcp.html): 90/100 — UK street works compliance. Section 50 licences, S58 deferral, S74 ove
+- [otp-ai-mcp](https://proofof.ai/scorecard/otp-ai-mcp.html): 90/100 — Otp Ai MCP Server by MEOK AI Labs
+- [pci-dss-mcp](https://proofof.ai/scorecard/pci-dss-mcp.html): 90/100 — Pci Dss MCP Server by MEOK AI Labs
+- [sbom-cyclonedx-mcp](https://proofof.ai/scorecard/sbom-cyclonedx-mcp.html): 90/100 — Software Bill of Materials generation + validation in CycloneDX 1.6 an
+- [sigstore-cosign-mcp](https://proofof.ai/scorecard/sigstore-cosign-mcp.html): 90/100 — Sigstore cosign + rekor transparency log verification for signed conta
+- [skip-hire-ai-mcp](https://proofof.ai/scorecard/skip-hire-ai-mcp.html): 90/100 — UK Waste Carrier Registration, EA waste codes, hazardous waste consign
+- [slsa-supply-chain-mcp](https://proofof.ai/scorecard/slsa-supply-chain-mcp.html): 90/100 — SLSA (Supply chain Levels for Software Artifacts) v1.0 framework. Comp
+- [trust-chain-mcp](https://proofof.ai/scorecard/trust-chain-mcp.html): 90/100 — Trust Chain MCP server. Tools: create trust anchor, verify chain, add 
+- [uk-ai-bill-compliance-mcp](https://proofof.ai/scorecard/uk-ai-bill-compliance-mcp.html): 90/100 — UK AI Regulation Compliance MCP. Automates audits against the UK AI Wh
+- [watermarking-authenticity-mcp](https://proofof.ai/scorecard/watermarking-authenticity-mcp.html): 90/100 — EU AI Act Article 50 watermarking + C2PA 2.1 compliance. NEW: 2 Decemb
+- [webhook-ai-mcp](https://proofof.ai/scorecard/webhook-ai-mcp.html): 90/100 — Webhook Ai tools for AI agents. Capabilities: validate webhook signatu
+- [agent-replay-debugger-mcp](https://proofof.ai/scorecard/agent-replay-debugger-mcp.html): 88/100 — Agent Replay Debugger MCP — record every agent step + deterministic re
+- [eudi-wallet-mcp](https://proofof.ai/scorecard/eudi-wallet-mcp.html): 88/100 — EUDI Wallet MCP — EU Digital Identity Wallet under eIDAS 2.0 for AI ag
+- [firmware-attestation-mcp](https://proofof.ai/scorecard/firmware-attestation-mcp.html): 88/100 — Firmware Attestation MCP — hardware trust layer for sovereign AI. Scan
+- [fsa-food-safety-mcp](https://proofof.ai/scorecard/fsa-food-safety-mcp.html): 88/100 — UK Food Standards Agency + EU Reg 178/2002 + HACCP + allergen labellin
+- [oasf-agent-directory-mcp](https://proofof.ai/scorecard/oasf-agent-directory-mcp.html): 88/100 — OASF Agent Directory MCP — bridges Cisco's Open Agentic Schema Framewo
+- [accounting-ai-mcp](https://proofof.ai/scorecard/accounting-ai-mcp.html): 86/100 — Accounting Ai MCP Server by MEOK AI Labs
+- [agent-commerce-payments-mcp](https://proofof.ai/scorecard/agent-commerce-payments-mcp.html): 86/100 — Agent Commerce Payments MCP Server by MEOK AI Labs
+- [agent-delegation-mcp](https://proofof.ai/scorecard/agent-delegation-mcp.html): 86/100 — Agent Delegation MCP Server by MEOK AI Labs
+- [agent-negotiation-mcp](https://proofof.ai/scorecard/agent-negotiation-mcp.html): 86/100 — Agent Negotiation MCP Server by MEOK AI Labs
+- [agent-orchestrator-mcp](https://proofof.ai/scorecard/agent-orchestrator-mcp.html): 86/100 — Agent Orchestrator MCP Server by MEOK AI Labs
+- [agriculture-robotics-mcp](https://proofof.ai/scorecard/agriculture-robotics-mcp.html): 86/100 — Agriculture Robotics MCP Server by MEOK AI Labs
+- [ai-gateway-mcp](https://proofof.ai/scorecard/ai-gateway-mcp.html): 86/100 — Ai Gateway MCP Server by MEOK AI Labs
+- [ai-ops-mcp](https://proofof.ai/scorecard/ai-ops-mcp.html): 86/100 — Ai Ops MCP Server by MEOK AI Labs
+- [ai-self-audit-mcp](https://proofof.ai/scorecard/ai-self-audit-mcp.html): 86/100 — Ai Self Audit MCP Server by MEOK AI Labs
+- [airspace-monitor-mcp](https://proofof.ai/scorecard/airspace-monitor-mcp.html): 86/100 — Airspace Monitor MCP Server by MEOK AI Labs
+- [api-tester-ai-mcp](https://proofof.ai/scorecard/api-tester-ai-mcp.html): 86/100 — Api Tester Ai MCP Server by MEOK AI Labs
+- [ascii-art-ai-mcp](https://proofof.ai/scorecard/ascii-art-ai-mcp.html): 86/100 — Ascii Art Ai MCP Server by MEOK AI Labs
+- [backup-ai-mcp](https://proofof.ai/scorecard/backup-ai-mcp.html): 86/100 — Backup Ai MCP Server by MEOK AI Labs
+- [blockchain-verification-mcp](https://proofof.ai/scorecard/blockchain-verification-mcp.html): 86/100 — Blockchain Verification MCP Server by MEOK AI Labs
+- [canada-aida-ai-mcp](https://proofof.ai/scorecard/canada-aida-ai-mcp.html): 86/100 — Canada Aida Ai MCP Server by MEOK AI Labs
+- [care-home-cqc-mcp](https://proofof.ai/scorecard/care-home-cqc-mcp.html): 86/100 — UK Care Quality Commission (CQC) Single Assessment Framework complianc
+- [changelog-ai-mcp](https://proofof.ai/scorecard/changelog-ai-mcp.html): 86/100 — Changelog Ai MCP Server by MEOK AI Labs
+- [ci-cd-generator-ai-mcp](https://proofof.ai/scorecard/ci-cd-generator-ai-mcp.html): 86/100 — Ci Cd Generator Ai MCP Server by MEOK AI Labs
+- [cli-builder-ai-mcp](https://proofof.ai/scorecard/cli-builder-ai-mcp.html): 86/100 — Cli Builder Ai MCP Server by MEOK AI Labs
+- [clipboard-ai-mcp](https://proofof.ai/scorecard/clipboard-ai-mcp.html): 86/100 — Clipboard Ai MCP Server by MEOK AI Labs
+- [cobol-bridge-mcp](https://proofof.ai/scorecard/cobol-bridge-mcp.html): 86/100 — AI-assisted COBOL → modern stack bridge. Parse COBOL programs, map to 
+- [code-reviewer-ai-mcp](https://proofof.ai/scorecard/code-reviewer-ai-mcp.html): 86/100 — Code Reviewer Ai MCP Server by MEOK AI Labs
+- [color-ai-mcp](https://proofof.ai/scorecard/color-ai-mcp.html): 86/100 — Color Ai MCP Server by MEOK AI Labs
+- [commit-message-ai-mcp](https://proofof.ai/scorecard/commit-message-ai-mcp.html): 86/100 — Commit Message Ai MCP Server by MEOK AI Labs
+- [compression-ai-mcp](https://proofof.ai/scorecard/compression-ai-mcp.html): 86/100 — Compression Ai MCP Server by MEOK AI Labs
+- [config-validator-ai-mcp](https://proofof.ai/scorecard/config-validator-ai-mcp.html): 86/100 — Config Validator Ai MCP Server by MEOK AI Labs
+- [consciousness-engine-mcp](https://proofof.ai/scorecard/consciousness-engine-mcp.html): 86/100 — Consciousness Engine MCP Server by MEOK AI Labs
+- [content-registry-mcp](https://proofof.ai/scorecard/content-registry-mcp.html): 86/100 — Content Registry MCP Server by MEOK AI Labs
+- [creativity-engine-mcp](https://proofof.ai/scorecard/creativity-engine-mcp.html): 86/100 — Creativity Engine MCP Server by MEOK AI Labs
+- [crm-ai-mcp](https://proofof.ai/scorecard/crm-ai-mcp.html): 86/100 — Crm Ai MCP Server by MEOK AI Labs
+- [cron-ai-mcp](https://proofof.ai/scorecard/cron-ai-mcp.html): 86/100 — Cron Ai MCP Server by MEOK AI Labs
+- [csoai-governance-crosswalk-mcp](https://proofof.ai/scorecard/csoai-governance-crosswalk-mcp.html): 86/100 — Csoai Governance Crosswalk MCP Server by MEOK AI Labs
+- [csv-analytics-mcp](https://proofof.ai/scorecard/csv-analytics-mcp.html): 86/100 — Csv Analytics MCP Server by MEOK AI Labs
+- [currency-converter-ai-mcp](https://proofof.ai/scorecard/currency-converter-ai-mcp.html): 86/100 — Currency Converter Ai MCP Server by MEOK AI Labs
+- [customer-support-ai-mcp](https://proofof.ai/scorecard/customer-support-ai-mcp.html): 86/100 — Customer Support Ai MCP Server by MEOK AI Labs
+- [cybersecurity-ai-mcp](https://proofof.ai/scorecard/cybersecurity-ai-mcp.html): 86/100 — Cybersecurity Ai MCP Server by MEOK AI Labs
+- [data-science-ai-mcp](https://proofof.ai/scorecard/data-science-ai-mcp.html): 86/100 — Data Science Ai MCP Server by MEOK AI Labs
+- [dataprivacy-ai-mcp](https://proofof.ai/scorecard/dataprivacy-ai-mcp.html): 86/100 — Dataprivacy Ai MCP Server by MEOK AI Labs
+- [date-calculator-ai-mcp](https://proofof.ai/scorecard/date-calculator-ai-mcp.html): 86/100 — Date Calculator Ai MCP Server by MEOK AI Labs
+- [deepfake-detector-mcp](https://proofof.ai/scorecard/deepfake-detector-mcp.html): 86/100 — Deepfake Detector MCP Server by MEOK AI Labs
+- [devops-ai-mcp](https://proofof.ai/scorecard/devops-ai-mcp.html): 86/100 — Devops Ai MCP Server by MEOK AI Labs
+- [diff-ai-mcp](https://proofof.ai/scorecard/diff-ai-mcp.html): 86/100 — Diff Ai MCP Server by MEOK AI Labs
+- [docker-helper-ai-mcp](https://proofof.ai/scorecard/docker-helper-ai-mcp.html): 86/100 — Docker Helper Ai MCP Server by MEOK AI Labs
+- [dockerfile-generator-ai-mcp](https://proofof.ai/scorecard/dockerfile-generator-ai-mcp.html): 86/100 — Dockerfile Generator Ai MCP Server by MEOK AI Labs
+- [document-comparison-ai-mcp](https://proofof.ai/scorecard/document-comparison-ai-mcp.html): 86/100 — Document Comparison Ai MCP Server by MEOK AI Labs
+- [drone-airspace-governance-mcp](https://proofof.ai/scorecard/drone-airspace-governance-mcp.html): 86/100 — Drone Airspace Governance MCP Server by MEOK AI Labs
+- [ecommerce-ai-mcp](https://proofof.ai/scorecard/ecommerce-ai-mcp.html): 86/100 — Ecommerce Ai MCP Server by MEOK AI Labs
+- [education-ai-mcp](https://proofof.ai/scorecard/education-ai-mcp.html): 86/100 — Education Ai MCP Server by MEOK AI Labs
+- [email-automation-mcp](https://proofof.ai/scorecard/email-automation-mcp.html): 86/100 — Email Automation MCP Server by MEOK AI Labs
+- [email-validator-ai-mcp](https://proofof.ai/scorecard/email-validator-ai-mcp.html): 86/100 — Email Validator Ai MCP Server by MEOK AI Labs
+- [emoji-ai-mcp](https://proofof.ai/scorecard/emoji-ai-mcp.html): 86/100 — Emoji Ai MCP Server by MEOK AI Labs
+- [encoder-ai-mcp](https://proofof.ai/scorecard/encoder-ai-mcp.html): 86/100 — Encoder Ai MCP Server by MEOK AI Labs
+- [env-manager-ai-mcp](https://proofof.ai/scorecard/env-manager-ai-mcp.html): 86/100 — Env Manager Ai MCP Server by MEOK AI Labs
+- [event-planning-ai-mcp](https://proofof.ai/scorecard/event-planning-ai-mcp.html): 86/100 — Event Planning Ai MCP Server by MEOK AI Labs
+- [expense-tracker-ai-mcp](https://proofof.ai/scorecard/expense-tracker-ai-mcp.html): 86/100 — Expense Tracker Ai MCP Server by MEOK AI Labs
+- [faker-ai-mcp](https://proofof.ai/scorecard/faker-ai-mcp.html): 86/100 — Faker Ai MCP Server by MEOK AI Labs
+- [feedback-analyzer-ai-mcp](https://proofof.ai/scorecard/feedback-analyzer-ai-mcp.html): 86/100 — Feedback Analyzer Ai MCP Server by MEOK AI Labs
+- [file-organizer-ai-mcp](https://proofof.ai/scorecard/file-organizer-ai-mcp.html): 86/100 — File Organizer Ai MCP Server by MEOK AI Labs
+- [flashcard-ai-mcp](https://proofof.ai/scorecard/flashcard-ai-mcp.html): 86/100 — Flashcard Ai MCP Server by MEOK AI Labs
+- [flight-logger-mcp](https://proofof.ai/scorecard/flight-logger-mcp.html): 86/100 — Flight Logger MCP Server by MEOK AI Labs
+- [focus-timer-ai-mcp](https://proofof.ai/scorecard/focus-timer-ai-mcp.html): 86/100 — Focus Timer Ai MCP Server by MEOK AI Labs
+- [gardening-ai-mcp](https://proofof.ai/scorecard/gardening-ai-mcp.html): 86/100 — Gardening Ai MCP Server by MEOK AI Labs
+- [gdpr-compliance-ai-mcp](https://proofof.ai/scorecard/gdpr-compliance-ai-mcp.html): 86/100 — Gdpr Compliance Ai MCP Server by MEOK AI Labs
+- [git-helper-ai-mcp](https://proofof.ai/scorecard/git-helper-ai-mcp.html): 86/100 — Git Helper Ai MCP Server by MEOK AI Labs
+- [grammar-fix-ai-mcp](https://proofof.ai/scorecard/grammar-fix-ai-mcp.html): 86/100 — Grammar Fix Ai MCP Server by MEOK AI Labs
+- [healthcare-ai-governance-mcp](https://proofof.ai/scorecard/healthcare-ai-governance-mcp.html): 86/100 — Healthcare Ai Governance MCP Server by MEOK AI Labs
+- [hipaa-compliance-mcp](https://proofof.ai/scorecard/hipaa-compliance-mcp.html): 86/100 — Hipaa Compliance MCP Server by MEOK AI Labs
+- [hr-management-ai-mcp](https://proofof.ai/scorecard/hr-management-ai-mcp.html): 86/100 — Hr Management Ai MCP Server by MEOK AI Labs
+- [hydration-reminder-ai-mcp](https://proofof.ai/scorecard/hydration-reminder-ai-mcp.html): 86/100 — Hydration Reminder Ai MCP Server by MEOK AI Labs
+- [icon-generator-ai-mcp](https://proofof.ai/scorecard/icon-generator-ai-mcp.html): 86/100 — Icon Generator Ai MCP Server by MEOK AI Labs
+- [insurance-verification-mcp](https://proofof.ai/scorecard/insurance-verification-mcp.html): 86/100 — Insurance Verification MCP Server by MEOK AI Labs
+- [inventory-management-ai-mcp](https://proofof.ai/scorecard/inventory-management-ai-mcp.html): 86/100 — Inventory Management Ai MCP Server by MEOK AI Labs
+- [invoice-generator-ai-mcp](https://proofof.ai/scorecard/invoice-generator-ai-mcp.html): 86/100 — Invoice Generator Ai MCP Server by MEOK AI Labs
+- [ip-network-ai-mcp](https://proofof.ai/scorecard/ip-network-ai-mcp.html): 86/100 — Ip Network Ai MCP Server by MEOK AI Labs
+- [iso-42001-ai-mcp](https://proofof.ai/scorecard/iso-42001-ai-mcp.html): 86/100 — Iso 42001 Ai MCP Server by MEOK AI Labs
+- [job-description-ai-mcp](https://proofof.ai/scorecard/job-description-ai-mcp.html): 86/100 — Job Description Ai MCP Server by MEOK AI Labs
+- [keyword-extractor-ai-mcp](https://proofof.ai/scorecard/keyword-extractor-ai-mcp.html): 86/100 — Keyword Extractor Ai MCP Server by MEOK AI Labs
+- [landlaw-ai-mcp](https://proofof.ai/scorecard/landlaw-ai-mcp.html): 86/100 — Landlaw Ai MCP Server by MEOK AI Labs
+- [legal-document-ai-mcp](https://proofof.ai/scorecard/legal-document-ai-mcp.html): 86/100 — Legal Document Ai MCP Server by MEOK AI Labs
+- [license-checker-ai-mcp](https://proofof.ai/scorecard/license-checker-ai-mcp.html): 86/100 — License Checker Ai MCP Server by MEOK AI Labs
+- [linkedin-outreach-mcp](https://proofof.ai/scorecard/linkedin-outreach-mcp.html): 86/100 — Linkedin Outreach MCP Server by MEOK AI Labs
+- [logistics-ai-mcp](https://proofof.ai/scorecard/logistics-ai-mcp.html): 86/100 — Logistics Ai MCP Server by MEOK AI Labs
+- [lorem-ipsum-ai-mcp](https://proofof.ai/scorecard/lorem-ipsum-ai-mcp.html): 86/100 — Lorem Ipsum Ai MCP Server by MEOK AI Labs
+- [markdown-ai-mcp](https://proofof.ai/scorecard/markdown-ai-mcp.html): 86/100 — Markdown Ai MCP Server by MEOK AI Labs
+- [marketing-analytics-ai-mcp](https://proofof.ai/scorecard/marketing-analytics-ai-mcp.html): 86/100 — Marketing Analytics Ai MCP Server by MEOK AI Labs
+- [math-solver-ai-mcp](https://proofof.ai/scorecard/math-solver-ai-mcp.html): 86/100 — Math Solver Ai MCP Server by MEOK AI Labs
+- [meal-planner-ai-mcp](https://proofof.ai/scorecard/meal-planner-ai-mcp.html): 86/100 — Meal Planner Ai MCP Server by MEOK AI Labs
+- [meditation-guide-ai-mcp](https://proofof.ai/scorecard/meditation-guide-ai-mcp.html): 86/100 — Meditation Guide Ai MCP Server by MEOK AI Labs
+- [meeting-summarizer-ai-mcp](https://proofof.ai/scorecard/meeting-summarizer-ai-mcp.html): 86/100 — Meeting Summarizer Ai MCP Server by MEOK AI Labs
+- [memory-search-mcp](https://proofof.ai/scorecard/memory-search-mcp.html): 86/100 — Memory Search MCP Server by MEOK AI Labs
+- [meok-asc-rspca-crosswalk-mcp](https://proofof.ai/scorecard/meok-asc-rspca-crosswalk-mcp.html): 86/100 — Flagship aquaculture crosswalk — one evidence pack satisfies ASC + RSP
+- [meok-governance-smithery](https://proofof.ai/scorecard/meok-governance-smithery.html): 86/100 — MEOK Governance Engine - 62 AI governance tools. EU AI Act + NIST + IS
+- [meok-laia-aquatic-mcp](https://proofof.ai/scorecard/meok-laia-aquatic-mcp.html): 86/100 — England Animal Welfare (Licensing of Activities Involving Animals) Reg
+- [meok-law-mcp](https://proofof.ai/scorecard/meok-law-mcp.html): 86/100 — MEOK LAW MCP — region-aware AI governance on the real CSOAI crosswalks
+- [meok-libp2p-agent-mesh-mcp](https://proofof.ai/scorecard/meok-libp2p-agent-mesh-mcp.html): 86/100 — MEOK libp2p Agent Mesh MCP — peer-to-peer agent discovery + addressing
+- [mock-server-ai-mcp](https://proofof.ai/scorecard/mock-server-ai-mcp.html): 86/100 — Mock Server Ai MCP Server by MEOK AI Labs
+- [mortgage-calculator-ai-mcp](https://proofof.ai/scorecard/mortgage-calculator-ai-mcp.html): 86/100 — Mortgage Calculator Ai MCP Server by MEOK AI Labs
+- [music-production-ai-mcp](https://proofof.ai/scorecard/music-production-ai-mcp.html): 86/100 — Music Production Ai MCP Server by MEOK AI Labs
+- [nis2-compliance-mcp](https://proofof.ai/scorecard/nis2-compliance-mcp.html): 86/100 — NIS2 Directive (EU 2022/2555) compliance for AI agents. 10 Article 21 
+- [nist-rmf-ai-mcp](https://proofof.ai/scorecard/nist-rmf-ai-mcp.html): 86/100 — Nist Rmf Ai MCP Server by MEOK AI Labs
+- [note-taking-ai-mcp](https://proofof.ai/scorecard/note-taking-ai-mcp.html): 86/100 — Note Taking Ai MCP Server by MEOK AI Labs
+- [notification-ai-mcp](https://proofof.ai/scorecard/notification-ai-mcp.html): 86/100 — Notification Ai MCP Server by MEOK AI Labs
+- [nutrition-tracker-ai-mcp](https://proofof.ai/scorecard/nutrition-tracker-ai-mcp.html): 86/100 — Nutrition Tracker Ai MCP Server by MEOK AI Labs
+- [optometry-ai-safety-mcp](https://proofof.ai/scorecard/optometry-ai-safety-mcp.html): 86/100 — Optometry Ai Safety MCP Server by MEOK AI Labs
+- [owasp-agentic-mcp](https://proofof.ai/scorecard/owasp-agentic-mcp.html): 86/100 — Owasp Agentic MCP Server by MEOK AI Labs
+- [patient-safety-ai-mcp](https://proofof.ai/scorecard/patient-safety-ai-mcp.html): 86/100 — Patient Safety Ai MCP Server by MEOK AI Labs
+- [pdf-document-mcp](https://proofof.ai/scorecard/pdf-document-mcp.html): 86/100 — Pdf Document MCP Server by MEOK AI Labs
+- [pdf-merge-ai-mcp](https://proofof.ai/scorecard/pdf-merge-ai-mcp.html): 86/100 — Pdf Merge Ai MCP Server by MEOK AI Labs
+- [pdf-tools-ai-mcp](https://proofof.ai/scorecard/pdf-tools-ai-mcp.html): 86/100 — Pdf Tools Ai MCP Server by MEOK AI Labs
+- [performance-ai-mcp](https://proofof.ai/scorecard/performance-ai-mcp.html): 86/100 — Performance Ai MCP Server by MEOK AI Labs
+- [personal-finance-ai-mcp](https://proofof.ai/scorecard/personal-finance-ai-mcp.html): 86/100 — Personal Finance Ai MCP Server by MEOK AI Labs
+- [photography-ai-mcp](https://proofof.ai/scorecard/photography-ai-mcp.html): 86/100 — Photography Ai MCP Server by MEOK AI Labs
+- [planthire-ai-mcp](https://proofof.ai/scorecard/planthire-ai-mcp.html): 86/100 — Planthire Ai MCP Server by MEOK AI Labs
+- [pomodoro-ai-mcp](https://proofof.ai/scorecard/pomodoro-ai-mcp.html): 86/100 — Pomodoro Ai MCP Server by MEOK AI Labs
+- [price-tracker-ai-mcp](https://proofof.ai/scorecard/price-tracker-ai-mcp.html): 86/100 — Price Tracker Ai MCP Server by MEOK AI Labs
+- [project-management-ai-mcp](https://proofof.ai/scorecard/project-management-ai-mcp.html): 86/100 — Project Management Ai MCP Server by MEOK AI Labs
+- [proofof-ai-mcp](https://proofof.ai/scorecard/proofof-ai-mcp.html): 86/100 — Proofof Ai MCP Server by MEOK AI Labs
+- [qidi-printer-mcp](https://proofof.ai/scorecard/qidi-printer-mcp.html): 86/100 — Qidi Printer MCP Server by MEOK AI Labs
+- [qr-code-ai-mcp](https://proofof.ai/scorecard/qr-code-ai-mcp.html): 86/100 — Qr Code Ai MCP Server by MEOK AI Labs
+- [quiz-generator-ai-mcp](https://proofof.ai/scorecard/quiz-generator-ai-mcp.html): 86/100 — Quiz Generator Ai MCP Server by MEOK AI Labs
+- [rag-knowledge-mcp](https://proofof.ai/scorecard/rag-knowledge-mcp.html): 86/100 — Rag Knowledge MCP Server by MEOK AI Labs
+- [recipe-finder-ai-mcp](https://proofof.ai/scorecard/recipe-finder-ai-mcp.html): 86/100 — Recipe Finder Ai MCP Server by MEOK AI Labs
+- [recruitment-ai-mcp](https://proofof.ai/scorecard/recruitment-ai-mcp.html): 86/100 — Recruitment Ai MCP Server by MEOK AI Labs
+- [risk-assessment-ai-mcp](https://proofof.ai/scorecard/risk-assessment-ai-mcp.html): 86/100 — Risk Assessment Ai MCP Server by MEOK AI Labs
+- [robotics-control-mcp](https://proofof.ai/scorecard/robotics-control-mcp.html): 86/100 — Robotics Control MCP Server by MEOK AI Labs
+- [schema-validator-ai-mcp](https://proofof.ai/scorecard/schema-validator-ai-mcp.html): 86/100 — Schema Validator Ai MCP Server by MEOK AI Labs
+- [sentiment-analysis-ai-mcp](https://proofof.ai/scorecard/sentiment-analysis-ai-mcp.html): 86/100 — Sentiment Analysis Ai MCP Server by MEOK AI Labs
+- [seo-checker-ai-mcp](https://proofof.ai/scorecard/seo-checker-ai-mcp.html): 86/100 — Seo Checker Ai MCP Server by MEOK AI Labs
+- [slack-enterprise-mcp](https://proofof.ai/scorecard/slack-enterprise-mcp.html): 86/100 — Slack Enterprise MCP Server by MEOK AI Labs
+- [sleep-tracker-ai-mcp](https://proofof.ai/scorecard/sleep-tracker-ai-mcp.html): 86/100 — Sleep Tracker Ai MCP Server by MEOK AI Labs
+- [slugify-ai-mcp](https://proofof.ai/scorecard/slugify-ai-mcp.html): 86/100 — Slugify Ai MCP Server by MEOK AI Labs
+- [soc2-compliance-ai-mcp](https://proofof.ai/scorecard/soc2-compliance-ai-mcp.html): 86/100 — Soc2 Compliance Ai MCP Server by MEOK AI Labs
+- [social-media-ai-mcp](https://proofof.ai/scorecard/social-media-ai-mcp.html): 86/100 — Social Media Ai MCP Server by MEOK AI Labs
+- [stock-analyzer-ai-mcp](https://proofof.ai/scorecard/stock-analyzer-ai-mcp.html): 86/100 — AI-powered stock analyzer ai MCP server for agents. Supports analyze s
+- [string-utils-ai-mcp](https://proofof.ai/scorecard/string-utils-ai-mcp.html): 86/100 — String Utils Ai tools for AI agents. Capabilities: slugify, camel to s
+- [subscription-tracker-ai-mcp](https://proofof.ai/scorecard/subscription-tracker-ai-mcp.html): 86/100 — MCP server for subscription tracker ai. Features add subscription, get
+- [summarizer-ai-mcp](https://proofof.ai/scorecard/summarizer-ai-mcp.html): 86/100 — MCP server for summarizer ai. Features summarize text, extract key poi
+- [supply-chain-mcp](https://proofof.ai/scorecard/supply-chain-mcp.html): 86/100 — Supply chain management and logistics tools for AI agents. Capabilitie
+- [survey-builder-ai-mcp](https://proofof.ai/scorecard/survey-builder-ai-mcp.html): 86/100 — AI-powered survey builder ai MCP server for agents. Supports create su
+- [tax-calculator-ai-mcp](https://proofof.ai/scorecard/tax-calculator-ai-mcp.html): 86/100 — AI-powered tax calculator ai MCP server for agents. Supports calculate
+- [test-case-generator-ai-mcp](https://proofof.ai/scorecard/test-case-generator-ai-mcp.html): 86/100 — AI-powered test case generator ai MCP server for agents. Supports gene
+- [text-stats-ai-mcp](https://proofof.ai/scorecard/text-stats-ai-mcp.html): 86/100 — MCP server for text stats ai. Features word count, reading time, keywo
+- [time-tracker-ai-mcp](https://proofof.ai/scorecard/time-tracker-ai-mcp.html): 86/100 — Time Tracker Ai tools for AI agents. Capabilities: start timer, stop t
+- [tone-rewriter-ai-mcp](https://proofof.ai/scorecard/tone-rewriter-ai-mcp.html): 86/100 — Tone Rewriter Ai MCP server. Tools: analyze tone, rewrite tone, compar
+- [translation-ai-mcp](https://proofof.ai/scorecard/translation-ai-mcp.html): 86/100 — Translation Ai automation via MCP. Includes translate text, detect lan
+- [translator-pro-ai-mcp](https://proofof.ai/scorecard/translator-pro-ai-mcp.html): 86/100 — AI-powered translator pro ai MCP server for agents. Supports translate
+- [uk-ai-act-mcp](https://proofof.ai/scorecard/uk-ai-act-mcp.html): 86/100 — UK AI regulation compliance tools for AI agents. Capabilities: UK risk
+- [unit-converter-ai-mcp](https://proofof.ai/scorecard/unit-converter-ai-mcp.html): 86/100 — AI-powered unit converter ai MCP server for agents. Supports convert l
+- [url-ai-mcp](https://proofof.ai/scorecard/url-ai-mcp.html): 86/100 — Url Ai MCP server. Tools: parse url, shorten url data, check url safet
+- [uuid-ai-mcp](https://proofof.ai/scorecard/uuid-ai-mcp.html): 86/100 — AI-powered uuid ai MCP server for agents. Supports generate uuid, pars
+- [validator-ai-mcp](https://proofof.ai/scorecard/validator-ai-mcp.html): 86/100 — AI-powered validator ai MCP server for agents. Supports validate json,
+- [vector-knowledge-graph-mcp](https://proofof.ai/scorecard/vector-knowledge-graph-mcp.html): 86/100 — AI-powered vector knowledge graph MCP server for agents. Supports add 
+- [video-editing-ai-mcp](https://proofof.ai/scorecard/video-editing-ai-mcp.html): 86/100 — Video Editing Ai MCP server. Tools: split scenes, generate subtitles, 
+- [voice-audio-mcp](https://proofof.ai/scorecard/voice-audio-mcp.html): 86/100 — Voice Audio MCP server. Tools: text to speech, list voices, transcribe
+- [weather-ai-mcp](https://proofof.ai/scorecard/weather-ai-mcp.html): 86/100 — Weather Ai tools for AI agents. Capabilities: get current conditions, 
+- [workout-planner-ai-mcp](https://proofof.ai/scorecard/workout-planner-ai-mcp.html): 86/100 — MCP server for workout planner ai. Features create workout, track prog
+- [writing-assistant-ai-mcp](https://proofof.ai/scorecard/writing-assistant-ai-mcp.html): 86/100 — Writing Assistant Ai tools for AI agents. Capabilities: generate headl
+- [yaml-ai-mcp](https://proofof.ai/scorecard/yaml-ai-mcp.html): 86/100 — AI-powered yaml ai MCP server for agents. Supports validate yaml, conv
+- [agent-prompt-injection-firewall-mcp](https://proofof.ai/scorecard/agent-prompt-injection-firewall-mcp.html): 84/100 — The WAF for agents. Pattern-based + heuristic firewall scans prompts, 
+- [ai-bom-mcp](https://proofof.ai/scorecard/ai-bom-mcp.html): 84/100 — AI Bill of Materials (AI-BOM) generator + auditor MCP — CycloneDX ML-B
+- [meok-ai-reflection-mcp](https://proofof.ai/scorecard/meok-ai-reflection-mcp.html): 84/100 — MEOK AI Labs - ai-reflection MCP server extracted from SOV3
+- [meok-bft-governance-mcp](https://proofof.ai/scorecard/meok-bft-governance-mcp.html): 84/100 — MEOK AI Labs - bft-governance MCP server extracted from SOV3
+- [cqc-compliance-mcp](https://proofof.ai/scorecard/cqc-compliance-mcp.html): 84/100 — cqc-compliance-mcp for domiciliary opticians
+- [dispense-record-mcp](https://proofof.ai/scorecard/dispense-record-mcp.html): 84/100 — GOC-compliant optical dispense record validation. Captures prescriptio
+- [domiciliary-care-mcp](https://proofof.ai/scorecard/domiciliary-care-mcp.html): 84/100 — UK domiciliary care provider compliance — DBS checks, CQC registration
+- [gos-claim-validator-mcp](https://proofof.ai/scorecard/gos-claim-validator-mcp.html): 84/100 — Validate NHS General Ophthalmic Services (GOS) claims pre-submission. 
+- [meok-allmi-hiab-mcp](https://proofof.ai/scorecard/meok-allmi-hiab-mcp.html): 84/100 — UK lorry-loader (hiab) compliance — ALLMI ACoP, BS 7121-4 lift plannin
+- [meok-cold-chain-pharma-mcp](https://proofof.ai/scorecard/meok-cold-chain-pharma-mcp.html): 84/100 — Pharmaceutical cold-chain + Good Distribution Practice compliance — MH
+- [meok-cpa-contract-lift-mcp](https://proofof.ai/scorecard/meok-cpa-contract-lift-mcp.html): 84/100 — UK crane / hiab / plant-hire — CPA Model Conditions of Hire (2011, am.
+- [meok-dvsa-olicence-mcp](https://proofof.ai/scorecard/meok-dvsa-olicence-mcp.html): 84/100 — UK DVSA Operator Licence audit + Traffic Commissioner Public Inquiry b
+- [meok-enterprise-compliance-suite](https://proofof.ai/scorecard/meok-enterprise-compliance-suite.html): 84/100 — MEOK Enterprise Compliance Suite — End-to-end EU AI Act, GDPR, NIS2, D
+- [meok-ev-recall-transport-mcp](https://proofof.ai/scorecard/meok-ev-recall-transport-mcp.html): 84/100 — EV-recall transport compliance — ADR Class 9 (UN3480/3481/3536/3556/35
+- [meok-fmcsa-hours-of-service-mcp](https://proofof.ai/scorecard/meok-fmcsa-hours-of-service-mcp.html): 84/100 — US FMCSA Hours of Service + CSA score forecast + ELD mandate + New Ent
+- [meok-fors-clocs-mcp](https://proofof.ai/scorecard/meok-fors-clocs-mcp.html): 84/100 — FORS Bronze/Silver/Gold + CLOCS + DVSA Earned Recognition audit-prep t
+- [meok-iata-dgr-air-cargo-mcp](https://proofof.ai/scorecard/meok-iata-dgr-air-cargo-mcp.html): 84/100 — IATA DGR air-cargo compliance — ICAO Annex 18, IATA DGR 66, lithium-ba
+- [meok-iru-tir-international-mcp](https://proofof.ai/scorecard/meok-iru-tir-international-mcp.html): 84/100 — International road transport compliance: TIR Carnet, CMR consignment n
+- [meok-nhvr-australia-mcp](https://proofof.ai/scorecard/meok-nhvr-australia-mcp.html): 84/100 — Australia National Heavy Vehicle Regulator (NHVR) compliance MCP. Heav
+- [meok-rail-freight-uk-mcp](https://proofof.ai/scorecard/meok-rail-freight-uk-mcp.html): 84/100 — UK rail freight compliance — ORR licensing, ROGS safety certificate, R
+- [meok-tacho-audit-mcp](https://proofof.ai/scorecard/meok-tacho-audit-mcp.html): 84/100 — UK haulage tachograph audit + drivers' hours + DVSA OCRS Red preventio
+- [meok-transport-canada-hos-mcp](https://proofof.ai/scorecard/meok-transport-canada-hos-mcp.html): 84/100 — Canadian Hours of Service (SOR/2005-313) + NSC Standard 9 + ELD mandat
+- [meok-uae-rta-transport-mcp](https://proofof.ai/scorecard/meok-uae-rta-transport-mcp.html): 84/100 — UAE Federal Transport + Emirate RTA compliance — Federal Decree-Law 38
+- [meok-uas-commercial-drone-mcp](https://proofof.ai/scorecard/meok-uas-commercial-drone-mcp.html): 84/100 — Commercial drone / UAS compliance toolkit — UK CAA CAP 722, Open / Spe
+- [meok-uk-adm-article22c-mcp](https://proofof.ai/scorecard/meok-uk-adm-article22c-mcp.html): 84/100 — UK Article 22C Automated Decision-Making compliance MCP. Ships with th
+- [meok-uk-fhi-mcp](https://proofof.ai/scorecard/meok-uk-fhi-mcp.html): 84/100 — MCP server wrapping the UK aquaculture regulatory stack — CEFAS Fish H
+- [meok-vehicle-handover-mcp](https://proofof.ai/scorecard/meok-vehicle-handover-mcp.html): 84/100 — Vehicle handover compliance — NAMA Vehicle Grading, BVRLA Fair Wear & 
+- [mhra-samd-optometry-mcp](https://proofof.ai/scorecard/mhra-samd-optometry-mcp.html): 84/100 — MHRA Software as a Medical Device (SaMD) compliance for AI-enabled opt
+- [meok-neural-health-monitor-mcp](https://proofof.ai/scorecard/meok-neural-health-monitor-mcp.html): 84/100 — MEOK AI Labs - neural-health-monitor MCP server extracted from SOV3
+- [optical-care-home-bridge-mcp](https://proofof.ai/scorecard/optical-care-home-bridge-mcp.html): 84/100 — Bridge between domiciliary optometry visits + care-home governance. Ha
+- [meok-quantum-scoring-mcp](https://proofof.ai/scorecard/meok-quantum-scoring-mcp.html): 84/100 — MEOK AI Labs - quantum-scoring MCP server extracted from SOV3
+- [restaurant-ai-mcp](https://proofof.ai/scorecard/restaurant-ai-mcp.html): 84/100 — Restaurant Ai MCP Server by MEOK AI Labs
+- [sql-builder-ai-mcp](https://proofof.ai/scorecard/sql-builder-ai-mcp.html): 84/100 — Sql Builder Ai MCP Server by MEOK AI Labs
+- [meok-mcp-hardening-mcp](https://proofof.ai/scorecard/meok-mcp-hardening-mcp.html): 83/100 — MEOK MCP Hardening MCP — automated security red-team for any MCP serve
+- [care-membrane-mcp](https://proofof.ai/scorecard/care-membrane-mcp.html): 80/100 — Care Membrane MCP Server by MEOK AI Labs
+- [meok-koikeeper-ai-mcp](https://proofof.ai/scorecard/meok-koikeeper-ai-mcp.html): 80/100 — Koi-pond MCP server — varieties database (Gosanke + secondary), pond s
+- [muckaway-ai-mcp](https://proofof.ai/scorecard/muckaway-ai-mcp.html): 80/100 — Muckaway Ai MCP Server by MEOK AI Labs
+- [web-research-mcp](https://proofof.ai/scorecard/web-research-mcp.html): 80/100 — web-research-mcp — an MCP server by MEOK AI Labs.
+- [care-home-scheduling-mcp](https://proofof.ai/scorecard/care-home-scheduling-mcp.html): 79/100 — care-home-scheduling-mcp for domiciliary opticians
+- [nhs-gos-claims-mcp](https://proofof.ai/scorecard/nhs-gos-claims-mcp.html): 79/100 — nhs-gos-claims-mcp for domiciliary opticians
+- [optometry-patient-mcp](https://proofof.ai/scorecard/optometry-patient-mcp.html): 79/100 — FHIR-based patient records for domiciliary opticians
+- [agent-audit-logger-mcp](https://proofof.ai/scorecard/agent-audit-logger-mcp.html): 78/100 — Hash-chained HMAC-signed audit log MCP for A2A (agent-to-agent) calls.
+- [agent-policy-enforcement-mcp](https://proofof.ai/scorecard/agent-policy-enforcement-mcp.html): 78/100 — Per-agent-pair IAM for A2A. Define policies ('orchestrator may call bi
+- [gods-eye-geospatial-mcp](https://proofof.ai/scorecard/gods-eye-geospatial-mcp.html): 78/100 — Gods Eye Geospatial MCP Server by MEOK AI Labs
+- [jwt-ai-mcp](https://proofof.ai/scorecard/jwt-ai-mcp.html): 78/100 — Jwt Ai MCP Server by MEOK AI Labs
+- [meok-abci-bridge-mcp](https://proofof.ai/scorecard/meok-abci-bridge-mcp.html): 76/100 — MEOK ABCI Bridge MCP — read-only Tendermint / Cosmos blockchain query 
+- [a2a-governance-bridge-mcp](https://proofof.ai/scorecard/a2a-governance-bridge-mcp.html): 74/100 — A2a Governance Bridge MCP Server by MEOK AI Labs
+- [accessibility-ai-mcp](https://proofof.ai/scorecard/accessibility-ai-mcp.html): 74/100 — Accessibility Ai MCP Server by MEOK AI Labs
+- [ad-copy-ai-mcp](https://proofof.ai/scorecard/ad-copy-ai-mcp.html): 74/100 — Ad Copy Ai MCP Server by MEOK AI Labs
+- [api-docs-generator-ai-mcp](https://proofof.ai/scorecard/api-docs-generator-ai-mcp.html): 74/100 — Api Docs Generator Ai MCP Server by MEOK AI Labs
+- [blockchain-ai-mcp](https://proofof.ai/scorecard/blockchain-ai-mcp.html): 74/100 — Blockchain Ai MCP Server by MEOK AI Labs
+- [budget-planner-ai-mcp](https://proofof.ai/scorecard/budget-planner-ai-mcp.html): 74/100 — Budget Planner Ai MCP Server by MEOK AI Labs
+- [calendar-ai-mcp](https://proofof.ai/scorecard/calendar-ai-mcp.html): 74/100 — Calendar Ai MCP Server by MEOK AI Labs
+- [churn-predictor-ai-mcp](https://proofof.ai/scorecard/churn-predictor-ai-mcp.html): 74/100 — Churn Predictor Ai MCP Server by MEOK AI Labs
+- [citation-finder-ai-mcp](https://proofof.ai/scorecard/citation-finder-ai-mcp.html): 74/100 — Citation Finder Ai MCP Server by MEOK AI Labs
+- [clinical-trials-ai-mcp](https://proofof.ai/scorecard/clinical-trials-ai-mcp.html): 74/100 — Clinical Trials Ai MCP Server by MEOK AI Labs
+- [code-executor-mcp](https://proofof.ai/scorecard/code-executor-mcp.html): 74/100 — Code Executor MCP Server by MEOK AI Labs
+- [competitor-monitor-ai-mcp](https://proofof.ai/scorecard/competitor-monitor-ai-mcp.html): 74/100 — Competitor Monitor Ai MCP Server by MEOK AI Labs
+- [content-calendar-ai-mcp](https://proofof.ai/scorecard/content-calendar-ai-mcp.html): 74/100 — Content Calendar Ai MCP Server by MEOK AI Labs
+- [contract-review-ai-mcp](https://proofof.ai/scorecard/contract-review-ai-mcp.html): 74/100 — Contract Review Ai MCP Server by MEOK AI Labs
+- [crypto-tracker-ai-mcp](https://proofof.ai/scorecard/crypto-tracker-ai-mcp.html): 74/100 — Crypto Tracker Ai MCP Server by MEOK AI Labs
+- [csv-tools-ai-mcp](https://proofof.ai/scorecard/csv-tools-ai-mcp.html): 74/100 — Csv Tools Ai MCP Server by MEOK AI Labs
+- [database-universal-mcp](https://proofof.ai/scorecard/database-universal-mcp.html): 74/100 — Database Universal MCP Server by MEOK AI Labs
+- [dependency-updater-ai-mcp](https://proofof.ai/scorecard/dependency-updater-ai-mcp.html): 74/100 — Dependency Updater Ai MCP Server by MEOK AI Labs
+- [explainability-report-mcp](https://proofof.ai/scorecard/explainability-report-mcp.html): 74/100 — Explainability Report MCP Server by MEOK AI Labs
+- [fishkeeper-ai-mcp](https://proofof.ai/scorecard/fishkeeper-ai-mcp.html): 74/100 — Fishkeeper Ai MCP Server by MEOK AI Labs
+- [fitness-ai-mcp](https://proofof.ai/scorecard/fitness-ai-mcp.html): 74/100 — Fitness Ai MCP Server by MEOK AI Labs
+- [geolocation-ai-mcp](https://proofof.ai/scorecard/geolocation-ai-mcp.html): 74/100 — Geolocation Ai MCP Server by MEOK AI Labs
+- [habit-tracker-ai-mcp](https://proofof.ai/scorecard/habit-tracker-ai-mcp.html): 74/100 — Habit Tracker Ai MCP Server by MEOK AI Labs
+- [health-check-ai-mcp](https://proofof.ai/scorecard/health-check-ai-mcp.html): 74/100 — Health Check Ai MCP Server by MEOK AI Labs
+- [healthcare-fhir-mcp](https://proofof.ai/scorecard/healthcare-fhir-mcp.html): 74/100 — Healthcare Fhir MCP Server by MEOK AI Labs
+- [html-parser-ai-mcp](https://proofof.ai/scorecard/html-parser-ai-mcp.html): 74/100 — Html Parser Ai MCP Server by MEOK AI Labs
+- [image-metadata-ai-mcp](https://proofof.ai/scorecard/image-metadata-ai-mcp.html): 74/100 — Image Metadata Ai MCP Server by MEOK AI Labs
+- [json-ai-mcp](https://proofof.ai/scorecard/json-ai-mcp.html): 74/100 — Json Ai MCP Server by MEOK AI Labs
+- [lead-scoring-ai-mcp](https://proofof.ai/scorecard/lead-scoring-ai-mcp.html): 74/100 — Lead Scoring Ai MCP Server by MEOK AI Labs
+- [llm-compliance-comparison-mcp](https://proofof.ai/scorecard/llm-compliance-comparison-mcp.html): 74/100 — Llm Compliance Comparison MCP Server by MEOK AI Labs
+- [meok-enterprise-compliance-checker](https://proofof.ai/scorecard/meok-enterprise-compliance-checker.html): 74/100 — MEOK Enterprise Compliance Checker — EU AI Act, DORA, GDPR automated g
+- [meok-governance-engine-mcp](https://proofof.ai/scorecard/meok-governance-engine-mcp.html): 74/100 — Governance Engine MCP Server by MEOK AI Labs
+- [meok-omnibus-tracker-mcp](https://proofof.ai/scorecard/meok-omnibus-tracker-mcp.html): 74/100 — EU Digital Omnibus AI Act tracker - Track delay status by article. Fir
+- [password-ai-mcp](https://proofof.ai/scorecard/password-ai-mcp.html): 74/100 — Password Ai MCP Server by MEOK AI Labs
+- [pet-care-ai-mcp](https://proofof.ai/scorecard/pet-care-ai-mcp.html): 74/100 — Pet Care Ai MCP Server by MEOK AI Labs
+- [plagiarism-checker-ai-mcp](https://proofof.ai/scorecard/plagiarism-checker-ai-mcp.html): 74/100 — Plagiarism Checker Ai MCP Server by MEOK AI Labs
+- [rag-knowledge-graph-mcp](https://proofof.ai/scorecard/rag-knowledge-graph-mcp.html): 74/100 — Rag Knowledge Graph MCP Server by MEOK AI Labs
+- [readme-generator-ai-mcp](https://proofof.ai/scorecard/readme-generator-ai-mcp.html): 74/100 — Readme Generator Ai MCP Server by MEOK AI Labs
+- [real-estate-listing-mcp](https://proofof.ai/scorecard/real-estate-listing-mcp.html): 74/100 — Real Estate Listing MCP Server by MEOK AI Labs
+- [regex-ai-mcp](https://proofof.ai/scorecard/regex-ai-mcp.html): 74/100 — Regex Ai MCP Server by MEOK AI Labs
+- [regulatory-webhook-mcp](https://proofof.ai/scorecard/regulatory-webhook-mcp.html): 74/100 — Regulatory Webhook MCP Server by MEOK AI Labs
+- [resume-parser-ai-mcp](https://proofof.ai/scorecard/resume-parser-ai-mcp.html): 74/100 — Resume Parser Ai MCP Server by MEOK AI Labs
+- [scam-detector-mcp](https://proofof.ai/scorecard/scam-detector-mcp.html): 74/100 — Scam Detector MCP Server by MEOK AI Labs
+- [security-scanner-ai-mcp](https://proofof.ai/scorecard/security-scanner-ai-mcp.html): 74/100 — Security Scanner Ai MCP Server by MEOK AI Labs
+- [self-healing-infrastructure-mcp](https://proofof.ai/scorecard/self-healing-infrastructure-mcp.html): 74/100 — Self Healing Infrastructure MCP Server by MEOK AI Labs
+- [stripe-billing-mcp](https://proofof.ai/scorecard/stripe-billing-mcp.html): 74/100 — Stripe Billing MCP Server by MEOK AI Labs
+- [meok-attestation-verify](https://proofof.ai/scorecard/meok-attestation-verify.html): 53/100 — Tiny zero-dependency verifier for MEOK AI Labs compliance attestations
+- [mcp-scorecard-mcp](https://proofof.ai/scorecard/mcp-scorecard-mcp.html): 18/100 — mcp-scorecard-mcp — an MCP server by MEOK AI Labs.

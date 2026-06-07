@@ -9,6 +9,13 @@
       "dest": "/api/payg.py"
     },
     {
+      "src": "^/signup(?:/.*)?$",
+      "dest": "/api/signup.py"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
       "src": "/(.*)",
       "dest": "/api/index.py"
     }
