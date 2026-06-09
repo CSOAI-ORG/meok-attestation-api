@@ -49,15 +49,17 @@ class handler(BaseHTTPRequestHandler):
         tier = "pro" if (key.startswith(("CSOAI-","meok_pro_","payg_")) ) else ("free" if key.startswith("meok_free_") else "anon")
         if tier in ("pro",):
             return _resp(self,200,{"allowed":True,"tier":"pro","remaining":"unlimited"})
-        # free + anon metered
+        if tier == "anon":
+            return _resp(self,200,{"allowed":True,"tier":"anon","remaining":"unmetered","note":"Get a free key (200/day): https://proofof.ai/get-key.html"})
+        # free tier: metered per-key (no global counter)
         day=datetime.now(timezone.utc).strftime("%Y%m%d")
-        ident = key or "anon"
+        ident = key
         rk=f"meok:meter:{ident}:{day}"
         n=_kv("INCR", rk)
         if n is None:                       # KV not configured -> fail open
             return _resp(self,200,{"allowed":True,"tier":tier,"remaining":"unmetered","note":"metering KV not configured"})
         if n==1: _kv("EXPIRE", rk, "90000")
-        limit = FREE_DAILY if tier=="free" else max(10, FREE_DAILY//4)  # anon gets less
+        limit = FREE_DAILY
         allowed = n <= limit
         return _resp(self,200,{"allowed":allowed,"tier":tier,"used":n,"limit":limit,
             "remaining":max(0,limit-n),
