@@ -15,6 +15,7 @@ header,footer{border-bottom:1px solid #eee;margin-bottom:16px;padding-bottom:8px
 <p class=muted>Vehicle handover compliance — NAMA Vehicle Grading, BVRLA Fair Wear &amp; Tear, photographic POD</p>
 <p><span class="score">84</span><span class=muted>/100</span> &nbsp;<span class="grade" style="background:#16a34a">A</span>
 &nbsp;· ranked <strong>#272</strong> of 339 MEOK MCPs · v1.0.0 · 8 tools</p>
+<div class=cta><strong>Use meok-vehicle-handover-mcp free — 200 calls/day.</strong><form onsubmit="return meokKey(event)"><input type=email id=meokEmail placeholder="you@company.com" required><button type=submit>Get free key</button></form><div id=meokOut class=muted style="margin-top:8px"></div><div style="margin-top:10px">Unlimited calls + HMAC-signed attestations → <a class=btn href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j">Pro · £79/mo</a></div><div class=audit>⚠️ EU AI Act Article 50 lands <strong>2 Aug 2026</strong>. Get a signed, audit-ready compliance report — 7-day done-for-you: <a href="https://buy.stripe.com/eVq6oJ3K49AC0ZTaqI8k91m"><strong>£4,950</strong></a>.</div></div>
 
 <h2>Is meok-vehicle-handover-mcp production-ready?</h2>
 <p>meok-vehicle-handover-mcp scores <strong>84/100</strong> on the proofof.ai 100-point rubric — flagship-grade (top tier).
@@ -34,4 +35,4 @@ That is around the fleet average of 85. Install: <code>pip install meok-vehicle-
 <ul><li><a href="https://pypi.org/project/meok-vehicle-handover-mcp/" rel=nofollow>PyPI</a></li><li><a href="https://github.com/CSOAI-ORG/meok-vehicle-handover-mcp" rel=nofollow>GitHub source</a></li>
 <li><a href="https://registry.modelcontextprotocol.io/?search=io.github.CSOAI-ORG/meok-vehicle-handover-mcp" rel=nofollow>Anthropic MCP Registry</a></li><li><a href="https://glama.ai/mcp/servers/CSOAI-ORG/meok-vehicle-handover-mcp" rel=nofollow>Glama</a></li></ul>
 <footer><p>Scored by <a href="https://proofof.ai">proofof.ai</a> — the MCP ratings agency. Methodology: <a href="/scorecard/methodology.html">100-point rubric</a>. Updated 2026-06-07. By <a href="https://meok.ai">MEOK AI Labs</a>.</p></footer>
-</body></html>
+<script>async function meokKey(e){e.preventDefault();var em=document.getElementById('meokEmail').value,o=document.getElementById('meokOut');o.textContent='…';try{var r=await fetch('/signup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em})});var d=await r.json();if(d.ok){o.innerHTML='\u2713 Your free key: <code>'+d.api_key+'</code> — set <code>MEOK_API_KEY</code> in your MCP client env.';}else{o.textContent=d.error||'Something went wrong';}}catch(x){o.textContent='Network error — try again';}return false;}</script></body></html>

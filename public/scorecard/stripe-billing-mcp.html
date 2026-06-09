@@ -15,6 +15,7 @@ header,footer{border-bottom:1px solid #eee;margin-bottom:16px;padding-bottom:8px
 <p class=muted>Stripe Billing MCP Server by MEOK AI Labs</p>
 <p><span class="score">74</span><span class=muted>/100</span> &nbsp;<span class="grade" style="background:#ca8a04">B</span>
 &nbsp;· ranked <strong>#337</strong> of 339 MEOK MCPs · v1.0.2 · 8 tools</p>
+<div class=cta><strong>Use stripe-billing-mcp free — 200 calls/day.</strong><form onsubmit="return meokKey(event)"><input type=email id=meokEmail placeholder="you@company.com" required><button type=submit>Get free key</button></form><div id=meokOut class=muted style="margin-top:8px"></div><div style="margin-top:10px">Unlimited calls + HMAC-signed attestations → <a class=btn href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j">Pro · £79/mo</a></div></div>
 
 <h2>Is stripe-billing-mcp production-ready?</h2>
 <p>stripe-billing-mcp scores <strong>74/100</strong> on the proofof.ai 100-point rubric — solid, with clear next steps.
@@ -34,4 +35,4 @@ That is around the fleet average of 85. Install: <code>pip install stripe-billin
 <ul><li><a href="https://pypi.org/project/stripe-billing-mcp/" rel=nofollow>PyPI</a></li><li><a href="https://github.com/CSOAI-ORG/stripe-billing-mcp" rel=nofollow>GitHub source</a></li>
 <li><a href="https://registry.modelcontextprotocol.io/?search=io.github.CSOAI-ORG/stripe-billing-mcp" rel=nofollow>Anthropic MCP Registry</a></li><li><a href="https://glama.ai/mcp/servers/CSOAI-ORG/stripe-billing-mcp" rel=nofollow>Glama</a></li></ul>
 <footer><p>Scored by <a href="https://proofof.ai">proofof.ai</a> — the MCP ratings agency. Methodology: <a href="/scorecard/methodology.html">100-point rubric</a>. Updated 2026-06-07. By <a href="https://meok.ai">MEOK AI Labs</a>.</p></footer>
-</body></html>
+<script>async function meokKey(e){e.preventDefault();var em=document.getElementById('meokEmail').value,o=document.getElementById('meokOut');o.textContent='…';try{var r=await fetch('/signup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em})});var d=await r.json();if(d.ok){o.innerHTML='\u2713 Your free key: <code>'+d.api_key+'</code> — set <code>MEOK_API_KEY</code> in your MCP client env.';}else{o.textContent=d.error||'Something went wrong';}}catch(x){o.textContent='Network error — try again';}return false;}</script></body></html>
