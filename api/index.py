@@ -295,7 +295,7 @@ def _check_api_key(api_key: str, email: str = "") -> tuple[bool, str, str]:
             return True, "OK (free-tier lead-capture path)", "free"
         return False, (
             "Missing email. Free tier: pass {email: 'you@company.com'} for instant "
-            "signed attestation (lead-capture). Pro tier (\u00a379/mo): pass {api_key, email} "
+            "signed attestation (lead-capture). Pro tier (\u00a3199/mo): pass {api_key, email} "
             "for verifiable attestations on a custom domain. "
             "Pro checkout: https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t"
         ), ""
