@@ -1364,7 +1364,7 @@ class handler(BaseHTTPRequestHandler):
                 "next": f"Set MEOK_API_KEY={api_key} in your MCP client env for 200 calls/day.",
                 "upgrade": {
                     "compliance_pro_79_mo": "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j",
-                    "pay_as_you_go": "https://proofof.ai/payg",
+                    "pay_as_you_go": "https://councilof.ai/payg",
                 },
             })
 
