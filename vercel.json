@@ -1,13 +1,13 @@
 {
   "rewrites": [
-    { "source": "/signup", "destination": "/api/signup" },
-    { "source": "/signup/:path*", "destination": "/api/signup" },
-    { "source": "/verify", "destination": "/api/verify" },
-    { "source": "/verify/:path*", "destination": "/api/verify" },
-    { "source": "/payg", "destination": "/api/payg" },
-    { "source": "/payg/:path*", "destination": "/api/payg" },
-    { "source": "/api/payg", "destination": "/api/payg" },
-    { "source": "/api/payg/:path*", "destination": "/api/payg" },
-    { "source": "/((?!api/|signup|verify|payg|scorecard/|sitemap\\.xml|robots\\.txt|llms-full\\.txt|llms\\.txt|get-key\\.html|favicon\\.ico|openapi\\.json|docs\\.html).*)", "destination": "/api/index" }
+    { "source": "/signup", "destination": "/api/signup.py" },
+    { "source": "/signup/:path*", "destination": "/api/signup.py" },
+    { "source": "/verify", "destination": "/api/verify.py" },
+    { "source": "/verify/:path*", "destination": "/api/verify.py" },
+    { "source": "/payg", "destination": "/api/payg.py" },
+    { "source": "/payg/:path*", "destination": "/api/payg.py" },
+    { "source": "/api/payg", "destination": "/api/payg.py" },
+    { "source": "/api/payg/:path*", "destination": "/api/payg.py" },
+    { "source": "/((?!api/|signup|verify|payg|scorecard/|sitemap\\.xml|robots\\.txt|llms-full\\.txt|llms\\.txt|get-key\\.html|favicon\\.ico|openapi\\.json|docs\\.html).*)", "destination": "/api/index.py" }
   ]
 }

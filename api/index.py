@@ -400,8 +400,38 @@ def _payg_calls_included(amount_gbp: float, rate: float = None) -> int:
     return int(amount_gbp / rate) if rate > 0 else 0
 
 
-def _payg_generate_token() -> str:
-    return "payg_" + secrets.token_urlsafe(24)
+def _payg_generate_token(customer_id: Optional[str] = None) -> str:
+    """Generate a PAYG token.
+
+    Format (NEW, v1.2.1): `payg_{customer_id_encoded}.{random}`
+        where customer_id_encoded = base64url(no padding) of the Stripe customer ID,
+        and `random` is 24 bytes of secrets.token_urlsafe().
+
+    Embedding the customer_id removes the dependency on Stripe Customer Search
+    (which has a 5-60s indexing lag and returned 0 hits for newly-created
+    customers in production). With the ID inline, /payg/balance and /payg/deduct
+    can do a direct `/customers/{id}` lookup which is real-time.
+
+    Backward-compat: tokens generated without a customer_id (legacy format
+    `payg_xxx` with no `.`) still get the search fallback in lookup.
+    """
+    rnd = secrets.token_urlsafe(24)
+    if not customer_id:
+        return "payg_" + rnd
+    cid_enc = base64.urlsafe_b64encode(customer_id.encode("utf-8")).rstrip(b"=").decode("ascii")
+    return f"payg_{cid_enc}.{rnd}"
+
+
+def _payg_decode_customer_id(token: str) -> Optional[str]:
+    """Reverse of the customer_id encoding in _payg_generate_token. None for legacy tokens."""
+    if not token or not token.startswith("payg_") or "." not in token:
+        return None
+    try:
+        cid_enc = token[len("payg_"):].split(".", 1)[0]
+        pad = "=" * (-len(cid_enc) % 4)
+        return base64.urlsafe_b64decode(cid_enc + pad).decode("utf-8")
+    except Exception:
+        return None
 
 
 def _payg_send_welcome(to_email: str, token: str, amount_gbp: float, balance_gbp: float) -> bool:
@@ -444,12 +474,49 @@ def _payg_send_welcome(to_email: str, token: str, amount_gbp: float, balance_gbp
 
 
 def _payg_lookup_customer_by_token(token: str) -> Optional[dict]:
+    """Resolve a PAYG token to its Stripe customer.
+
+    Step 1 (fast path): if the token embeds a customer_id (new format
+    `payg_<base64-cid>.<rand>`), retrieve the customer directly. Verifies
+    the stored metadata token matches to prevent forgery.
+
+    Step 2 (legacy fallback): search by metadata. This path hits the Stripe
+    Customer Search indexing lag, so it can return None for tokens issued in
+    the last ~60s. Kept for backward compat with v1.2.0 tokens.
+    """
     if not token:
         return None
+    customer_id = _payg_decode_customer_id(token)
+    if customer_id:
+        try:
+            customer = _stripe_api_request("GET", f"/customers/{customer_id}")
+            stored_token = (customer.get("metadata") or {}).get("meok_payg_token", "")
+            if stored_token and hmac.compare_digest(stored_token, token):
+                return customer
+            return None
+        except Exception:
+            return None
+    # Legacy / search fallback
     try:
         resp = _stripe_api_request(
             "GET",
             f"/customers/search?query=metadata['meok_payg_token']:'{token}'",
+        )
+        customers = resp.get("data", [])
+        return customers[0] if customers else None
+    except Exception:
+        return None
+
+
+def _payg_find_customer_by_email(email: str) -> Optional[dict]:
+    """Real-time email lookup via /customers/list?email=. Unlike Customer Search,
+    /list?email is queried against the live database with no indexing lag."""
+    if not email:
+        return None
+    try:
+        resp = _stripe_api_request(
+            "GET",
+            f"/customers?email={urllib.parse.quote(email)}&limit=1",
         )
         customers = resp.get("data", [])
         return customers[0] if customers else None
@@ -1517,7 +1584,9 @@ class handler(BaseHTTPRequestHandler):
 
             existing_token = (customer.get("metadata") or {}).get("meok_payg_token", "")
             existing_balance = float((customer.get("metadata") or {}).get("meok_payg_balance", "0"))
-            token = existing_token or _payg_generate_token()
+            # NEW: embed customer_id in the token so balance/deduct can look up
+            # directly without hitting Stripe Customer Search (5–60s indexing lag).
+            token = existing_token or _payg_generate_token(customer_id)
             new_balance = round(existing_balance + amount_gbp, 4)
 
             try:
@@ -1552,17 +1621,11 @@ class handler(BaseHTTPRequestHandler):
 
             trial_amount = float(os.environ.get("MEOK_PAYG_TRIAL_GBP", "0.50"))
 
-            # Look up existing customer by email (Stripe stores it on Customer)
-            try:
-                resp = _stripe_api_request(
-                    "GET",
-                    f"/customers/search?query=email:'{email}'",
-                )
-            except Exception as e:
-                return self._json(500, {"error": f"Stripe lookup failed: {e}"})
-
-            customers = resp.get("data", [])
-            existing = customers[0] if customers else None
+            # Real-time email lookup via /customers/list?email=. Unlike
+            # /customers/search (5–60s search index lag), /list?email queries
+            # the live database — closes the 409-dedupe race that previously
+            # let the same email claim multiple £0.50 trials.
+            existing = _payg_find_customer_by_email(email)
 
             if existing:
                 meta = existing.get("metadata") or {}
@@ -1574,7 +1637,7 @@ class handler(BaseHTTPRequestHandler):
                         "topup_url": _PAYG_TOPUP_URL,
                     })
                 customer_id = existing["id"]
-                token = meta.get("meok_payg_token") or _payg_generate_token()
+                token = meta.get("meok_payg_token") or _payg_generate_token(customer_id)
                 new_balance = round(
                     float(meta.get("meok_payg_balance", "0")) + trial_amount, 4
                 )
@@ -1587,7 +1650,9 @@ class handler(BaseHTTPRequestHandler):
                 except Exception as e:
                     return self._json(500, {"error": f"Could not create Stripe customer: {e}"})
                 customer_id = customer["id"]
-                token = _payg_generate_token()
+                # Embed the customer_id in the token so subsequent
+                # balance/deduct calls don't hit Customer Search lag.
+                token = _payg_generate_token(customer_id)
                 new_balance = round(trial_amount, 4)
 
             try:
