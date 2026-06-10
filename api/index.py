@@ -925,6 +925,18 @@ def _catalogue_html() -> str:
   </div>
 </div>
 
+<h2>Done-for-you services (fixed fee, 7-day turnaround)</h2>
+<div class="tiers">
+  <div class="tier"><h3>🇳🇱 Netherlands NIS2</h3><div class="price">£499</div>
+    <p>NCSC-NL registration filed + board evidence pack. Deadline 30 June 2026.</p>
+    <a class="cta" href="https://meok.ai/nis2-nl">Details</a></div>
+  <div class="tier"><h3>🇩🇪 Germany NIS2</h3><div class="price">£499</div>
+    <p>BSI late-filing rapid response for the ~17.5K entities that missed 6 March.</p>
+    <a class="cta" href="https://meok.ai/nis2-de-kit">Details</a></div>
+  <div class="tier"><h3>EU AI Act Article 50 kit</h3><div class="price">£999</div>
+    <p>Two-layer output marking (C2PA + invisible watermark) + signed conformity attestation. 2 Aug 2026.</p>
+    <a class="cta" href="https://meok.ai/article-50-kit">Details</a></div>
+</div>
 <h2>How signed attestations work</h2>
 <div class="flow">
   <div class="step">Subscribe to Pro at Stripe — key provisioned via webhook.</div>
