@@ -1,1 +1,2 @@
-# Pure stdlib — no external deps required. HMAC + json + datetime only.
+# Ed25519 (SIGIL) co-signing — everything else is stdlib (HMAC + json + datetime).
+pynacl>=1.5.0
