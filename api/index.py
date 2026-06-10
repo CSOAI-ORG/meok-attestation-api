@@ -857,7 +857,7 @@ def _catalogue_html() -> str:
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>MEOK Compliance MCP Catalogue — Signed EU AI Act, DORA, NIS2, CRA, CSRD Attestations</title>
-<meta name="description" content="15 Python MCP servers that audit AI systems + compliance posture against EU AI Act, DORA, NIS2, CRA, CSRD, GDPR, HIPAA, SOC 2, ISO 42001, UK AI Regulation. Each emits HMAC-signed attestations with public verify URLs. Pro £199/mo.">
+<meta name="description" content="A 294-server compliance fleet (official MCP Registry, verified June 2026) that audits AI systems + compliance posture against EU AI Act, DORA, NIS2, CRA, CSRD, GDPR, HIPAA, SOC 2, ISO 42001, UK AI Regulation. Each emits HMAC-signed attestations with public verify URLs. Pro £199/mo.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta property="og:title" content="MEOK Compliance MCP Catalogue — Signed EU Compliance Attestations">
 <meta property="og:description" content="15 Python MCPs for EU AI Act, DORA, NIS2, CRA, CSRD, UK AI. HMAC-signed attestations with public verify URLs.">
@@ -895,7 +895,7 @@ def _catalogue_html() -> str:
 <body>
 
 <h1>MEOK Compliance MCP Catalogue</h1>
-<p class="lead">15 Python MCP servers that audit AI systems + compliance posture against EU AI Act, DORA, NIS2, CRA, CSRD, UK AI Regulation and more. Every Pro-tier audit emits a HMAC-signed attestation your auditor validates at a public URL <strong>without contacting MEOK</strong>.</p>
+<p class="lead">A 294-server compliance fleet (official MCP Registry, verified June 2026) that audits AI systems + compliance posture against EU AI Act, DORA, NIS2, CRA, CSRD, UK AI Regulation and more. Every Pro-tier audit emits a HMAC-signed attestation your auditor validates at a public URL <strong>without contacting MEOK</strong>.</p>
 
 <h2>Pricing</h2>
 <div class="tiers">
@@ -993,7 +993,7 @@ meok-attestation-verify &lt; cert.json</pre>
         "code{background:#f3f4f6;padding:.1rem .3rem;border-radius:.25rem}</style>"
         f"</head><body>{body}"
         "<hr><p><small>Issued by <a href=\"https://meok.ai\">MEOK AI Labs</a>. "
-        "Every cert ID is signed with HMAC-SHA256. Key rotation policy: quarterly.</small></p>"
+        "Every cert is signed with HMAC-SHA256 + Ed25519. Verify offline with the public key at /pubkey — no account, no contact with MEOK. Key rotation policy: quarterly.</small></p>"
         "</body></html>"
     )
 
