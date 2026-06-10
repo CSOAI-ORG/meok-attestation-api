@@ -309,6 +309,13 @@ def _check_api_key(api_key: str, email: str = "") -> tuple[bool, str, str]:
         return True, "OK (derived enterprise)", "enterprise"
     if email and derived_key_valid(api_key, email, tier="pro"):
         return True, "OK (derived pro)", "pro"
+    if email and derived_key_valid(api_key, email, tier="free"):
+        return True, "OK (derived free)", "free"
+    if api_key.startswith("meok_free_") and not email:
+        return False, (
+            "Free keys are bound to the signup email. Send {api_key, email} together "
+            "(the email you used at /signup)."
+        ), ""
     return False, "Invalid or unknown api_key. Contact hello@meok.ai or subscribe at https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t", ""
 
 
@@ -856,7 +863,7 @@ def _catalogue_html() -> str:
 <meta property="og:description" content="15 Python MCPs for EU AI Act, DORA, NIS2, CRA, CSRD, UK AI. HMAC-signed attestations with public verify URLs.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://meok-attestation-api.vercel.app/catalogue">
-<link rel="canonical" href="https://meok-attestation-api.vercel.app/catalogue">
+<link rel="canonical" href="https://www.proofof.ai/">
 <script type="application/ld+json">{json.dumps(jsonld, ensure_ascii=False)}</script>
 <style>
   body{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:960px;margin:0 auto;padding:2rem 1rem;color:#111;line-height:1.55;}}
@@ -1022,6 +1029,11 @@ class handler(BaseHTTPRequestHandler):
                 "version": "1.2.0",
                 "ed25519": bool(_ED25519_SK_HEX and _Ed25519SigningKey),
             })
+        if path == "/payg" or path == "/payg/":
+            self.send_response(302)
+            self.send_header("Location", _PAYG_TOPUP_URL)
+            self.end_headers()
+            return
         if path == "/pubkey":
             if not _ED25519_PUB_HEX:
                 return self._json(503, {"error": "MEOK_PUBKEY_HEX not configured."})
