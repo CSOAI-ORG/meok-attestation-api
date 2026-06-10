@@ -1,0 +1,85 @@
+{
+  "protocolVersion": "0.3.0",
+  "name": "ProofOf.AI — MEOK Compliance Attestation Agent",
+  "description": "Audits AI systems and compliance posture against the EU AI Act, DORA, NIS2, CRA, CSRD, GDPR, HIPAA, SOC 2, ISO 42001 and NIST AI RMF via 15 Python MCP servers. Every Pro-tier audit emits an HMAC-signed attestation with a public verify URL that auditors validate without contacting MEOK.",
+  "url": "https://proofof.ai",
+  "preferredTransport": "JSONRPC",
+  "provider": {
+    "organization": "MEOK AI Labs (CSOAI LTD, UK Companies House 16939677)",
+    "url": "https://meok.ai"
+  },
+  "version": "1.0.0",
+  "documentationUrl": "https://meok-attestation-api.vercel.app/",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": false
+  },
+  "defaultInputModes": ["application/json", "text/plain"],
+  "defaultOutputModes": ["application/json"],
+  "skills": [
+    {
+      "id": "eu-ai-act-audit",
+      "name": "EU AI Act compliance audit",
+      "description": "Risk classification (Annex III), 42-point audit, penalty calculator against Regulation (EU) 2024/1689. Signed attestation on Pro tier.",
+      "tags": ["eu-ai-act", "compliance", "audit", "attestation"],
+      "examples": ["Classify the risk level of our hiring-screening model", "Run a 42-point EU AI Act audit and give me the signed attestation"]
+    },
+    {
+      "id": "dora-audit",
+      "name": "DORA ICT-risk audit",
+      "description": "Regulation (EU) 2022/2554 ICT risk + third-party register checks, signed certificate via get_dora_certificate.",
+      "tags": ["dora", "financial-services", "compliance"]
+    },
+    {
+      "id": "nis2-audit",
+      "name": "NIS2 governance audit",
+      "description": "Directive (EU) 2022/2555 entity classification + 10 governance domains.",
+      "tags": ["nis2", "cybersecurity", "compliance"]
+    },
+    {
+      "id": "deepfake-content-authenticity",
+      "name": "Deepfake & content-authenticity marking (Article 50)",
+      "description": "Two-layer machine-readable marking: invisible watermark + C2PA 2.1 credentials + Sigstore; Article 50 attestations ahead of the 2 Aug 2026 enforcement.",
+      "tags": ["deepfake", "watermarking", "c2pa", "article-50", "content-authenticity"],
+      "examples": ["Mark this generated video Article-50 compliant", "Verify whether this image carries C2PA credentials"]
+    },
+    {
+      "id": "agent-security-guardian",
+      "name": "Agent security — Guardian for Hives",
+      "description": "Prompt-injection firewall, hash-chained audit logging (Art 12), policy enforcement, certified A2A handoffs, data-residency checks, MCP injection scanning.",
+      "tags": ["agent-security", "prompt-injection", "audit", "a2a", "guardian"]
+    },
+    {
+      "id": "regulatory-deep-work",
+      "name": "DPIA / FRIA / IFU / TLPT generators",
+      "description": "EDPB-template DPIAs, Article 27 FRIAs, Article 13 Instructions-for-Use, DORA Article 26 TLPT plans, CRA Annex-IV classification — board-ready, signed on Pro.",
+      "tags": ["dpia", "fria", "dora-tlpt", "cra", "edpb"]
+    },
+    {
+      "id": "signed-attestation",
+      "name": "HMAC-signed attestation issuance + public verification",
+      "description": "Issues tamper-evident HMAC-SHA256 attestations with cert_id + public verify URL at meok-attestation-api.vercel.app/verify/<cert_id>. Independent verifier: pip install meok-attestation-verify.",
+      "tags": ["attestation", "hmac", "audit-evidence", "verify"]
+    }
+  ],
+  "securitySchemes": {
+    "meokApiKey": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-MEOK-API-KEY",
+      "description": "Pro-tier key, self-serve via POST https://meok-attestation-api.vercel.app/provision"
+    }
+  },
+  "_meta": {
+    "mcpPackages": [
+      "eu-ai-act-compliance-mcp", "dora-compliance-mcp", "nis2-compliance-mcp",
+      "cra-compliance-mcp", "csrd-compliance-mcp", "ai-bom-mcp",
+      "uk-ai-bill-compliance-mcp", "dora-nis2-crosswalk-mcp", "ai-incident-reporting-mcp",
+      "gods-eye-geospatial-mcp", "gdpr-compliance-mcp", "hipaa-compliance-mcp",
+      "soc2-compliance-mcp", "iso-42001-compliance-mcp", "nist-rmf-ai-mcp"
+    ],
+    "registry": "io.github.CSOAI-ORG (official MCP Registry, registry.modelcontextprotocol.io)",
+    "deployNote": "Serve at https://proofof.ai/.well-known/agent.json (and agent-card.json alias). Validate in CI with: pip install openmoe-bft && python -c \"from openmoe_bft import ...validate_agent_card\" — eat your own dog food."
+  }
+}
