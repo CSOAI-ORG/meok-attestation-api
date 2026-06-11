@@ -9,3 +9,8 @@ SECRETS_LOCAL.md*
 # editor/migration backups (the 2026-06-08 router routing-break investigation)
 vercel.json.*
 *.with_handle_fs_*
+build/
+dist/
+*.egg-info/
+__pycache__/
+*.pyc

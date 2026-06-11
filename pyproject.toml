@@ -1,6 +1,18 @@
 [project]
 name = "meok-attestation-api"
-version = "1.0.0"
-description = "MEOK AI Labs attestation signing and verification API."
+version = "0.2.0"
+description = "MEOK AI Labs attestation signing and verification — pure stdlib HMAC-SHA256."
+readme = "README.md"
 requires-python = ">=3.9"
 dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["meok_attestation_api*"]
