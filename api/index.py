@@ -1174,6 +1174,9 @@ class handler(BaseHTTPRequestHandler):
                 "github_org": "https://github.com/CSOAI-ORG",
                 "pypi_user": "https://pypi.org/user/MEOK_AI_Labs/",
             })
+        if path == "/verify" or path == "/verify/":
+            # GET /verify — landing page with verify form
+            return self._html(200, _verify_html(""))
         if path.startswith("/verify/") or path.startswith("/v/"):
             cert_id = path.split("/", 2)[-1] or ""
             return self._html(200, _verify_html(cert_id))
