@@ -33,6 +33,14 @@
       "destination": "/api/v1_sdk_pro"
     },
     {
+      "source": "/v1/a2a/:path*",
+      "destination": "/api/a2a_demo"
+    },
+    {
+      "source": "/api/a2a/:path*",
+      "destination": "/api/a2a_demo"
+    },
+    {
       "source": "/((?!api/|\\.well-known/|scorecard/|sitemap\\.xml|robots\\.txt|llms-full\\.txt|llms\\.txt|get-key\\.html|favicon\\.ico|openapi\\.json|docs\\.html).*)",
       "destination": "/api/index.py"
     }
