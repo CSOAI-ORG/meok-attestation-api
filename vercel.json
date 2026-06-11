@@ -21,6 +21,18 @@
       "destination": "/api/index.py"
     },
     {
+      "source": "/v1/healthx",
+      "destination": "/api/v1_sdk_pro"
+    },
+    {
+      "source": "/v1/:path*",
+      "destination": "/api/v1_sdk_pro"
+    },
+    {
+      "source": "/api/v1/:path*",
+      "destination": "/api/v1_sdk_pro"
+    },
+    {
       "source": "/((?!api/|\\.well-known/|scorecard/|sitemap\\.xml|robots\\.txt|llms-full\\.txt|llms\\.txt|get-key\\.html|favicon\\.ico|openapi\\.json|docs\\.html).*)",
       "destination": "/api/index.py"
     }
