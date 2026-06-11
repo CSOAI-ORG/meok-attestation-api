@@ -1019,16 +1019,21 @@ class handler(BaseHTTPRequestHandler):
         self.send_header("Access-Control-Allow-Methods", "GET,POST,OPTIONS")
         self.send_header("Access-Control-Allow-Headers", "Content-Type,X-API-Key")
         self.end_headers()
-        self.wfile.write(json.dumps(body).encode())
+        if self.command != 'HEAD':
+            self.wfile.write(json.dumps(body).encode())
 
     def _html(self, status: int, body: str) -> None:
         self.send_response(status)
         self.send_header("Content-Type", "text/html; charset=utf-8")
         self.end_headers()
-        self.wfile.write(body.encode())
+        if self.command != 'HEAD':
+            self.wfile.write(body.encode())
 
     def do_OPTIONS(self) -> None:
         self._json(204, {})
+
+    def do_HEAD(self) -> None:
+        self.do_GET()
 
     def do_GET(self) -> None:
         path = (self.path or "/").split("?", 1)[0]
