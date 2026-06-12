@@ -1,0 +1,14 @@
+{
+  "name": "meok-attestation-api",
+  "description": "MEOK Attestation API — the verify-URL surface. Signed Ed25519 attestations for any AI agent or computation result. Verify URLs the auditor checks without you. Anti-Billion-Dollar-Whale: cryptographic proof. Built by MEOK AI Labs.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/CSOAI-ORG/meok-attestation-api",
+  "license": "MIT",
+  "author": "MEOK AI Labs",
+  "type": "api",
+  "endpoints": {
+    "openapi": "https://meok-attestation-api.vercel.app/openapi.json",
+    "health": "https://meok-attestation-api.vercel.app/health",
+    "verify": "https://meok-attestation-api.vercel.app/verify/{attestation_id}"
+  }
+}
