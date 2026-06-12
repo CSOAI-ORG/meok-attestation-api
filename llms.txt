@@ -1,0 +1,76 @@
+# meok-attestation-api
+> The MEOK Attestation API — the verify-URL surface that auditors and compliance teams hit to confirm an AI agent's claims. Every attestation is Ed25519-signed. The cryptographic proof that the rest of the MEOK fleet is built on. Built by MEOK AI Labs.
+
+## What this is
+
+A REST API (FastAPI on Vercel) that issues, verifies, and lists signed attestations. Use it from any agent or compliance tool to:
+
+1. **Sign** a payload (any string or hash) → get back a portable attestation_id + Ed25519 signature
+2. **Verify** an attestation_id → re-compute the signature, confirm chain integrity
+3. **List** attestations by issuer or time range
+4. **Audit** the full chain head (for tamper-evidence)
+
+## Install (Python)
+
+```bash
+pip install requests
+```
+
+## Use
+
+```python
+import requests
+
+# Sign
+r = requests.post("https://meok-attestation-api.vercel.app/sign", json={
+    "payload_hex": "a591a6d40bf420404a011733cfb7b190d62c65bf0bcda32b57b277d9ad9f146e",  # SHA-256
+    "issuer": "agent-compliance-passport"
+})
+att = r.json()
+print(f"  attestation_id: {att['attestation_id']}")
+print(f"  signature: {att['signature']}")
+print(f"  verify_url: https://meok-attestation-api.vercel.app/verify/{att['attestation_id']}")
+
+# Verify (this is what an auditor hits)
+r = requests.get(f"https://meok-attestation-api.vercel.app/verify/{att['attestation_id']}")
+print(r.json())
+# {"is_valid": true, "head": "abc123...", "verified_at": "2026-06-12T15:00:00Z"}
+```
+
+## Why this matters
+
+In a world of unverifiable AI claims, **the verify URL the auditor checks without you** is the entire moat. This is what makes MEOK anti-Billion-Dollar-Whale: every claim is signed, every signature is portable, every verification is independent.
+
+Vanta/Drata issue compliance reports you must trust. MEOK Attestation issues signatures you can verify.
+
+## API reference
+
+- `GET /openapi.json` — full OpenAPI 3.1 spec
+- `GET /health` — liveness check
+- `POST /sign` — issue new attestation
+- `GET /verify/{attestation_id}` — re-compute + verify
+- `GET /list?issuer=X&since=ISO8601` — list attestations
+- `GET /chain/head` — current tamper-evident chain head
+
+## Integration
+
+- All MEOK compliance MCPs auto-sign their audit results via this API
+- The csoai-dashboard Watchdog Certification reads from this API
+- The proofof.ai agent ledger is a UI on top of this API
+
+## Architecture
+
+- FastAPI on Vercel serverless
+- Ed25519 signing (asymmetric — verifies cannot forge)
+- HMAC-SHA256 for internal receipts (x402)
+- Chained for tamper evidence: each attestation links to previous via head hash
+
+## Links
+
+- Source: https://github.com/CSOAI-ORG/meok-attestation-api
+- Live: https://meok-attestation-api.vercel.app
+- OpenAPI: https://meok-attestation-api.vercel.app/openapi.json
+- MEOK: https://meok.ai
+- CSOAI: https://csoai.org
+
+Built by Nick Templeman and the MEOK AI Labs team.
