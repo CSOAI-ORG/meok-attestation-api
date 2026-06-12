@@ -17,7 +17,7 @@ from http.server import BaseHTTPRequestHandler
 KV_URL = os.environ.get("KV_REST_API_URL", "")
 KV_TOK = os.environ.get("KV_REST_API_TOKEN", "")
 FREE_DAILY = int(os.environ.get("MEOK_FREE_DAILY", "200"))
-PRO_LINK = "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j"
+PRO_LINK = "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t"
 PAYG_LINK = "https://proofof.ai/payg"
 
 def _kv(*cmd):
@@ -65,3 +65,35 @@ class handler(BaseHTTPRequestHandler):
             "remaining":max(0,limit-n),
             **({} if allowed else {"upgrade_url":PRO_LINK,"payg":PAYG_LINK,
                "message":f"Free limit {limit}/day reached. Pro (unlimited): {PRO_LINK}"})})
+
+
+def _meter_check(api_key: str, tool: str = "") -> dict:
+    """Pure-function form of the handler — returns the JSON dict for index.py to embed.
+    Identical semantics: pro/payg/CSOAI = unlimited, anon = unmetered, free = KV-counted."""
+    key = (api_key or "").strip()
+    tier = "pro" if key.startswith(("CSOAI-", "meok_pro_", "payg_")) else (
+        "free" if key.startswith("meok_free_") else "anon")
+    if tier == "pro":
+        return {"allowed": True, "tier": "pro", "remaining": "unlimited", "tool": tool}
+    if tier == "anon":
+        return {"allowed": True, "tier": "anon", "remaining": "unmetered",
+                "note": "Get a free key (200/day): https://proofof.ai/get-key.html",
+                "upgrade_url": PRO_LINK, "tool": tool}
+    # free tier: KV-counted
+    day = datetime.now(timezone.utc).strftime("%Y%m%d")
+    rk = f"meok:meter:{key}:{day}"
+    n = _kv("INCR", rk)
+    if n is None:
+        return {"allowed": True, "tier": tier, "remaining": "unmetered",
+                "note": "metering KV not configured (Vercel KV env vars not set)",
+                "upgrade_url": PRO_LINK, "tool": tool}
+    if n == 1:
+        _kv("EXPIRE", rk, "90000")
+    limit = FREE_DAILY
+    allowed = n <= limit
+    out = {"allowed": allowed, "tier": tier, "used": n, "limit": limit,
+           "remaining": max(0, limit - n), "tool": tool}
+    if not allowed:
+        out.update({"upgrade_url": PRO_LINK, "payg": PAYG_LINK,
+                    "message": f"Free limit {limit}/day reached. Pro (unlimited): {PRO_LINK}"})
+    return out

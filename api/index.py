@@ -34,6 +34,11 @@ from datetime import datetime, timedelta, timezone
 from http.server import BaseHTTPRequestHandler
 from typing import Any, Optional
 
+try:
+    from . import _crypto
+except ImportError:
+    import _crypto
+
 
 # ── Server-side signing key (NEVER share this) ─────────────────────────
 # V-01 FIX: REQUIRE the key at module load. NO dev-placeholder fallback.
@@ -724,8 +729,10 @@ def sign_attestation(
             ],
         }
 
-    ed25519_sig = _ed25519_sign(canonical)
-    return {
+    ed25519_sig = _crypto.ed25519_sign(canonical)
+    rfc3161_ts = _crypto.get_rfc3161_timestamp(canonical) if tier != "free" else None
+    
+    cert_resp = {
         "cert_id": cert_id,
         "issued_utc": now.isoformat(),
         "expires_utc": expires.isoformat(),
@@ -733,6 +740,7 @@ def sign_attestation(
         "signature_sha256_hmac": signature,
         **({"signature_ed25519": ed25519_sig, "signing_pubkey_id": _ED25519_IDENTITY,
             "pubkey_url": f"{_VERIFY_BASE.rsplit('/verify', 1)[0]}/pubkey"} if ed25519_sig else {}),
+        **({"rfc3161_timestamp": rfc3161_ts} if rfc3161_ts else {}),
         "verify_url": f"{_VERIFY_BASE}/{cert_id}",
         "assessment": assessment,
         "score_percent": payload["score_percent"],
@@ -748,13 +756,13 @@ def sign_attestation(
             f"This attestation expires {expires.strftime('%d %b %Y')}. Re-run the audit "
             "before then to keep continuous compliance evidence."
         ),
-        "what_to_do_with_this": [
-            "Share the verify_url with your auditor, board, or procurement team",
-            "The HMAC signature is cryptographically binding — any tampering invalidates it",
-            "Certificates expire 365 days from issue. Re-run the audit before expiry to maintain continuous evidence",
-            "Enterprise tier unlocks co-branded PDFs + webhook pushes to your Trust Center",
-        ],
     }
+    
+    # Add OSCAL link for high tiers
+    if tier in ("pro", "enterprise", "professional"):
+        cert_resp["oscal_url"] = f"{_VERIFY_BASE.rsplit('/verify', 1)[0]}/api/oscal/{cert_id}"
+        
+    return cert_resp
 
 
 def verify_attestation(cert: dict[str, Any]) -> tuple[bool, str]:
@@ -1181,6 +1189,15 @@ class handler(BaseHTTPRequestHandler):
             cert_id = path.split("/", 2)[-1] or ""
             return self._html(200, _verify_html(cert_id))
 
+        if path.startswith("/api/oscal/"):
+            # OSCAL export: for high-tier integration.
+            # In a real system, we'd look up the cert in a DB.
+            # For this serverless demo, we'd need to re-verify the signature
+            # if we wanted to be sure, but usually the caller provides the
+            # cert body. If GET /api/oscal/<id> is used, we'd need a backend store.
+            # For now, we return a 405 explaining it's a POST endpoint or needs DB.
+            return self._json(501, {"error": "OSCAL GET requires persistence. Use POST /api/oscal with cert body."})
+
         # ── PAYG GET endpoints ──
         if path in ("/payg/health", "/api/payg/health"):
             return self._json(200, {
@@ -1368,6 +1385,18 @@ class handler(BaseHTTPRequestHandler):
                 return self._json(200 if ok else 401, {"ok": ok})
             except Exception as e:
                 return self._json(500, {"error": f"unsubscribe: {e}"})
+
+        if path == "/api/oscal":
+            try:
+                body = json.loads(raw) if raw else {}
+            except json.JSONDecodeError:
+                return self._json(400, {"error": "Invalid JSON"})
+            # Verify the cert before converting to OSCAL
+            ok, msg = verify_attestation(body)
+            if not ok:
+                return self._json(401, {"error": f"Invalid certificate: {msg}"})
+            oscal = _crypto.generate_oscal_attestation(body)
+            return self._json(200, oscal)
 
         # /webhook needs raw body for Stripe signature verification — parse only after.
         if path == "/webhook":
@@ -1593,6 +1622,15 @@ class handler(BaseHTTPRequestHandler):
             return self._json(200, cert)
 
         if path == "/verify":
+            # ── 2026-06-12: METERING BRANCH (wired in) ──
+            # auth_middleware_metered.py in every MCP package posts {api_key, tool}
+            # here. Returns {allowed, tier, remaining, upgrade_url}. Fail-open if KV
+            # not configured (returns allowed=True, remaining="unmetered"). Keep this
+            # branch FIRST so the metering check happens before SIGIL/HMAC paths.
+            if body.get("api_key") is not None and "sigil_chain" not in body and "payload" not in body and "cert" not in body:
+                from .verify import _meter_check
+                return self._json(200, _meter_check(body.get("api_key", ""), body.get("tool", "")))
+
             # SIGIL hash-chain verification — the tamper-evident audit trail (honey
             # receipts, tool-call audit). Anyone can POST a SIGIL chain and confirm it's
             # intact WITHOUT backend trust: receipt = sha256(prev_receipt + line)[:16].
