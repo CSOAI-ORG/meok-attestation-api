@@ -25,7 +25,7 @@ from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler
 
 STRIPE_KEY = os.environ.get("STRIPE_SECRET_KEY", "")
-PRO_LINK = "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j"  # £79 Compliance Pro
+PRO_LINK = "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t"  # £79 Compliance Pro
 PAYG_LINK = "https://proofof.ai/payg"
 FREE_LIMIT = "200/day"
 EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")

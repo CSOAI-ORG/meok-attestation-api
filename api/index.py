@@ -1638,14 +1638,25 @@ class handler(BaseHTTPRequestHandler):
             if chain is not None:
                 import hashlib as _hl
                 _GEN = "MEOK-SIGIL-GENESIS"
-                prev = (chain[0].get("prev") if chain else _GEN) or _GEN
-                verified, broken_at = 0, None
-                for r in chain:
-                    calc = _hl.sha256(f"{prev}{r.get('line','')}".encode()).hexdigest()[:16]
-                    if calc != r.get("receipt"):
-                        broken_at = r.get("seq", verified)
-                        break
-                    prev, verified = r["receipt"], verified + 1
+                # FIX 2026-06-12: malformed input (e.g. list of strings, missing fields)
+                # used to return 500 FUNCTION_INVOCATION_FAILED. Now returns 400 with
+                # structured error.
+                try:
+                    prev = (chain[0].get("prev") if chain else _GEN) or _GEN
+                    verified, broken_at = 0, None
+                    for r in chain:
+                        calc = _hl.sha256(f"{prev}{r.get('line','')}".encode()).hexdigest()[:16]
+                        if calc != r.get("receipt"):
+                            broken_at = r.get("seq", verified)
+                            break
+                        prev, verified = r["receipt"], verified + 1
+                except (TypeError, ValueError, KeyError, AttributeError) as e:
+                    return self._json(400, {
+                        "valid": False,
+                        "kind": "sigil_chain",
+                        "error": "malformed_input",
+                        "detail": f"each chain entry must be a dict with 'line' and 'receipt' fields: {e}",
+                    })
                 return self._json(200, {
                     "valid": broken_at is None,
                     "kind": "sigil_chain",
