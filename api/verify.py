@@ -10,15 +10,23 @@ is not configured or unreachable, allow (never break the MCPs). Env:
   MEOK_FREE_DAILY  (default 200)
 """
 from __future__ import annotations
-import json, os, urllib.request, urllib.error
+import json, os, re, urllib.request, urllib.error
 from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler
 
 KV_URL = os.environ.get("KV_REST_API_URL", "")
 KV_TOK = os.environ.get("KV_REST_API_TOKEN", "")
 FREE_DAILY = int(os.environ.get("MEOK_FREE_DAILY", "200"))
+# Grace cap for correctly-shaped pro keys NOT yet in the registry (pre-backfill
+# legit keys OR forgeries). Generous so real customers never notice, but finite
+# so a forged `meok_pro_<random hex>` can't get truly unlimited usage. Once the
+# registry is backfilled, every real key is registered → genuinely unlimited.
+PRO_GRACE_DAILY = int(os.environ.get("MEOK_PRO_GRACE_DAILY", "500"))
 PRO_LINK = "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t"
 PAYG_LINK = "https://proofof.ai/payg"
+
+# A real derived key is meok_<tier>_<24 lowercase hex> (see derive_api_key).
+_HEX24 = re.compile(r"^[0-9a-f]{24}$")
 
 def _kv(*cmd):
     """Upstash REST: POST [cmd...] -> result. Returns None on any failure (fail-open)."""
@@ -30,6 +38,29 @@ def _kv(*cmd):
             return json.load(r).get("result")
     except Exception:
         return None
+
+def register_key(key: str, tier: str) -> None:
+    """Record an issued key in the KV registry so metering can tell a REAL key
+    from a forged prefix. Permanent (no expiry). No-op if KV unset (fail-open).
+    Called at every mint site (provision/webhook/signup) + the backfill."""
+    key = (key or "").strip()
+    if not key:
+        return
+    _kv("SET", f"meok:validkey:{key}", (tier or "pro").lower())
+
+def _registered_tier(key: str):
+    """Registered tier for a key, or None if not in the registry."""
+    return _kv("GET", f"meok:validkey:{(key or '').strip()}")
+
+def _pro_shaped(key: str) -> bool:
+    """True if the key has the structural shape of a real pro/payg key.
+    Catches `meok_pro_test` / `meok_pro_anything` (non-hex suffix) cheaply,
+    before any KV lookup. Does NOT prove authenticity — the registry does that."""
+    if key.startswith(("meok_pro_", "meok_enterprise_")):
+        return bool(_HEX24.match(key.rsplit("_", 1)[-1]))
+    if key.startswith("payg_"):
+        return len(key) > 8
+    return False
 
 def _resp(h, code, obj):
     b=json.dumps(obj).encode()
@@ -45,43 +76,19 @@ class handler(BaseHTTPRequestHandler):
             body=json.loads(self.rfile.read(ln) or b"{}")
         except Exception:
             return _resp(self,400,{"error":"invalid JSON"})
-        key=(body.get("api_key") or "").strip()
-        tier = "pro" if (key.startswith(("CSOAI-","meok_pro_","payg_")) ) else ("free" if key.startswith("meok_free_") else "anon")
-        if tier in ("pro",):
-            return _resp(self,200,{"allowed":True,"tier":"pro","remaining":"unlimited"})
-        if tier == "anon":
-            return _resp(self,200,{"allowed":True,"tier":"anon","remaining":"unmetered","note":"Get a free key (200/day): https://proofof.ai/get-key.html"})
-        # free tier: metered per-key (no global counter)
-        day=datetime.now(timezone.utc).strftime("%Y%m%d")
-        ident = key
-        rk=f"meok:meter:{ident}:{day}"
-        n=_kv("INCR", rk)
-        if n is None:                       # KV not configured -> fail open
-            return _resp(self,200,{"allowed":True,"tier":tier,"remaining":"unmetered","note":"metering KV not configured"})
-        if n==1: _kv("EXPIRE", rk, "90000")
-        limit = FREE_DAILY
-        allowed = n <= limit
-        return _resp(self,200,{"allowed":allowed,"tier":tier,"used":n,"limit":limit,
-            "remaining":max(0,limit-n),
-            **({} if allowed else {"upgrade_url":PRO_LINK,"payg":PAYG_LINK,
-               "message":f"Free limit {limit}/day reached. Pro (unlimited): {PRO_LINK}"})})
+        # Single source of truth — same registry-gated logic index.py embeds.
+        return _resp(self, 200, _meter_check(body.get("api_key", ""), body.get("tool", "")))
 
 
-def _meter_check(api_key: str, tool: str = "") -> dict:
-    """Pure-function form of the handler — returns the JSON dict for index.py to embed.
-    Identical semantics: pro/payg/CSOAI = unlimited, anon = unmetered, free = KV-counted."""
-    key = (api_key or "").strip()
-    tier = "pro" if key.startswith(("CSOAI-", "meok_pro_", "payg_")) else (
-        "free" if key.startswith("meok_free_") else "anon")
-    if tier == "pro":
-        return {"allowed": True, "tier": "pro", "remaining": "unlimited", "tool": tool}
-    if tier == "anon":
-        return {"allowed": True, "tier": "anon", "remaining": "unmetered",
-                "note": "Get a free key (200/day): https://proofof.ai/get-key.html",
-                "upgrade_url": PRO_LINK, "tool": tool}
-    # free tier: KV-counted
+def _fp(key: str) -> str:
+    import hashlib
+    return hashlib.sha256((key or "").encode("utf-8")).hexdigest()[:12]
+
+
+def _meter(key: str, tier: str, limit: int, tool: str, ns: str = "meter") -> dict:
+    """KV daily counter for `key` under namespace `ns`. Fail-open if KV unset."""
     day = datetime.now(timezone.utc).strftime("%Y%m%d")
-    rk = f"meok:meter:{key}:{day}"
+    rk = f"meok:{ns}:{key}:{day}"
     n = _kv("INCR", rk)
     if n is None:
         return {"allowed": True, "tier": tier, "remaining": "unmetered",
@@ -89,11 +96,56 @@ def _meter_check(api_key: str, tool: str = "") -> dict:
                 "upgrade_url": PRO_LINK, "tool": tool}
     if n == 1:
         _kv("EXPIRE", rk, "90000")
-    limit = FREE_DAILY
     allowed = n <= limit
     out = {"allowed": allowed, "tier": tier, "used": n, "limit": limit,
            "remaining": max(0, limit - n), "tool": tool}
     if not allowed:
         out.update({"upgrade_url": PRO_LINK, "payg": PAYG_LINK,
-                    "message": f"Free limit {limit}/day reached. Pro (unlimited): {PRO_LINK}"})
+                    "message": f"Limit {limit}/day reached. Pro (unlimited): {PRO_LINK}"})
     return out
+
+
+def _meter_check(api_key: str, tool: str = "") -> dict:
+    """Server-side metering + KEY-AUTHENTICITY gate (the fix for the
+    `meok_pro_<forged>` = unlimited leak). Trust ladder:
+
+      CSOAI-*                        -> internal, unlimited
+      registered pro/enterprise/payg -> unlimited (validated vs KV registry)
+      pro-shaped but NOT registered  -> GRACE-metered (PRO_GRACE_DAILY/day) + logged
+      pro-prefixed but malformed     -> free-metered (catches meok_pro_test)
+      meok_free_*                    -> free-metered (FREE_DAILY/day)
+      anon (no key)                  -> allowed, unmetered (no identity to meter)
+
+    Fail-open: if KV is unreachable/unconfigured, allow (never break the fleet).
+    """
+    key = (api_key or "").strip()
+
+    # Internal CSOAI keys — yours, always unlimited.
+    if key.startswith("CSOAI-"):
+        return {"allowed": True, "tier": "pro", "remaining": "unlimited",
+                "validated": "internal", "tool": tool}
+
+    # Pro/payg class — unlimited ONLY when validated against the registry.
+    if _pro_shaped(key):
+        if not (KV_URL and KV_TOK):
+            # KV not configured at all -> legacy fail-open (don't break prod).
+            return {"allowed": True, "tier": "pro", "remaining": "unlimited",
+                    "validated": "kv-unconfigured", "tool": tool}
+        reg = _registered_tier(key)
+        if reg in ("pro", "enterprise", "payg"):
+            return {"allowed": True, "tier": reg, "remaining": "unlimited",
+                    "validated": "registry", "tool": tool}
+        # Correctly-shaped but unregistered: a pre-backfill legit key OR a
+        # forgery. Grace-meter so real customers never notice but forgeries
+        # can't run unlimited. Logged so backfill gaps are visible.
+        print(f"[UNREGISTERED_PRO_KEY] fp={_fp(key)} tool={tool} — grace-metered")
+        return _meter(key, "pro_grace", PRO_GRACE_DAILY, tool, ns="grace")
+
+    # Free shape, or any pro-prefixed-but-malformed key -> metered free tier.
+    if key.startswith(("meok_free_", "meok_pro_", "meok_enterprise_", "payg_")):
+        return _meter(key, "free", FREE_DAILY, tool)
+
+    # No recognised key -> anon. No identity to meter; allow + advertise free key.
+    return {"allowed": True, "tier": "anon", "remaining": "unmetered",
+            "note": "Get a free key (200/day): https://proofof.ai/get-key.html",
+            "upgrade_url": PRO_LINK, "tool": tool}

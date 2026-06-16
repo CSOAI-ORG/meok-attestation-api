@@ -130,6 +130,23 @@ def key_fp(api_key: str) -> str:
     return hashlib.sha256((api_key or "").encode("utf-8")).hexdigest()[:12]
 
 
+def _register_minted_key(api_key: str, tier: str) -> None:
+    """Best-effort: add a freshly-minted key to the KV registry so the metering
+    gate (verify._meter_check) can validate it as REAL rather than trusting the
+    prefix. Never raises — provisioning must not depend on KV. (Hardening 2026-06-16.)"""
+    try:
+        from .verify import register_key
+        register_key(api_key, tier)
+    except Exception as e:
+        print(f"[REGISTER_KEY] best-effort failed fp={key_fp(api_key)}: {type(e).__name__}")
+
+
+# Free-tier /sign daily cap (keyless email signers). Advertised as 3/day in the
+# cert copy; default a touch higher so genuine trials never hit a wall, tunable
+# via env. Pro/enterprise keys are validated + uncapped. (Hardening 2026-06-16.)
+_FREE_SIGN_DAILY = int(os.environ.get("MEOK_FREE_SIGN_DAILY", "10"))
+
+
 # ── Crypto helpers ─────────────────────────────────────────────────────
 def _canonical_payload(payload: dict[str, Any]) -> bytes:
     """Deterministic JSON for stable signatures."""
@@ -1427,6 +1444,7 @@ class handler(BaseHTTPRequestHandler):
                 session_id = session.get("id", "")
                 if email:
                     api_key = derive_api_key(email, tier)
+                    _register_minted_key(api_key, tier)
                     # Log for Vercel logs (Nick can grep). Never return the key in response body
                     # since webhook responses go back to Stripe.
                     print(f"[PROVISIONED] email={email} tier={tier} key_fp={key_fp(api_key)} session={session_id} mcp_slug={mcp_slug}")
@@ -1448,6 +1466,7 @@ class handler(BaseHTTPRequestHandler):
             if not _is_valid_email(email):
                 return self._json(400, {"error": "a valid email is required"})
             api_key = derive_api_key(email, "free")
+            _register_minted_key(api_key, "free")
             lead = False
             try:
                 if _STRIPE_SECRET_KEY:
@@ -1510,6 +1529,7 @@ class handler(BaseHTTPRequestHandler):
                 if tier not in ("pro", "enterprise"):
                     return self._json(400, {"error": "tier must be 'pro' or 'enterprise'"})
                 key = derive_api_key(email, tier)
+                _register_minted_key(key, tier)
                 return self._json(200, {
                     "email": email,
                     "tier": tier,
@@ -1546,6 +1566,7 @@ class handler(BaseHTTPRequestHandler):
             email_mismatch = bool(body_email) and body_email != cust_email
 
             key = derive_api_key(cust_email, tier)
+            _register_minted_key(key, tier)
             return self._json(200, {
                 "email": cust_email,
                 "tier": tier,
@@ -1586,6 +1607,26 @@ class handler(BaseHTTPRequestHandler):
             # Previously a Pro key could sign certs claiming tier=enterprise.
             tier = resolved_tier
             auditor_notes = body.get("auditor_notes") or ""
+
+            # RATE LIMIT (#2, 2026-06-16): free-tier /sign was unlimited — the
+            # "3/day" cert copy was cosmetic, so a no-key caller could mint
+            # unlimited genuinely-signed certs. Pro/enterprise keys are already
+            # validated by _check_api_key (derived_key_valid) + stay uncapped;
+            # only the keyless free path needs a cap. Meter by email; fail-open.
+            if tier == "free":
+                try:
+                    from .verify import _meter
+                    ident = f"email:{(email or '').strip().lower()}"
+                    m = _meter(ident, "free", _FREE_SIGN_DAILY, "sign", ns="sign")
+                    if not m.get("allowed", True):
+                        return self._json(429, {
+                            "error": (f"Free signing limit {m['limit']}/day reached. "
+                                      "Upgrade to Pro for unlimited verifiable certs."),
+                            "used": m.get("used"), "limit": m.get("limit"),
+                            "upgrade_url": "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t",
+                        })
+                except Exception as _me:
+                    print(f"[SIGN_METER] fail-open: {type(_me).__name__}")
 
             # FREE-TIER LEAD CAPTURE: every email-only request gets logged so
             # Nick can grep Vercel logs for compliance buyers in the funnel.
