@@ -122,6 +122,14 @@ def derived_key_valid(api_key: str, email: str, tier: str = "pro") -> bool:
     return hmac.compare_digest(api_key or "", derive_api_key(email, tier))
 
 
+def key_fp(api_key: str) -> str:
+    """Short, non-reversible fingerprint of an API key for safe logging.
+    NEVER log the raw key — Vercel log retention turns it into a working
+    credential leak. Logs the sha256[:12] so events stay greppable/correlatable
+    without exposing the live key. (Hardening 2026-06-16.)"""
+    return hashlib.sha256((api_key or "").encode("utf-8")).hexdigest()[:12]
+
+
 # ── Crypto helpers ─────────────────────────────────────────────────────
 def _canonical_payload(payload: dict[str, Any]) -> bytes:
     """Deterministic JSON for stable signatures."""
@@ -1421,7 +1429,7 @@ class handler(BaseHTTPRequestHandler):
                     api_key = derive_api_key(email, tier)
                     # Log for Vercel logs (Nick can grep). Never return the key in response body
                     # since webhook responses go back to Stripe.
-                    print(f"[PROVISIONED] email={email} tier={tier} key={api_key} session={session_id} mcp_slug={mcp_slug}")
+                    print(f"[PROVISIONED] email={email} tier={tier} key_fp={key_fp(api_key)} session={session_id} mcp_slug={mcp_slug}")
                     # Fire Day-0 welcome email (no-op if RESEND_API_KEY unset)
                     _send_welcome_email(email=email, tier=tier, api_key=api_key, mcp_slug=mcp_slug, session_id=session_id)
                     handled = True
@@ -1459,7 +1467,7 @@ class handler(BaseHTTPRequestHandler):
                     lead = True
             except Exception as e:
                 print(f"[SIGNUP] stripe lead-capture failed email={email}: {type(e).__name__}: {e}")
-            print(f"[SIGNUP] email={email} key={api_key} lead_captured={lead} "
+            print(f"[SIGNUP] email={email} key_fp={key_fp(api_key)} lead_captured={lead} "
                   f"ts={datetime.now(timezone.utc).isoformat()}")
             return self._json(200, {
                 "ok": True,
