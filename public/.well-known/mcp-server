@@ -1,0 +1,59 @@
+{
+  "mcpVersion": "1.0.0",
+  "serverInfo": {
+    "name": "meok-attestation-api",
+    "version": "1.2.0",
+    "description": "MEOK Attestation API — issue and verify Ed25519-signed AI compliance attestations with public verify URLs."
+  },
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": false
+  },
+  "tools": [
+    {
+      "name": "sign_attestation",
+      "description": "Sign a compliance payload and return a portable attestation with Ed25519 signature.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "payload": { "type": "string", "description": "The compliance payload or hash to attest" },
+          "product": { "type": "string", "description": "Product or system name" },
+          "tier": { "type": "string", "description": "Subscription tier (starter, pro, enterprise)" }
+        },
+        "required": ["payload", "product"]
+      }
+    },
+    {
+      "name": "verify_attestation",
+      "description": "Verify an attestation by ID or full payload offline.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "cert_id": { "type": "string", "description": "The certificate ID to verify" }
+        },
+        "required": ["cert_id"]
+      }
+    }
+  ],
+  "resources": [
+    {
+      "uri": "https://meok-attestation-api.vercel.app/llms.txt",
+      "name": "Attestation API LLMs.txt",
+      "description": "Discovery manifest for LLM agents.",
+      "mimeType": "text/plain"
+    },
+    {
+      "uri": "https://meok-attestation-api.vercel.app/openapi.json",
+      "name": "OpenAPI Schema",
+      "description": "Machine-readable API specification.",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "https://meok-attestation-api.vercel.app/pubkey",
+      "name": "Ed25519 Public Key",
+      "description": "Offline attestation verification key.",
+      "mimeType": "text/plain"
+    }
+  ]
+}
