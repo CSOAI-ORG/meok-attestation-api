@@ -1,0 +1,31 @@
+{
+  "schema_version": "2025-06",
+  "publisher": {
+    "name": "CSOAI Hive",
+    "legal_entity": "MEOK AI LTD",
+    "url": "https://csoai.org"
+  },
+  "site": {
+    "name": "ProofOf",
+    "domain": "proofof.ai",
+    "sector": "ai-governance"
+  },
+  "registry": "https://csoai.org/.well-known/mcp.json",
+  "published_mcp_servers_total": 271,
+  "servers": [
+    {
+      "name": "meok-attestation-api",
+      "tool": "meok-attestation-api.sign",
+      "description": "Issue a tamper-evident HMAC + Ed25519 attestation with a public verify URL.",
+      "endpoint": "https://proofof.ai/mcp/meok-attestation-api",
+      "tier": "flagship"
+    },
+    {
+      "name": "meok-attestation-verify",
+      "tool": "meok-attestation-verify.verify",
+      "description": "Offline Ed25519 verification of a MEOK attestation.",
+      "endpoint": "https://proofof.ai/mcp/meok-attestation-verify",
+      "tier": "flagship"
+    }
+  ]
+}

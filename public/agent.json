@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "name": "ProofOf Agent",
+  "description": "Signed AI compliance attestations — public signing + verification surface for the MEOK AI Labs hive.",
+  "url": "https://proofof.ai",
+  "provider": {
+    "organization": "MEOK AI Labs (CSOAI LTD)",
+    "url": "https://csoai.org"
+  },
+  "capabilities": {
+    "streaming": false,
+    "mcp": true,
+    "a2a": true
+  },
+  "skills": [
+    {
+      "id": "sign",
+      "name": "meok-attestation-api.sign",
+      "description": "Issue a tamper-evident HMAC + Ed25519 attestation with a public verify URL."
+    },
+    {
+      "id": "verify",
+      "name": "meok-attestation-verify.verify",
+      "description": "Offline verification of a MEOK attestation. Pubkey at https://proofof.ai/pubkey."
+    }
+  ],
+  "endpoints": {
+    "a2a": "https://proofof.ai/.well-known/agent.json",
+    "mcp_catalog": "https://proofof.ai/.well-known/mcp.json",
+    "verify": "https://proofof.ai/verify",
+    "signup": "https://proofof.ai/signup"
+  },
+  "sector": "ai-governance"
+}
