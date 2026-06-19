@@ -1,6 +1,14 @@
 {
   "rewrites": [
     {
+      "source": "/signup",
+      "destination": "/signup.html"
+    },
+    {
+      "source": "/api/signup",
+      "destination": "/api/signup.py"
+    },
+    {
       "source": "/api/payg",
       "destination": "/api/index.py"
     },
