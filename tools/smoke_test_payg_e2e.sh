@@ -18,6 +18,28 @@ NC=$'\033[0m'
 pass () { printf "  ${GREEN}✓${NC} %s\n" "$1"; }
 fail () { printf "  ${RED}✗${NC} %s\n" "$1"; exit 1; }
 
+# ---------------------------------------------------------------------------
+# Preflight: does the host this test targets exist at all?
+#
+# Every run of this smoke test failed with a bare "exit code 6" and no message.
+# Exit 6 is curl for "couldn't resolve host": meok-attestation-api.pages.dev has
+# no DNS record. The test was not finding a broken API — it was testing an API
+# that is not deployed. `set -e` plus an unchecked curl turned that into an
+# opaque number.
+#
+# Checked 2026-08-05: meok-attestation-api.pages.dev does not resolve;
+# os.meok.ai/payg/health and meok.ai/payg/health both return the 43,485-byte MEOK
+# homepage, i.e. a soft-404, not the API. The PAYG endpoints are live nowhere.
+HOST=$(printf '%s' "$API" | sed -E 's#^https?://([^/]+).*#\1#')
+if ! getent hosts "$HOST" >/dev/null 2>&1 && ! nslookup "$HOST" >/dev/null 2>&1; then
+  printf "  ${RED}✗${NC} %s\n" "host does not resolve: $HOST"
+  echo ""
+  echo "  The PAYG API is not deployed at this address, so there is nothing to smoke."
+  echo "  Either deploy it, or point \$API at the address it actually lives on."
+  echo "  This test is failing correctly; it is not a flake and not a credentials problem."
+  exit 1
+fi
+
 echo "=== 1. /payg/health ==="
 HEALTH=$(curl -s "$API/health")
 echo "  body: $HEALTH"
