@@ -1,5 +1,8 @@
 name: PAYG E2E Smoke
 
+permissions:
+  issues: write
+
 on:
   # Run every push to main + on PR
   push:
@@ -25,13 +28,7 @@ jobs:
           python-version: '3.11'
 
       - name: PAYG E2E smoke against live production
-        run: |
-          if [ ! -f tools/smoke_test_payg_e2e.sh ]; then
-            echo "::warning::Pulling smoke script from clawd-workspace if local copy missing"
-            curl -sSL -o tools/smoke_test_payg_e2e.sh https://raw.githubusercontent.com/CSOAI-ORG/clawd-workspace/main/tools/smoke_test_payg_e2e.sh
-            chmod +x tools/smoke_test_payg_e2e.sh
-          fi
-          bash tools/smoke_test_payg_e2e.sh
+        run: bash tools/smoke_test_payg_e2e.sh
 
       - name: Alert on failure
         if: failure()
