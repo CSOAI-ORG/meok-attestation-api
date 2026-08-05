@@ -40,6 +40,6 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               title: `PAYG smoke FAIL — ${today}`,
-              body: `The daily PAYG E2E smoke test failed.\n\nRun: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}\n\nLikely causes:\n- STRIPE_SECRET_KEY env var dropped in Vercel\n- STRIPE_WEBHOOK_SECRET env var dropped in Vercel\n- meok-attestation-api deploy errored\n- Vercel routing regression\n\nCheck /payg/health response body to localise.`,
+              body: `The daily PAYG E2E smoke test failed.\n\nRun: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}\n\nLikely causes:\n- meok-attestation-api.pages.dev CF Pages project not yet provisioned\n- API env var (STRIPE_SECRET_KEY / STRIPE_WEBHOOK_SECRET) not configured on CF Pages\n- Worker Python rewrite not deployed\n- /payg/health endpoint not routing\n\nCheck /payg/health response body to localise.`,
               labels: ['payg-smoke-fail'],
             });
