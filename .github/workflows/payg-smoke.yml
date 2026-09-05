@@ -9,9 +9,12 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
-  # Daily at 06:30 UTC — same window as the EUR-Lex sync
-  schedule:
-    - cron: '30 6 * * *'
+  # NO SCHEDULE. This ran daily at 06:30 UTC and opened a fresh issue every single time it
+  # failed, which was every single day: meok-attestation-api.pages.dev does not resolve, because
+  # the Pages project was never provisioned — cause #1 in this workflow's own alert text. A daily
+  # alarm for a service that was never deployed is not monitoring. It produced #28 through #35 and
+  # beyond, one per day, and that volume is part of why genuine signal elsewhere in this org sat
+  # unread for days. Re-add the schedule when there is a deployed endpoint for it to watch.
   # Manual fire
   workflow_dispatch:
 
@@ -35,7 +38,27 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
+            // Reuse the open alert if one exists. The previous version called issues.create()
+            // unconditionally, so a persistent failure became one new issue per run rather than
+            // one issue with a comment per run. Deduplicate on the label.
             const today = new Date().toISOString().split('T')[0];
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'payg-smoke-fail',
+              per_page: 1,
+            });
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            if (existing.data.length > 0) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.data[0].number,
+                body: `Still failing on ${today}. Run: ${runUrl}`,
+              });
+              return;
+            }
             await github.rest.issues.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
